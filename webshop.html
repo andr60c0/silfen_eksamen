@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>SHOP</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav" id="nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="webshop.html">SHOP</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+      </ul>
+    </header>
+    <h1>SHOP</h1>
+    <section id="products">
+      <div class="sectionwrapper">
+        <div class="col test">
+          <template id="products_template">
+            <article>
+              <img class="product_image" src="" alt="" />
+              <div class="product_quick_info">
+                <h3 class="product_name"></h3>
+                <p class="product_price"></p>
+              </div>
+            </article>
+          </template>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </section>
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+      let productsData = [];
+
+      const productsEndpoint =
+        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
+
+      let productsTemplate = document.querySelector("#products_template");
+      const container = document.querySelector(".test");
+
+      document.addEventListener("DOMContentLoaded", getProductsData);
+
+      async function getProductsData() {
+        const productsResponse = await fetch(productsEndpoint);
+        productsData = await productsResponse.json();
+        showProducts();
+      }
+
+      function showProducts() {
+        console.log("showProducts");
+        container.innerHTML = "";
+        productsData.forEach((product) => {
+          const clone = productsTemplate.cloneNode(true).content;
+          clone.querySelector(".product_image").src =
+            product.product_image.guid;
+          clone.querySelector(".product_name").innerHTML = product.product_name;
+          clone.querySelector(".product_price").innerHTML =
+            product.product_price;
+          clone.querySelector("article").addEventListener("click", () => {
+            location.href = "product_singelView.html?id=" + product.id;
+          });
+
+          container.appendChild(clone);
+        });
+      }
+    </script>
+  </body>
+</html>

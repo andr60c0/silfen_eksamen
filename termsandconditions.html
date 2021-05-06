@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Terms & Conditions</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav" id="nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="webshop.html">SHOP</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+      </ul>
+    </header>
+    <h1>Terms and Conditions</h1>
+    <section id="terms_and_conditions"></section>
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+      let termsAndConditionsData;
+      let termsAndConditionsEndpoint =
+        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/49";
+
+      function start() {
+        getData();
+      }
+
+      async function getData() {
+        const termsAndConditionsResponse = await fetch(
+          termsAndConditionsEndpoint
+        );
+        termsAndConditionsData = await termsAndConditionsResponse.json();
+        showTermsAndConditionsPage();
+      }
+
+      function showTermsAndConditionsPage() {
+        console.log("showTermsAndConditions");
+        document.querySelector("#terms_and_conditions").innerHTML =
+          termsAndConditionsData.content.rendered;
+      }
+    </script>
+  </body>
+</html>

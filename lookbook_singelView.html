@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lookbook</title>
+  </head>
+  <body>
+    <section id="singleCollection">
+      <article>
+        <h1 class="collection"></h1>
+        <h3 class="collection_name"></h3>
+      </article>
+    </section>
+    <footer></footer>
+    <script src=""></script>
+    <script>
+      //Produkt single view tekst indhold
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+      console.log("id", id);
+      const lookbookSingleViewEndpoint =
+        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/collection?per_page=100";
+      let lookbookSingleViewData = [];
+      let lookbookSingleView = document.querySelector("#singleCollection");
+
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("singleView start");
+        getSingleCollectionData();
+      }
+
+      async function getSingleCollectionData() {
+        const singleCollectionResponse = await fetch(
+          lookbookSingleViewEndpoint
+        );
+        lookbookSingleViewData = await singleCollectionResponse.json();
+        console.log("lookbookSingleViewData", lookbookSingleViewData);
+        showSingleCollection();
+      }
+
+      function showSingleCollection() {
+        console.log("showSingleCollection");
+
+        lookbookSingleViewData.forEach((collection) => {
+          if (collection.id == id) {
+            console.log("if");
+            lookbookSingleView.querySelector(".collection").innerHTML =
+              collection.collection;
+            lookbookSingleView.querySelector(".collection_name").innerHTML =
+              collection.collection_navn;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

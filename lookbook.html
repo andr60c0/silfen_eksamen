@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lookbook</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav" id="nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="webshop.html">SHOP</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+      </ul>
+    </header>
+    <h1>Lookbook</h1>
+    <section id="lookbook">
+      <div class="sectionwrapper">
+        <template id="lookbook_template">
+          <div class="col">
+            <article>
+              <img class="collection_image" src="" alt="" />
+              <div class="collection_info">
+                <h3 class="collection_abbreviation"></h3>
+                <h4 class="collection_name"></h4>
+              </div>
+            </article>
+          </div>
+        </template>
+      </div>
+    </section>
+    <footer></footer>
+
+    <script>
+      let lookbookData = [];
+
+      const lookbookEndpoint =
+        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/collection?per_page=100";
+
+      let lookbookTemplate = document.querySelector("#lookbook_template");
+      const container = document.querySelector("#lookbook .sectionwrapper");
+
+      document.addEventListener("DOMContentLoaded", getLookbookData);
+
+      async function getLookbookData() {
+        const lookbookResponse = await fetch(lookbookEndpoint);
+        lookbookData = await lookbookResponse.json();
+        showLookbook();
+      }
+
+      function showLookbook() {
+        console.log("showLookBook");
+
+        container.innerHTML = "";
+        lookbookData.forEach((collection) => {
+          const clone = lookbookTemplate.cloneNode(true).content;
+          clone.querySelector(".collection_image").src =
+            collection.collection_image.guid;
+          clone.querySelector(".collection_abbreviation").innerHTML =
+            collection.collection_abbreviation;
+          clone.querySelector(".collection_name").innerHTML =
+            collection.collection_navn;
+          clone.querySelector("article").addEventListener("click", () => {
+            location.href = "lookbook_singelView.html?id=" + collection.id;
+          });
+
+          container.appendChild(clone);
+        });
+      }
+    </script>
+  </body>
+</html>

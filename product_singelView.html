@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+  </head>
+  <body>
+    <section id="singleProduct">
+      <article>
+        <div class="sectionwrapper">
+          <div class="col">
+            <img class="product_image" src="" alt="" />
+          </div>
+          <div class="col">
+            <h3 class="product_name"></h3>
+            <p class="product_price"></p>
+            <div class="color_picker"></div>
+            <!-- TODO: Color funktion -->
+            <p class="product_color">Color:</p>
+            <button class="add_to_cart_button">Add To Cart</button>
+            <!-- TODO: Like funktion -->
+            <img class="heart" src="assets/ui-elements/heart.svg" />
+            <p class="product_description"></p>
+            <!-- TODO: Specifications -->
+            <!-- TODO: Care -->
+            <!-- TODO: Shipping & Returns -->
+          </div>
+        </div>
+      </article>
+    </section>
+
+  
+  
+  </div>
+  
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+      "use strict";
+      //Produkt single view tekst indhold
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+      console.log("id", id);
+      const productSingleViewEndpoint =
+        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
+      let productSingleViewData = [];
+      let productSingleView = document.querySelector("#singleProduct");
+
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("singleView start");
+        getSingleProductData();
+      }
+
+      async function getSingleProductData() {
+        const singleProductResponse = await fetch(productSingleViewEndpoint);
+        productSingleViewData = await singleProductResponse.json();
+        console.log("productSingleViewData", productSingleViewData);
+        showSingleProduct();
+      }
+
+      function showSingleProduct() {
+        console.log("showSingleProduct");
+        
+
+        productSingleViewData.forEach((product) => {
+          if (product.id == id) {
+            console.log("if");
+            productSingleView.querySelector(".product_image").src =
+              product.product_image.guid;
+            productSingleView.querySelector(".product_name").innerHTML =
+              product.product_name;
+            productSingleView.querySelector(".product_price").innerHTML =
+              product.product_price;
+            //TODO:Color
+            // productSingleView
+            //   .querySelector(".color_picker")
+            //   .addEventListener("click", () => {
+            //   if (){}
+
+
+            //   });
+            productSingleView.querySelector(".color_picker").innerHTML =
+              product.products_colors;
+            productSingleView.querySelector(".product_description").innerHTML =
+              product.product_description;
+          }
+        });
+      }
+
+      function clickColorbox() {
+        console.log("clickColorbox");
+      }
+    </script>
+  </body>
+</html>
