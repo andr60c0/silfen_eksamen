@@ -1,4 +1,8 @@
 @use "./sass/typography";
+@use "./sass/general";
+@use "./sass/reset";
+@use "./sass/layouts/splitscreen";
+@use "./sass/popUps";
 
 //Font families
 
@@ -56,18 +60,3 @@
   font-weight: normal;
   font-style: normal;
 }
-
-// h1,
-// h3,
-// h4 {
-//   font-family: Futura, Trebuchet MS, Arial, sans-serif;
-//   text-transform: uppercase;
-// }
-
-// h4 {
-//   font-weight: 100;
-// }
-
-// p {
-//   font-family: "manroperegular";
-// }

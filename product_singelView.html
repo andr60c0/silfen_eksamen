@@ -4,23 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.scss" />
     <title></title>
   </head>
   <body>
+    <header>
+      <ul class="nav" id="nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="webshop.html">SHOP</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="wishlist_icon">
+          <a href="wishlish.html"><img src="static/assets/ui-elements/heart.svg" /><span>0</span></a>
+        </li>
+        <li class="cart_link">
+          <a href="cart.html">Cart <span>0</span></a>
+        </li>
+      </ul>
+    </header>
     <section id="singleProduct">
       <article>
         <div class="sectionwrapper">
           <div class="col">
             <img class="product_image" src="" alt="" />
+            <div class="all_product_images_container">
+              <template>
+                <img class="imgs" src="" alt="" />
+              </template>
+            </div>
           </div>
           <div class="col">
             <h3 class="product_name"></h3>
             <p class="product_price"></p>
-            <div class="color_picker"></div>
-            <!-- TODO: Color funktion -->
-            <p class="product_color">Color:</p>
+            <div class="color_picker">
+              <div class="currentDiv singleBagColors"></div>
+            </div>
+            <p class="product_color"></p>
             <button class="add_to_cart_button">Add To Cart</button>
+            <ion-icon name="trash-outline"></ion-icon>
+            <!-- <div class="add_subtract_buttons">
+              <button class="button subtract_button">-</button>
+              <p class="number">0</p>
+              <button class="button add_button">+</button>
+            </div> -->
             <!-- TODO: Like funktion -->
             <img class="heart" src="assets/ui-elements/heart.svg" />
             <p class="product_description"></p>
@@ -31,70 +59,8 @@
         </div>
       </article>
     </section>
-
-  
-  
-  </div>
-  
     <footer></footer>
+
     <script src="script.js"></script>
-    <script>
-      "use strict";
-      //Produkt single view tekst indhold
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get("id");
-      console.log("id", id);
-      const productSingleViewEndpoint =
-        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
-      let productSingleViewData = [];
-      let productSingleView = document.querySelector("#singleProduct");
-
-      document.addEventListener("DOMContentLoaded", start);
-
-      function start() {
-        console.log("singleView start");
-        getSingleProductData();
-      }
-
-      async function getSingleProductData() {
-        const singleProductResponse = await fetch(productSingleViewEndpoint);
-        productSingleViewData = await singleProductResponse.json();
-        console.log("productSingleViewData", productSingleViewData);
-        showSingleProduct();
-      }
-
-      function showSingleProduct() {
-        console.log("showSingleProduct");
-        
-
-        productSingleViewData.forEach((product) => {
-          if (product.id == id) {
-            console.log("if");
-            productSingleView.querySelector(".product_image").src =
-              product.product_image.guid;
-            productSingleView.querySelector(".product_name").innerHTML =
-              product.product_name;
-            productSingleView.querySelector(".product_price").innerHTML =
-              product.product_price;
-            //TODO:Color
-            // productSingleView
-            //   .querySelector(".color_picker")
-            //   .addEventListener("click", () => {
-            //   if (){}
-
-
-            //   });
-            productSingleView.querySelector(".color_picker").innerHTML =
-              product.products_colors;
-            productSingleView.querySelector(".product_description").innerHTML =
-              product.product_description;
-          }
-        });
-      }
-
-      function clickColorbox() {
-        console.log("clickColorbox");
-      }
-    </script>
   </body>
 </html>
