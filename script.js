@@ -533,8 +533,9 @@ function removeFromWishlist(wishlistBag) {
   //   localStorage.setItem("numberOfWishlistItems", wishlistItemCounter - 1);
   //   document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter - 1;
   // }
-  let wishlistItems = [];
-  wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist")); // updated
+  //Til Peter: det er den her, nu har jeg fjollet lidt rundt med det hele så intet virker hæhæ.
+
+  let wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist")); // updated
   console.log("wishlist item before", wishlistItems);
   console.log("wishlistItems[wishlistBag.tag]", wishlistItems[wishlistBag.tag]);
 
