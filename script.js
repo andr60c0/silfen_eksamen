@@ -89,9 +89,9 @@ function start() {
   console.log("script start");
   displayCart();
   displayWishlist();
-  onLoadCartNumbers();
   getProductsData();
   getSingleProductData();
+  updateNumbers();
 
   // createWishlistObject();
 
@@ -180,6 +180,7 @@ function showProducts() {
         this.setAttribute("src", "static/ui-elements/blackheart.svg");
         addToWishlist(wishlistBag);
       }
+      updateNumbers();
 
       console.log("wishlistBagObject", wishlistBag);
     });
@@ -389,9 +390,10 @@ function setItems(bag) {
 
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
-//Checking if there are any products in the cart on reload //RENAME: checkLocalStorageOnReload
-function onLoadCartNumbers() {
-  console.log("onLoadCartNumbers");
+//Checking if there are any products in the cart / wishlist on reload
+
+function updateNumbers(wishlistBag) {
+  console.log("updateNumbers");
 
   let productNumbers = localStorage.getItem("cartNumbers");
   if (productNumbers) {
@@ -402,6 +404,31 @@ function onLoadCartNumbers() {
   if (wishlistItemCounter) {
     document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter;
   }
+
+  const wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist"));
+  console.log("wishlistItem in update", wishlistItems);
+  let el = document.querySelectorAll(".product_article");
+  el.forEach((product) => {
+    product.dataset.productId = "2";
+    console.log("product", product);
+  });
+  console.log("el", el);
+  // if (wishlistItems !== null) {
+  //   for (let i = 0; i < wishlistItems.length; i++) {
+  //     let productArticles = document.querySelectorAll(".product_article");
+  //     console.log("productArticles", productArticles);
+  //     productArticles[i].dataset.productId = wishlistItems[i].id;
+  //     console.log("wishlistItems[i].id", wishlistItems[i].id);
+  //   }
+  //   productArticles.forEach((product) => {
+  //     wishlistItems.forEach((item) => {
+  //       if (product.id === item.id) {
+  //         console.log("match");
+  //         document.querySelector(".product_heart").src = "static/ui-elements/blackheart.svg";
+  //       }
+  //     });
+  //   });
+  // }
 }
 
 function totalCost(bag) {
@@ -434,66 +461,58 @@ function displayCart() {
     productContainer.innerHTML = "";
     Object.values(cartItems).map((item) => {
       productContainer.innerHTML += `
+            <div class="cart_sectionwrapper">
             <div class="product">
-            <div class="close_button"></div>
-            <span>${item.name}</span>
-            <span>${item.price} DKK</span>
-            <span>${item.inCart}</span>
-            <span>${item.color}</span>
-            <img src="static/bags/${item.image}">
+            <img class="cart_product_image" src="static/bags/${item.image}">
+            <div class="cart_col">
+            <p>${item.name}</p>
+            <p>${item.color}</p>
+            </div>
+            <p>${item.price} DKK</p>
+            <p>${item.inCart}</p>
+            <div class="deleteFromCart_button">
+            <img src="static/ui-elements/delete.svg">
+            </div>
            </div>
-
+           <div class="shoppingcart_total">
+           </div>
+           </div>
             `;
     });
   }
 }
 //Add to wishlist
 function addToWishlist(wishlistBag) {
-  console.log("numberOfWishListItems");
-  // console.log("the wishlistproduct", wishlistItem);
-  // //RENAME: cartItemCounter;
+  console.log("addToWishlist");
+  const wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist")) ?? [];
+
+  console.log("my products are:", wishlistItems);
+
+  if (!wishlistItems.find((bag) => bag.id === wishlistBag.id)) {
+    // Hvis der er et array
+    //if (wishlistItems !== null) {
+    wishlistItems.push(wishlistBag);
+  }
+
   let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
 
   //Converting from string to number
   wishlistItemCounter = parseInt(wishlistItemCounter);
-
   if (wishlistItemCounter) {
-    localStorage.setItem("numberOfWishlistItems", wishlistItemCounter + 1);
-    document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter + 1;
+    localStorage.setItem("numberOfWishlistItems", wishlistItems.length);
+    document.querySelector(".wishlist_icon span").textContent = wishlistItems.length;
   } else {
     localStorage.setItem("numberOfWishlistItems", 1);
     document.querySelector(".wishlist_icon span").textContent = 1;
-  }
-
-  // setWishlistItems(wishlistBag);
-  // console.log("My product is ", wishlistBag);
-
-  let wishlistItems = localStorage.getItem("productsInWishlist");
-  wishlistItems = JSON.parse(wishlistItems);
-  console.log("my products are:", wishlistItems);
-
-  if (wishlistItems !== null) {
-    if (wishlistItems[wishlistBag.tag] == undefined) {
-      wishlistItems = {
-        ...wishlistItems,
-        [wishlistBag.tag]: wishlistBag,
-      };
-    }
-    // wishlistItems[wishlistBag.name].inCart += 1;
-  } else {
-    // wishbag.inCart = 1;
-    wishlistItems = {
-      [wishlistBag.tag]: wishlistBag,
-    };
   }
 
   localStorage.setItem("productsInWishlist", JSON.stringify(wishlistItems));
   console.log("wishlistItems", wishlistItems);
 }
 
-function displayWishlist() {
+function displayWishlist(wishlistBag) {
   console.log("displayWishlist");
-  console.log(localStorage);
+
   let wishlistItems = localStorage.getItem("productsInWishlist");
   wishlistItems = JSON.parse(wishlistItems);
   let wishlistProductContainer = document.querySelector(".wishlist_products");
@@ -504,11 +523,12 @@ function displayWishlist() {
     Object.values(wishlistItems).map((item) => {
       wishlistProductContainer.innerHTML += `
             <div class="wishlist_product">
+            <div class="wishlist_image_container">
             <div class="removeFromWishlist_button">
-            
+            <img src="static/ui-elements/delete.svg">
             </div>
-            
             <img src="${item.image}">
+            </div>
             <p>${item.name}</p>
             <p>${item.color}</p>
             <p>${item.price} DKK</p>
@@ -520,30 +540,62 @@ function displayWishlist() {
             `;
     });
   }
+  let deleteFromWishlistButtons = document.querySelectorAll(".removeFromWishlist_button");
+  deleteFromWishlistButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("wishlist button click");
+      console.log("gdgfdsg", wishlistItems);
+      for (let i = 0; i < wishlistItems.length; i++) {
+        wishlistItems[i] = button[i];
+        wishlistItems.splice(i, 1);
+        console.log("wishlistItems after splice", wishlistItems);
+      }
+
+      localStorage.setItem("productsInWishlist", JSON.stringify(wishlistItems));
+
+      let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
+
+      //Converting from string to number
+      wishlistItemCounter = parseInt(wishlistItemCounter);
+
+      if (wishlistItemCounter) {
+        console.log("if");
+        localStorage.setItem("numberOfWishlistItems", wishlistItems.length);
+        document.querySelector(".wishlist_icon span").textContent = wishlistItems.length;
+      } else {
+        console.log("else");
+        localStorage.setItem("numberOfWishlistItems", 1);
+        document.querySelector(".wishlist_icon span").textContent = "";
+      }
+      displayWishlist();
+    });
+  });
 }
 
 function removeFromWishlist(wishlistBag) {
   // console.log("removeWishListItems");
-  // let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
+  let wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist"));
 
-  // //Converting from string to number
-  // wishlistItemCounter = parseInt(wishlistItemCounter);
+  const index = wishlistItems.findIndex((bag) => bag.id === wishlistBag.id);
 
-  // if (wishlistItemCounter) {
-  //   localStorage.setItem("numberOfWishlistItems", wishlistItemCounter - 1);
-  //   document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter - 1;
-  // }
-  //Til Peter: det er den her, nu har jeg fjollet lidt rundt med det hele så intet virker hæhæ.
-
-  let wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist")); // updated
-  console.log("wishlist item before", wishlistItems);
-  console.log("wishlistItems[wishlistBag.tag]", wishlistItems[wishlistBag.tag]);
-
-  if (wishlistItems[wishlistBag.tag] !== null) {
-    wishlistItems.splice(wishlistBag, 1);
-    console.log("after splice", wishlistItems);
+  if (index !== -1) {
+    wishlistItems.splice(index, 1);
   }
-
   localStorage.setItem("productsInWishlist", JSON.stringify(wishlistItems));
   console.log("wishlist after", wishlistItems);
+
+  let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
+
+  //Converting from string to number
+  wishlistItemCounter = parseInt(wishlistItemCounter);
+
+  if (wishlistItemCounter) {
+    console.log("if");
+    localStorage.setItem("numberOfWishlistItems", wishlistItems.length);
+    document.querySelector(".wishlist_icon span").textContent = wishlistItems.length;
+  } else {
+    console.log("else");
+    localStorage.setItem("numberOfWishlistItems", 1);
+    document.querySelector(".wishlist_icon span").textContent = "";
+  }
 }

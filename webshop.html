@@ -20,7 +20,7 @@
           <a href="wishlish.html"><img src="static/ui-elements/heart.svg" /><span>0</span></a>
         </li>
         <li class="cart_link">
-          <a href="cart.html">Cart <span>0</span></a>
+          <a href="cart.html">Cart <span></span></a>
         </li>
       </ul>
     </header>
@@ -28,7 +28,7 @@
     <section id="products"></section>
     <template id="products_template">
       <div class="col">
-        <article class="product_article">
+        <article class="product_article" data-product-id="">
           <div class="product_image_container">
             <img class="product_image" alt="" />
           </div>
@@ -47,5 +47,6 @@
 
     <footer></footer>
     <script type="module" src="./script.js"></script>
+    <script type="module" src="./wishlist.js"></script>
   </body>
 </html>

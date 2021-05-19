@@ -1,6 +1,34 @@
 //Generelle indstillinger
+
+.cart_sectionwrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shoppingcart_total {
+  flex-basis: 300px;
+  flex-grow: 1;
+  background-color: blue;
+}
+.product {
+  position: relative;
+  flex-basis: 600px;
+  flex-grow: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  background-color: pink;
+}
+
+.deleteFromCart_button {
+  position: absolute;
+  right: 2vw;
+  bottom: 1vw;
+}
+
 .products-container {
-  max-width: 650px;
+  // max-width: 650px;
   justify-content: space-around;
   margin: 0 auto;
   margin-top: 50px;
@@ -10,7 +38,7 @@
 
 .product-header {
   width: 100%;
-  max-width: 650px;
+  // max-width: 650px;
   display: flex;
   justify-content: flex-start;
 }
@@ -33,21 +61,12 @@
 
 .total {
   width: 10%;
-
   display: flex;
   align-items: center;
 }
 
-.product {
-  width: 45%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.test {
-  pointer-events: none;
+.cart_product_image {
+  width: 10%;
 }
 
 #products {
@@ -225,10 +244,26 @@ ion-icon {
 }
 
 .wishlist_product {
-  flex-basis: 300px;
+  flex-basis: 200px;
   flex-grow: 1;
+  max-width: 500px;
 }
 
 .wishlist_product img {
   width: 50%;
+}
+
+.wishlist_image_container {
+  position: relative;
+}
+
+.removeFromWishlist_button {
+  position: absolute;
+  bottom: 0;
+  right: 2vw;
+  cursor: pointer;
+}
+
+.removeFromWishlist_button img {
+  width: 100%;
 }
