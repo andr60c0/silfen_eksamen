@@ -5,18 +5,15 @@ import "./styles.scss";
 
 //Terms and conditions
 let termsAndConditionsData;
-let termsAndConditionsEndpoint =
-  "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/49";
+let termsAndConditionsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/49";
 
 //Privacy policy
 let privacyPolicyData;
-let privacyPolicyEndpoint =
-  "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/51";
+let privacyPolicyEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/51";
 
 //Webshop - products
 let productsData = [];
-const productsEndpoint =
-  "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
+const productsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
 let productsTemplate = document.querySelector("#products_template");
 const container = document.querySelector("#products");
 
@@ -24,15 +21,12 @@ const container = document.querySelector("#products");
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 // console.log("id", id);
-const productSingleViewEndpoint =
-  "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
+const productSingleViewEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
 let productSingleViewData = [];
 let productSingleView = document.querySelector("#singleProduct");
 //Webshop single view - all pictures
 let allProductImages;
-let allProductImagesEndpoint =
-  "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product/" +
-  id;
+let allProductImagesEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product/" + id;
 
 const allColors = [
   {
@@ -74,6 +68,7 @@ const cartItem = {
 
 //The prototype for wishlist item
 const wishlistItem = {
+  id: "",
   name: "",
   color: "",
   tag: "",
@@ -95,7 +90,6 @@ function start() {
   displayCart();
   displayWishlist();
   onLoadCartNumbers();
-  checkWishlistOnReload();
   getProductsData();
   getSingleProductData();
 
@@ -145,16 +139,14 @@ async function getSingleProductData() {
 //Terms and conditions
 function showTermsAndConditionsPage() {
   console.log("showTermsAndConditions");
-  document.querySelector("#terms_and_conditions").innerHTML =
-    termsAndConditionsData.content.rendered;
+  document.querySelector("#terms_and_conditions").innerHTML = termsAndConditionsData.content.rendered;
 }
 
 //Privacy Policy
 function showPrivacyPage() {
   console.log("showPrivacyPage");
 
-  document.querySelector("#privacy_policy").innerHTML =
-    privacyPolicyData.content.rendered;
+  document.querySelector("#privacy_policy").innerHTML = privacyPolicyData.content.rendered;
 }
 
 //Webshop - all products
@@ -165,37 +157,32 @@ function showProducts() {
     const clone = productsTemplate.cloneNode(true).content;
     clone.querySelector(".product_image").src = product.product_image.guid;
     clone.querySelector(".product_name").innerHTML = product.product_name;
-    clone.querySelector(".product_price").innerHTML =
-      product.product_price + " DKK";
-    clone
-      .querySelector(".product_image_container")
-      .addEventListener("click", () => {
-        location.href = "product_singelView.html?id=" + product.id;
-      });
-    clone
-      .querySelector(".product_heart_container")
-      .addEventListener("click", function () {
-        console.log("heart click");
-        console.log("this", this);
-        this.classList.add("active");
-        const wishlistBag = Object.create(wishlistItem);
-        wishlistBag.name = product.product_name;
-        wishlistBag.color = product.product_color;
-        wishlistBag.tag = product.product_name + "_" + wishlistBag.color;
-        wishlistBag.price = product.product_price;
-        wishlistBag.image = product.product_image.guid;
-        wishlistBag.inStock = "In Stock";
-        wishlistBag.remove_button = "static/ui-elements/delete.svg";
-        if (this.classList.contains("active")) {
-          removeFromWishlist();
-          this.classList.remove("active");
-        } else {
-          numberOfWishListItems(wishlistBag);
-          this.classList.add("active");
-        }
+    clone.querySelector(".product_price").innerHTML = product.product_price + " DKK";
+    clone.querySelector(".product_image_container").addEventListener("click", () => {
+      location.href = "product_singelView.html?id=" + product.id;
+    });
+    clone.querySelector(".product_heart").addEventListener("click", function () {
+      const wishlistBag = Object.create(wishlistItem);
+      wishlistBag.id = product.id;
+      wishlistBag.name = product.product_name;
+      wishlistBag.color = product.product_color;
+      wishlistBag.tag = product.product_name + "_" + wishlistBag.color;
+      wishlistBag.price = product.product_price;
+      wishlistBag.image = product.product_image.guid;
+      wishlistBag.inStock = "In Stock";
 
-        console.log("wishlistBagObject", wishlistBag);
-      });
+      if (this.classList.contains("active")) {
+        this.classList.remove("active");
+        this.setAttribute("src", "static/ui-elements/heart.svg");
+        removeFromWishlist(wishlistBag);
+      } else {
+        this.classList.add("active");
+        this.setAttribute("src", "static/ui-elements/blackheart.svg");
+        addToWishlist(wishlistBag);
+      }
+
+      console.log("wishlistBagObject", wishlistBag);
+    });
 
     container.appendChild(clone);
   });
@@ -215,15 +202,11 @@ function showSingleProduct() {
   productSingleViewData.forEach((product) => {
     if (product.id == id) {
       console.log("if");
-      productSingleView.querySelector(".product_name").innerHTML =
-        product.product_name;
-      productSingleView.querySelector(".product_price").innerHTML =
-        product.product_price + " DKK";
-      productSingleView.querySelector(".product_color").innerHTML =
-        product.product_color;
+      productSingleView.querySelector(".product_name").innerHTML = product.product_name;
+      productSingleView.querySelector(".product_price").innerHTML = product.product_price + " DKK";
+      productSingleView.querySelector(".product_color").innerHTML = product.product_color;
 
-      productSingleView.querySelector(".product_description").innerHTML =
-        product.product_description;
+      productSingleView.querySelector(".product_description").innerHTML = product.product_description;
 
       //Eventlisteners på add & subtract knapper. Opdaterer antal.
       // document.querySelector(".add_button").addEventListener("click", () => {
@@ -242,22 +225,20 @@ function showSingleProduct() {
       // });
 
       //Creating object for cart
-      document
-        .querySelector(".add_to_cart_button")
-        .addEventListener("click", () => {
-          console.log("addToCartButtonClick");
-          const bag = Object.create(cartItem);
-          bag.name = product.product_name;
-          bag.price = product.product_price;
-          bag.color = document.querySelector(".product_color").innerHTML;
-          bag.tag = itemName + "_" + bag.color;
-          bag.inCart = 0;
-          bag.image = itemName + "_" + bag.color + "_1.jpeg";
-          cartNumbers(bag); //RENAME
-          totalCost(bag);
+      document.querySelector(".add_to_cart_button").addEventListener("click", () => {
+        console.log("addToCartButtonClick");
+        const bag = Object.create(cartItem);
+        bag.name = product.product_name;
+        bag.price = product.product_price;
+        bag.color = document.querySelector(".product_color").innerHTML;
+        bag.tag = itemName + "_" + bag.color;
+        bag.inCart = 0;
+        bag.image = itemName + "_" + bag.color + "_1.jpeg";
+        cartNumbers(bag); //RENAME
+        totalCost(bag);
 
-          console.log("bag.image", bag.image);
-        });
+        console.log("bag.image", bag.image);
+      });
 
       //Finder hvilke farver tasken findes i
       singleBagColors = product.products_colors;
@@ -269,9 +250,7 @@ function showSingleProduct() {
     const clone = document.querySelector("template").cloneNode(true).content;
     if (image.post_excerpt === "default") {
       clone.querySelector(".imgs").src = image.guid;
-      document
-        .querySelector(".all_product_images_container")
-        .appendChild(clone);
+      document.querySelector(".all_product_images_container").appendChild(clone);
     }
   });
 
@@ -280,24 +259,16 @@ function showSingleProduct() {
   //Alle billeder hedder navne med samme format: navnPåTaske_farve_nummer. Her looper vi så igennem alle billederne, og splitter navn strengen op, og finder farven. Derefter laver vi en variablen bagColor som indeholder taskens farve. Der efter tilføjer vi property'en color til hver taske og sætter bagColor variablen ind.
   for (let i = 0; i < productImagesArray.length; i++) {
     //Index of first underscore
-    let indexOfFirstUnderscore =
-      productImagesArray[i].post_title.indexOf(underscore);
+    let indexOfFirstUnderscore = productImagesArray[i].post_title.indexOf(underscore);
     //Index of second underscore
-    let indexOfLastUnderscore =
-      productImagesArray[i].post_title.lastIndexOf(underscore);
+    let indexOfLastUnderscore = productImagesArray[i].post_title.lastIndexOf(underscore);
     //Få fat i farven på tasken
-    bagColor = productImagesArray[i].post_title.substring(
-      indexOfFirstUnderscore + 1,
-      indexOfLastUnderscore
-    );
+    bagColor = productImagesArray[i].post_title.substring(indexOfFirstUnderscore + 1, indexOfLastUnderscore);
     console.log("bagColor", bagColor);
     //Tilføj property og ligge taskens farve på.
     productImagesArray[i].color = bagColor;
 
-    itemName = productImagesArray[i].post_title.substring(
-      0,
-      indexOfFirstUnderscore
-    );
+    itemName = productImagesArray[i].post_title.substring(0, indexOfFirstUnderscore);
   }
 
   console.log("bagColor", bagColor);
@@ -358,17 +329,12 @@ function showSingleProduct() {
         img.classList.add("hide");
       });
       productImagesArray.forEach((image) => {
-        const clone = document
-          .querySelector("template")
-          .cloneNode(true).content;
+        const clone = document.querySelector("template").cloneNode(true).content;
         if (colorbox.color === image.color) {
           clone.querySelector(".imgs").src = image.guid;
 
-          productSingleView.querySelector(".product_color").innerHTML =
-            image.color;
-          document
-            .querySelector(".all_product_images_container")
-            .appendChild(clone);
+          productSingleView.querySelector(".product_color").innerHTML = image.color;
+          document.querySelector(".all_product_images_container").appendChild(clone);
         }
       });
     });
@@ -434,17 +400,8 @@ function onLoadCartNumbers() {
 
   let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
   if (wishlistItemCounter) {
-    document.querySelector(".wishlist_icon span").textContent =
-      wishlistItemCounter;
+    document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter;
   }
-}
-
-function checkWishlistOnReload() {
-  console.log("checkWishlistOnReload");
-  // let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
-  // if (wishlistItemCounter) {
-  //   document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter;
-  // }
 }
 
 function totalCost(bag) {
@@ -452,11 +409,11 @@ function totalCost(bag) {
   let cartCost = localStorage.getItem("totalCost");
 
   // console.log("My cartCost is", cartCost);
-  console.log("product price is", bag.price);
+  // console.log("product price is", bag.price);
   let price = parseInt(bag.price);
 
-  console.log("typeof");
-  console.log(typeof price);
+  // console.log("typeof");
+  // console.log(typeof price);
   if (cartCost != null) {
     cartCost = parseInt(cartCost);
     console.log(typeof cartCost);
@@ -490,33 +447,26 @@ function displayCart() {
     });
   }
 }
-
-function numberOfWishListItems(wishlistBag) {
+//Add to wishlist
+function addToWishlist(wishlistBag) {
   console.log("numberOfWishListItems");
-  console.log("the wishlistproduct", wishlistItem);
+  // console.log("the wishlistproduct", wishlistItem);
   // //RENAME: cartItemCounter;
   let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
-  let wishlistItems = localStorage.getItem("productsInWishlist");
 
   //Converting from string to number
   wishlistItemCounter = parseInt(wishlistItemCounter);
 
   if (wishlistItemCounter) {
     localStorage.setItem("numberOfWishlistItems", wishlistItemCounter + 1);
-    document.querySelector(".wishlist_icon span").textContent =
-      wishlistItemCounter + 1;
+    document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter + 1;
   } else {
     localStorage.setItem("numberOfWishlistItems", 1);
     document.querySelector(".wishlist_icon span").textContent = 1;
   }
 
-  setWishlistItems(wishlistBag);
-}
-
-function setWishlistItems(wishlistBag) {
-  console.log("setWishlistItems");
-
-  console.log("My product is ", wishlistBag);
+  // setWishlistItems(wishlistBag);
+  // console.log("My product is ", wishlistBag);
 
   let wishlistItems = localStorage.getItem("productsInWishlist");
   wishlistItems = JSON.parse(wishlistItems);
@@ -538,16 +488,18 @@ function setWishlistItems(wishlistBag) {
   }
 
   localStorage.setItem("productsInWishlist", JSON.stringify(wishlistItems));
+  console.log("wishlistItems", wishlistItems);
 }
 
 function displayWishlist() {
   console.log("displayWishlist");
+  console.log(localStorage);
   let wishlistItems = localStorage.getItem("productsInWishlist");
   wishlistItems = JSON.parse(wishlistItems);
   let wishlistProductContainer = document.querySelector(".wishlist_products");
-  console.log(wishlistItems);
+  // console.log(wishlistItems);
   if (wishlistItems && wishlistProductContainer) {
-    console.log("running");
+    // console.log("running");
     wishlistProductContainer.innerHTML = "";
     Object.values(wishlistItems).map((item) => {
       wishlistProductContainer.innerHTML += `
@@ -555,7 +507,7 @@ function displayWishlist() {
             <div class="removeFromWishlist_button">
             
             </div>
-            <ion-icon name="trash-outline"></ion-icon>
+            
             <img src="${item.image}">
             <p>${item.name}</p>
             <p>${item.color}</p>
@@ -570,6 +522,27 @@ function displayWishlist() {
   }
 }
 
-function removeFromWishlist() {
-  console.log("removeFromWishlist");
+function removeFromWishlist(wishlistBag) {
+  // console.log("removeWishListItems");
+  // let wishlistItemCounter = localStorage.getItem("numberOfWishlistItems");
+
+  // //Converting from string to number
+  // wishlistItemCounter = parseInt(wishlistItemCounter);
+
+  // if (wishlistItemCounter) {
+  //   localStorage.setItem("numberOfWishlistItems", wishlistItemCounter - 1);
+  //   document.querySelector(".wishlist_icon span").textContent = wishlistItemCounter - 1;
+  // }
+  let wishlistItems = [];
+  wishlistItems = JSON.parse(localStorage.getItem("productsInWishlist")); // updated
+  console.log("wishlist item before", wishlistItems);
+  console.log("wishlistItems[wishlistBag.tag]", wishlistItems[wishlistBag.tag]);
+
+  if (wishlistItems[wishlistBag.tag] !== null) {
+    wishlistItems.splice(wishlistBag, 1);
+    console.log("after splice", wishlistItems);
+  }
+
+  localStorage.setItem("productsInWishlist", JSON.stringify(wishlistItems));
+  console.log("wishlist after", wishlistItems);
 }
