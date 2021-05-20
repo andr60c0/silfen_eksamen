@@ -209,22 +209,32 @@ function showSingleProduct() {
 
       productSingleView.querySelector(".product_description").innerHTML = product.product_description;
 
-      //Eventlisteners på add & subtract knapper. Opdaterer antal.
-      // document.querySelector(".add_button").addEventListener("click", () => {
-      //   console.log("add");
-      //   number++;
-      //   console.log(number);
-      //   productSingleView.querySelector(".number").innerHTML = number;
-      // });
-      // document.querySelector(".subtract_button").addEventListener("click", () => {
-      //   console.log("subtract");
-      //   if (number > 0) {
-      //     number--;
-      //     console.log(number);
-      //     productSingleView.querySelector(".number").innerHTML = number;
-      //   }
-      // });
+      document.querySelector(".singleview_heart").addEventListener("click", () => {
+        //Creating object for wishlist
+        console.log("singleview heart click");
+        const wishlistBag = Object.create(wishlistItem);
+        wishlistBag.id = product.id;
+        wishlistBag.name = product.product_name;
+        wishlistBag.color = product.product_color;
+        wishlistBag.tag = product.product_name + "_" + wishlistBag.color;
+        wishlistBag.price = product.product_price;
+        wishlistBag.image = product.product_image.guid;
+        wishlistBag.inStock = "In Stock";
+        console.log("singleView WishlistBag", wishlistBag);
 
+        if (document.querySelector(".singleview_heart").classList.contains("active")) {
+          document.querySelector(".singleview_heart").classList.remove("active");
+          document.querySelector(".singleview_heart").setAttribute("src", "static/ui-elements/heart.svg");
+          removeFromWishlist(wishlistBag);
+        } else {
+          document.querySelector(".singleview_heart").classList.add("active");
+          document.querySelector(".singleview_heart").setAttribute("src", "static/ui-elements/blackheart.svg");
+          addToWishlist(wishlistBag);
+        }
+        updateNumbers();
+
+        // console.log("wishlistBagObject", wishlistBag);
+      });
       //Creating object for cart
       document.querySelector(".add_to_cart_button").addEventListener("click", () => {
         console.log("addToCartButtonClick");
@@ -390,9 +400,13 @@ function setItems(bag) {
 
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
+
+function removeFromCart() {
+  console.log("removeFromCart");
+}
 //Checking if there are any products in the cart / wishlist on reload
 
-function updateNumbers(wishlistBag) {
+function updateNumbers() {
   console.log("updateNumbers");
 
   let productNumbers = localStorage.getItem("cartNumbers");
@@ -445,8 +459,10 @@ function totalCost(bag) {
     cartCost = parseInt(cartCost);
     console.log(typeof cartCost);
     localStorage.setItem("totalCost", cartCost + price);
+    // document.querySelector(".ordervalue").textContent = cartCost + price;
   } else {
     localStorage.setItem("totalCost", price);
+    // document.querySelector(".ordervalue").textContent = cartCost;
   }
 }
 
@@ -461,21 +477,21 @@ function displayCart() {
     productContainer.innerHTML = "";
     Object.values(cartItems).map((item) => {
       productContainer.innerHTML += `
-            <div class="cart_sectionwrapper">
             <div class="product">
             <img class="cart_product_image" src="static/bags/${item.image}">
             <div class="cart_col">
             <p>${item.name}</p>
-            <p>${item.color}</p>
+            <p>Color: ${item.color}</p>
             </div>
-            <p>${item.price} DKK</p>
-            <p>${item.inCart}</p>
+            <div class="cart_add_subtract">
+              <div class="cartbuttons subtract_button">-</div>
+              <p>${item.inCart}</p>
+              <div class="cartbuttons add_button">+</div>
+            </div>
+            <p>${item.price * item.inCart} DKK</p>
             <div class="deleteFromCart_button">
             <img src="static/ui-elements/delete.svg">
             </div>
-           </div>
-           <div class="shoppingcart_total">
-           </div>
            </div>
             `;
     });
@@ -599,3 +615,19 @@ function removeFromWishlist(wishlistBag) {
     document.querySelector(".wishlist_icon span").textContent = "";
   }
 }
+
+//Eventlisteners på add & subtract knapper. Opdaterer antal.
+// document.querySelector(".add_button").addEventListener("click", () => {
+//   console.log("add");
+//   number++;
+//   console.log(number);
+//   productSingleView.querySelector(".number").innerHTML = number;
+// });
+// document.querySelector(".subtract_button").addEventListener("click", () => {
+//   console.log("subtract");
+//   if (number > 0) {
+//     number--;
+//     console.log(number);
+//     productSingleView.querySelector(".number").innerHTML = number;
+//   }
+// });

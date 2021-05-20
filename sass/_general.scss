@@ -1,6 +1,6 @@
 //Generelle indstillinger
 
-.cart_sectionwrapper {
+.cart_wrapper {
   display: flex;
   flex-wrap: wrap;
 }
@@ -8,17 +8,37 @@
 .shoppingcart_total {
   flex-basis: 300px;
   flex-grow: 1;
-  background-color: blue;
+  background-color: rgb(141, 141, 207);
 }
 .product {
   position: relative;
-  flex-basis: 600px;
-  flex-grow: 2;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
   background-color: pink;
+}
+.discountbox_container {
+  display: flex;
+}
+.discountbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 3rem;
+  margin-right: 10px;
+  background-color: yellow;
+}
+
+.discountbox_button {
+  background-color: red;
+  padding: 10px 40px;
+}
+
+.products {
+  flex-basis: 600px;
+  flex-grow: 2;
 }
 
 .deleteFromCart_button {
@@ -36,6 +56,15 @@
   flex-wrap: wrap;
 }
 
+.cart_add_subtract {
+  display: flex;
+  border: 1px solid black;
+}
+
+.cartbuttons {
+  margin: 0 10px 0 10px;
+}
+
 .product-header {
   width: 100%;
   // max-width: 650px;
@@ -44,7 +73,7 @@
 }
 
 .product-title {
-  width: 45%;
+  width: 40%;
 }
 
 .price {
@@ -54,7 +83,7 @@
 }
 
 .quantity {
-  width: 30%;
+  width: 16.5%;
   display: flex;
   align-items: center;
 }
@@ -137,7 +166,7 @@ ion-icon {
   margin-right: 30px;
 }
 
-.heart {
+.singleview_heart {
   width: 5%;
 }
 
