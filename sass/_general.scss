@@ -170,6 +170,10 @@ ion-icon {
   width: 5%;
 }
 
+figure img {
+  height: auto;
+}
+
 /*Color box*/
 .colorbox {
   width: 20px;
@@ -198,66 +202,118 @@ ion-icon {
 #contact .inner_col {
   display: flex;
 }
+#landingpage_splash {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .splash_title {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+  }
+
+  #slideshow_wrap {
+    overflow: hidden;
+    width: 100vw;
+  }
+
+  .slideimage_wrapper {
+    display: flex;
+    animation: slide 30s infinite linear;
+  }
+  #slideshow_wrap img {
+    flex-basis: 300px;
+    flex-grow: 1;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(300px);
+    }
+    100% {
+      transform: translateX(-3000px);
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    #slideshow_wrap img {
+      width: 60%;
+    }
+    @keyframes slide {
+      0% {
+        transform: translateX(500px);
+      }
+      100% {
+        transform: translateX(-3800px);
+      }
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    #slideshow_wrap img {
+      width: 50%;
+      padding: 140px;
+    }
+    .slideimage_wrapper {
+      animation-duration: 40s;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(800px);
+      }
+      100% {
+        transform: translateX(-5000px);
+      }
+    }
+  }
+}
 
 #landingpage {
   /******************** MOBIL LANDING PAGE START ********************/
-  .splash,
-  .section1,
-  .section2,
-  .section3,
-  .section4,
-  .section5,
-  .section6 {
-    scroll-snap-align: start;
-    height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+
+  #most_wanted {
+    flex-basis: 200px;
+    flex-grow: 1;
+    padding: 0 30px 30px 30px;
   }
 
-  .splash {
-    background-image: url("../static/splash_pic.png");
-    background-size: cover;
-  }
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: white;
-    border-style: solid;
-    border-width: 1px;
-    margin: 10px;
-  }
-  img {
-    width: 100%;
+  #lp_discover {
+    flex-basis: 400px;
+    flex-grow: 2;
+    padding: 0 30px 30px 30px;
   }
 
-  .active_dot {
-    background-color: white;
+  #discover {
+    // flex-basis: 400px;
+    // flex-grow: 2;
+    // padding: 0 30px 30px 30px;
+
+    .landingpage_discover_article {
+    }
+
+    .lp_discover_container {
+      position: relative;
+    }
+    .lp_discover_info {
+      position: absolute;
+      bottom: 2vw;
+      left: 1vw;
+    }
   }
 
-  .indicator {
-    position: fixed;
-    top: 50%;
-    right: 5%;
+  #whoruntheworld {
+    flex-basis: 300px;
+    flex-grow: 1.5;
+    padding: 0 30px 30px 30px;
+    // .wp-block-group__inner-container p {
+    //   max-width: 300px;
+    // }
   }
-
-  .section1 {
-    background-color: blue;
-  }
-  .section2 {
-    background-color: red;
-  }
-  .section3 {
-    background-color: orange;
-  }
-  .section4 {
-    background-color: green;
-  }
-  .section5 {
-    background-color: yellow;
-  }
-  .section6 {
-    background-color: pink;
-  }
-
   /******************** MOBIL LANDING PAGE END ********************/
 
   /******************** IPAD LANDING PAGE START ********************/
@@ -296,3 +352,5 @@ ion-icon {
 .removeFromWishlist_button img {
   width: 100%;
 }
+
+// COMMUNITY

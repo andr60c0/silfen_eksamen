@@ -3,6 +3,32 @@ import "./styles.scss";
 
 //ENDPOINTS
 
+//Landing page - Who run the world
+let landingpageWRTWData;
+const landingpageWRTWEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/180";
+
+//Landing page - discover
+let landingpageDiscoverData = [];
+const landingpageDiscoverEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/landingpage_discover";
+let landingpageDiscoverTemplate = document.querySelector(".landingpage_discover_template");
+let landingpageDiscoverContainer = document.querySelector("#discover");
+
+//Lookbook
+let lookbookData = [];
+const lookbookEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/collection?per_page=100";
+let lookbookTemplate = document.querySelector("#lookbook_template");
+let lookbookContainer = document.querySelector("#lookbook .sectionwrapper");
+
+//Community
+let communityData;
+let communityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/157";
+
+//Sustainability
+let sustainabilityData = [];
+let sustainabilityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/sustainability";
+let sustainabilityTemplate = document.querySelector("#sustainability_template");
+let sustainabilityContainer = document.querySelector("#sustainability");
+
 //Terms and conditions
 let termsAndConditionsData;
 let termsAndConditionsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/49";
@@ -84,14 +110,20 @@ let number = 0;
 let itemName;
 
 document.addEventListener("DOMContentLoaded", start);
-
+// let body = document.querySelector("body");
+// let lookbookbody = document.querySelector("#lookbookbody");
 function start() {
   console.log("script start");
+  getWRTWData();
+  getLPDiscoverData();
+  getProductsData();
   displayCart();
   displayWishlist();
-  getProductsData();
   getSingleProductData();
   updateNumbers();
+  getSustainabilityData();
+  getCommunityData();
+  getLookbookData();
 
   // createWishlistObject();
 
@@ -100,6 +132,18 @@ function start() {
 }
 
 //ASYNC FUNCTIONS
+
+async function getWRTWData() {
+  const landingpageWRTWResponse = await fetch(landingpageWRTWEndpoint);
+  landingpageWRTWData = await landingpageWRTWResponse.json();
+  showWRTWsection();
+}
+
+async function getLPDiscoverData() {
+  const lpDiscoverResponse = await fetch(landingpageDiscoverEndpoint);
+  landingpageDiscoverData = await lpDiscoverResponse.json();
+  showLPDiscover();
+}
 
 async function getProductsData() {
   const productsResponse = await fetch(productsEndpoint);
@@ -130,11 +174,54 @@ async function getSingleProductData() {
   const allProductImagesResponse = await fetch(allProductImagesEndpoint);
   allProductImages = await allProductImagesResponse.json();
   // console.log("allProductImages", allProductImages);
-
   showSingleProduct();
 }
 
+//Sustainability data
+async function getSustainabilityData() {
+  const sustainabilityResponse = await fetch(sustainabilityEndpoint);
+  sustainabilityData = await sustainabilityResponse.json();
+  showSustainabilityPage();
+}
+
+//Community data
+async function getCommunityData() {
+  const communityResponse = await fetch(communityEndpoint);
+  communityData = await communityResponse.json();
+  showCommunityPage();
+}
+
+//Lookbook
+async function getLookbookData() {
+  const lookbookResponse = await fetch(lookbookEndpoint);
+  lookbookData = await lookbookResponse.json();
+  showLookbook();
+}
+
 //LOADING DATA TO DOM
+
+//Landing page
+function showWRTWsection() {
+  console.log("showWRTWsection");
+  document.querySelector("#whoruntheworld").innerHTML = landingpageWRTWData.content.rendered;
+}
+
+function showLPDiscover() {
+  console.log("showLPDiscover");
+  landingpageDiscoverContainer.innerHTML = "";
+  landingpageDiscoverData.forEach((sect) => {
+    const clone = landingpageDiscoverTemplate.cloneNode(true).content;
+    clone.querySelector(".lp_discover_header").innerHTML = sect.overskrift;
+    clone.querySelector(".lp_discover_text").innerHTML = sect.tekst;
+    clone.querySelector(".lp_discover_link").innerHTML = sect.link;
+    clone.querySelector(".lp_discover_link").addEventListener("click", () => {
+      console.log("link klik");
+    });
+    clone.querySelector(".lp_discover_image").src = sect.billede.guid;
+
+    landingpageDiscoverContainer.appendChild(clone);
+  });
+}
 
 //Terms and conditions
 function showTermsAndConditionsPage() {
@@ -245,7 +332,7 @@ function showSingleProduct() {
         bag.tag = itemName + "_" + bag.color;
         bag.inCart = 0;
         bag.image = itemName + "_" + bag.color + "_1.jpeg";
-        cartNumbers(bag); //RENAME
+        addToCart(bag);
         totalCost(bag);
 
         console.log("bag.image", bag.image);
@@ -352,18 +439,51 @@ function showSingleProduct() {
   });
 }
 
+function showSustainabilityPage() {
+  console.log("showSustainabilityPage");
+  sustainabilityContainer.innerHTML = "";
+  sustainabilityData.forEach((sect) => {
+    const clone = sustainabilityTemplate.cloneNode(true).content;
+    clone.querySelector(".sustainability_h1").innerHTML = sect.overskrift;
+    clone.querySelector(".sustainability_text").innerHTML = sect.tekst;
+    clone.querySelector(".sustainability_image").src = sect.billede.guid;
+
+    sustainabilityContainer.appendChild(clone);
+  });
+}
+
+function showCommunityPage() {
+  console.log("showCommunityPage");
+  document.querySelector("#community").innerHTML = communityData.content.rendered;
+}
+
+function showLookbook() {
+  console.log("showLookBook");
+
+  lookbookContainer.innerHTML = "";
+  lookbookData.forEach((collection) => {
+    const clone = lookbookTemplate.cloneNode(true).content;
+    clone.querySelector(".collection_image").src = collection.collection_image.guid;
+    clone.querySelector(".collection_abbreviation").innerHTML = collection.collection_abbreviation;
+    clone.querySelector(".collection_name").innerHTML = collection.collection_navn;
+    clone.querySelector("article").addEventListener("click", () => {
+      location.href = "lookbook_singelView.html?id=" + collection.id;
+    });
+
+    lookbookContainer.appendChild(clone);
+  });
+}
+
 //CART
 
 //How many items there are in the cart //RENAME: numberOfCartItems
-function cartNumbers(bag) {
+function addToCart(bag) {
   console.log("cartNumbers");
   console.log("the product", bag);
   //RENAME: cartItemCounter;
   let productNumbers = localStorage.getItem("cartNumbers");
-
   //Converting from string to number
   productNumbers = parseInt(productNumbers);
-
   if (productNumbers) {
     localStorage.setItem("cartNumbers", productNumbers + 1);
     document.querySelector(".cart_link span").textContent = productNumbers + 1;
@@ -371,7 +491,6 @@ function cartNumbers(bag) {
     localStorage.setItem("cartNumbers", 1);
     document.querySelector(".cart_link span").textContent = 1;
   }
-
   setItems(bag);
 }
 
@@ -379,10 +498,8 @@ function setItems(bag) {
   console.log("setItems");
   console.log("My product is ", bag);
 
-  let cartItems = localStorage.getItem("productsInCart");
-  cartItems = JSON.parse(cartItems);
+  let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
   console.log("my products are:", cartItems);
-  console.log(cartItems);
   if (cartItems !== null) {
     if (cartItems[bag.tag] == undefined) {
       cartItems = {
@@ -496,6 +613,8 @@ function displayCart() {
             `;
     });
   }
+  let allRemoveFromCartButtons = document.querySelectorAll(".deleteFromCart_button");
+  console.log("allRemoveFromCartButtons", allRemoveFromCartButtons);
 }
 //Add to wishlist
 function addToWishlist(wishlistBag) {

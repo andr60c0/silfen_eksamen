@@ -9,73 +9,103 @@
   </head>
   <body>
     <header>
-      <ul class="nav" id="nav">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="webshop.html" id="webshop_button">SHOP</a></li>
-        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
-        <li><a href="privacypolicy.html">Privacy Policy</a></li>
-        <li><a href="lookbook.html">Lookbook</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="wishlist_icon">
-          <a href="wishlish.html"><img src="static/ui-elements/heart.svg" /><span>0</span></a>
-        </li>
-        <li class="cart_link">
-          <a href="cart.html">Cart <span>0</span></a>
-        </li>
-      </ul>
-    </header>
-    <section id="landingpage">
-      <div class="splash landingpagesection">
-        <!-- <div class="shipping_popUp">
-          <p>Worldwide free shipping on all orders over 1000 DKK</p>
-        </div> -->
-        <div class="indicator">
-          <div class="dot active_dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-      <div class="section1 landingpagesection">
-        <h1>Section 1</h1>
-        <p>HELLO</p>
-        <div class="icon">
-          <ion-icon name="trash-outline"></ion-icon>
-        </div>
-      </div>
-      <div class="section2 landingpagesection">
-        <h1>Section 2</h1>
-      </div>
-      <div class="section3 landingpagesection">
-        <h1>Section 3</h1>
-      </div>
-      <div class="section4 landingpagesection">
-        <h1>Section 4</h1>
-      </div>
-
-      <div class="section5 landingpagesection">
-        <h1>Section 5</h1>
-        <p>Hello</p>
-      </div>
-      <div class="section6 landingpagesection">
-        <h1>Section 6</h1>
-        <div class="cookie_popUp">
-          <p>THIS WEBSITE STORES COOKIES ON YOUR COMPUTER. TO FIND OUT MORE ABOUT THIS, SEE OUR COOKIE POLICY.</p>
-          <div class="cookie_button">
-            <p>Accept</p>
+      <nav>
+        <div class="header-wrapper">
+          <div class="logo">
+            <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+          </div>
+          <div class="ui">
+            <div class="menuaccount">
+              <a href="#"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+            </div>
+            <div class="menusearch">
+              <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
+            </div>
+            <div class="menuheart">
+              <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /></a>
+            </div>
+            <div class="menucart">
+              <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /></a>
+            </div>
+            <div id="burger" onclick="onClickMenu()">
+              <div id="bar1" class="bar"></div>
+              <div id="bar2" class="bar"></div>
+              <div id="bar3" class="bar"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, illo ipsum sunt sed optio fuga cumque nihil quaerat quis sapiente vero fugiat, facere, non harum ullam nesciunt delectus!
-        Deserunt, repudiandae!
-      </p>
 
-      <footer></footer>
+        <ul class="nav" id="nav">
+          <li class="nav-dropdown">
+            <a href="#">SHOP</a>
+            <span>+</span>
+            <ul class="dropdown">
+              <li><a href="#">BAGS</a></li>
+              <li><a href="#">PROTECTION AND CARE</a></li>
+              <li><a href="#">NEW ARRIVALS</a></li>
+              <li><a href="#">MOST WANTED</a></li>
+              <li><a href="#">SALE</a></li>
+            </ul>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#">WORLD OF SILFEN</a>
+            <ul>
+              <li><a href="#">SUSTAINABILITY</a></li>
+              <li><a href="#">LOOKBOOK</a></li>
+              <li><a href="#">COMMUNITY</a></li>
+              <li><a href="#">CARE GUIDE</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="landingpage_splash">
+      <h1 class="splash_title">FASHIONABLE SUSTAINABLE</h1>
+      <div id="slideshow_wrap">
+        <div class="slideimage_wrapper slider1">
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
+        </div>
+      </div>
     </section>
+    <section id="landingpage">
+      <div id="most_wanted">
+        <h1>MOST WANTED</h1>
+        <!-- TODO: LAV DYNAMISK -->
+        <img src="static/bags/test.png" />
+        <img src="static/bags/pippiveganleather_pink2.jpeg" />
+        <img src="static/bags/pippiveganleather_pink2.jpeg" />
+        <img src="static/bags/pippiveganleather_pink2.jpeg" />
+        <img src="static/bags/pippiveganleather_pink2.jpeg" />
+        <img src="static/bags/pippiveganleather_pink2.jpeg" />
+      </div>
+      <div id="lp_discover">
+        <h1>DISCOVER</h1>
+        <div id="discover">
+          <template class="landingpage_discover_template">
+            <article class="landingpage_discover_article">
+              <div class="lp_discover_container">
+                <div class="lp_discover_info">
+                  <h2 class="lp_discover_header"></h2>
+                  <p class="lp_discover_text"></p>
+                  <a class="lp_discover_link" href="#"></a>
+                </div>
+                <img class="lp_discover_image" alt="" />
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+      <div id="whoruntheworld"></div>
+    </section>
+    <script type="module" src="./landingpage.js"></script>
     <script type="module" src="./script.js"></script>
   </body>
 </html>

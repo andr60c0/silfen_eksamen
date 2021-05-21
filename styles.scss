@@ -3,59 +3,53 @@
 @use "./sass/reset";
 @use "./sass/layouts/splitscreen";
 @use "./sass/popUps";
+@use "./sass/menu";
 
 //Font families
 @font-face {
   font-family: "manropebold";
-  src: url("fonte/manrope/manrope-bold-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-bold-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-bold-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "manropeextrabold";
-  src: url("fonte/manrope/manrope-extrabold-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-extrabold-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-extrabold-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-extrabold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "manropeextralight";
-  src: url("fonte/manrope/manrope-extralight-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-extralight-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-extralight-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-extralight-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "manropelight";
-  src: url("fonte/manrope/manrope-light-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-light-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-light-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "manropemedium";
-  src: url("fonte/manrope/manrope-medium-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-medium-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-medium-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "manroperegular";
-  src: url("fonte/manrope/manrope-regular-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-regular-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-regular-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "manropesemibold";
-  src: url("fonte/manrope/manrope-semibold-webfont.woff2") format("woff2"),
-    url("fonte/manrope/manrope-semibold-webfont.woff") format("woff");
+  src: url("fonte/manrope/manrope-semibold-webfont.woff2") format("woff2"), url("fonte/manrope/manrope-semibold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Lookbook</title>
+    <title>Community</title>
   </head>
-  <body id="lookbookbody">
+  <body>
     <header>
       <ul class="nav" id="nav">
         <li><a href="index.html">HOME</a></li>
-        <li><a href="webshop.html">SHOP</a></li>
+        <li><a href="webshop.html" id="webshop_button">SHOP</a></li>
         <li><a href="termsandconditions.html">Terms and Conditions</a></li>
         <li><a href="privacypolicy.html">Privacy Policy</a></li>
-        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="sustainability.html">Sustainability</a></li>
         <li><a href="community.html">Community</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="wishlist_icon">
           <a href="wishlish.html"><img src="static/ui-elements/heart.svg" /><span>0</span></a>
@@ -25,21 +26,18 @@
         </li>
       </ul>
     </header>
-    <h1>Lookbook</h1>
-    <section id="lookbook">
-      <div class="sectionwrapper">
-        <template id="lookbook_template">
-          <div class="col">
-            <article>
-              <img class="collection_image" src="" alt="" />
-              <div class="collection_info">
-                <h3 class="collection_abbreviation"></h3>
-                <h4 class="collection_name"></h4>
-              </div>
-            </article>
-          </div>
-        </template>
-      </div>
+    <section id="community"></section>
+    <section id="community-form">
+      <h1>Want to collaborate?</h1>
+      <p>Become a member of SILFEN’s girl squad today! Send us your application by filling out the form below.</p>
+      <form>
+        <div class="collab_form_container">
+          <input type="text" id="fullname" name="fullname" placeholder="Name" />
+          <input type="text" id="email" name="email" placeholder="Email" />
+          <label for="application">Application</label>
+          <input type="text" id="application" name="application" />
+        </div>
+      </form>
     </section>
     <footer></footer>
     <script type="module" src="./script.js"></script>
