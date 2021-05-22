@@ -8,58 +8,79 @@
     <title>SILFEN</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="header-wrapper">
-          <div class="logo">
-            <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+    <nav role="navigation">
+      <div class="header-wrapper">
+        <div class="logo">
+          <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+        </div>
+        <div class="ui">
+          <!-- <div class="menuaccount">
+            <a href="#"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+          </div> -->
+          <div class="menusearch">
+            <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
           </div>
-          <div class="ui">
-            <div class="menuaccount">
-              <a href="#"><img src="static/ui-elements/account.svg" alt="Account" /></a>
-            </div>
-            <div class="menusearch">
-              <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
-            </div>
-            <div class="menuheart">
-              <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /></a>
-            </div>
-            <div class="menucart">
-              <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /></a>
-            </div>
-            <div id="burger" onclick="onClickMenu()">
-              <div id="bar1" class="bar"></div>
-              <div id="bar2" class="bar"></div>
-              <div id="bar3" class="bar"></div>
-            </div>
+          <div class="menuheart">
+            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /></a>
+          </div>
+          <div class="menucart">
+            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /></a>
           </div>
         </div>
+      </div>
+      <div id="menuToggle">
+        <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+        <input type="checkbox" />
 
-        <ul class="nav" id="nav">
-          <li class="nav-dropdown">
-            <a href="#">SHOP</a>
-            <span>+</span>
-            <ul class="dropdown">
-              <li><a href="#">BAGS</a></li>
-              <li><a href="#">PROTECTION AND CARE</a></li>
-              <li><a href="#">NEW ARRIVALS</a></li>
-              <li><a href="#">MOST WANTED</a></li>
-              <li><a href="#">SALE</a></li>
-            </ul>
-          </li>
-          <li class="nav-dropdown">
-            <a href="#">WORLD OF SILFEN</a>
-            <ul>
-              <li><a href="#">SUSTAINABILITY</a></li>
-              <li><a href="#">LOOKBOOK</a></li>
-              <li><a href="#">COMMUNITY</a></li>
-              <li><a href="#">CARE GUIDE</a></li>
-            </ul>
-          </li>
+        <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+        <ul id="menu">
+          <div class="contentBx">
+            <div class="label">SHOP</div>
+            <div class="content">
+              <ul>
+                <li><a class="" href="#">BAGS</a></li>
+                <li><a href="#">PROTECTION AND CARE</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+                <li><a href="#">MOST WANTED</a></li>
+                <li><a href="#">SALE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <div class="label">WORLD OF SILFEN</div>
+            <div class="content">
+              <ul>
+                <li><a href="#">INFORMATION</a></li>
+                <li><a href="#">SUSTAINABILITY</a></li>
+                <li><a href="#">LOOKBOOK</a></li>
+                <li><a href="#">COMMUNITY</a></li>
+                <li><a href="#">CARE GUIDE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <li class="account_link"><a href="#">ACCOUNT</a></li>
+          </div>
         </ul>
-      </nav>
-    </header>
-
+      </div>
+    </nav>
     <section id="landingpage_splash">
       <h1 class="splash_title">FASHIONABLE SUSTAINABLE</h1>
       <div id="slideshow_wrap">

@@ -125,10 +125,22 @@ function start() {
   getCommunityData();
   getLookbookData();
 
+  const accordion = document.getElementsByClassName("contentBx");
+  for (let i = 0; i < accordion.length; i++) {
+    accordion[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  }
+
   // createWishlistObject();
 
   // getTermsAndConditionsData();
   // getPrivacyData();
+  document.querySelector("#burger").addEventListener("click", () => {
+    console.log("burger click");
+    document.getElementById("burger").classList.toggle("change");
+    document.getElementById("nav").classList.toggle("change");
+  });
 }
 
 //ASYNC FUNCTIONS
@@ -473,6 +485,8 @@ function showLookbook() {
     lookbookContainer.appendChild(clone);
   });
 }
+
+//BURGER MENU
 
 //CART
 
