@@ -29,24 +29,51 @@
         <div class="sectionwrapper">
           <div class="col">
             <img class="product_image" alt="" />
-            <div class="all_product_images_container">
-              <template>
-                <img class="imgs" alt="" />
-              </template>
+            <div id="webshop_carousel">
+              <div class="carousel">
+                <div class="carousel_inner">
+                  <div class="all_product_images_container">
+                    <template>
+                      <img class="imgs" alt="" />
+                    </template>
+                  </div>
+                </div>
+                <div class="legend-container"></div>
+              </div>
             </div>
           </div>
           <div class="col">
-            <h3 class="product_name"></h3>
-            <p class="product_price"></p>
+            <div class="mobile_heart_container">
+              <div class="mobile_product_container">
+                <h3 class="product_name"></h3>
+                <p class="product_price"></p>
+              </div>
+              <img class="mobile_singleview_heart wishlist_like" src="static/ui-elements/heart.svg" />
+            </div>
+            <p class="cc">COLORS</p>
             <div class="color_picker">
               <div class="currentDiv singleBagColors"></div>
             </div>
             <p class="product_color"></p>
             <button class="add_to_cart_button">Add To Cart</button>
-            <!-- TODO: Like funktion -->
-            <img class="singleview_heart" src="static/ui-elements/heart.svg" />
             <p class="product_description"></p>
             <!-- TODO: Specifications -->
+            <div class="specifications">
+              <p>SPECIFICATIONS</p>
+              <div class="contentBx">
+                <div class="label">SHOP</div>
+                <div class="content">
+                  <p></p>
+                </div>
+              </div>
+              <div class="contentBx">
+                <div class="label">Return</div>
+                <div class="content">
+                  <p class="material"></p>
+                  <p class="measurements"></p>
+                </div>
+              </div>
+            </div>
             <!-- TODO: Care -->
             <!-- TODO: Shipping & Returns -->
           </div>

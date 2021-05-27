@@ -1,4 +1,6 @@
-<svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="12.384" cy="11.384" r="10.134" stroke="black" stroke-width="0.5"/>
-<rect x="19.3411" y="18.7765" width="0.608121" height="11.7203" rx="0.30406" transform="rotate(-45.4406 19.3411 18.7765)" fill="black"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="26.369" height="26.963" viewBox="0 0 26.369 26.963">
+  <g id="search" transform="translate(-1.75 -0.75)">
+    <circle id="Ellipse_111" data-name="Ellipse 111" cx="10.134" cy="10.134" r="10.134" transform="translate(2.25 1.25)" fill="none" stroke="#000" stroke-width="1"/>
+    <rect id="Rectangle_488" data-name="Rectangle 488" width="1.608" height="11.72" rx="0.304" transform="translate(18.639 19.489) rotate(-45.44)"/>
+  </g>
 </svg>

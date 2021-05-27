@@ -1,3 +1,8 @@
+//Variables
+$textFontSizeSm: 12px;
+$headingFontSizeSm: 18px;
+$limeGreen: #71f049;
+
 h1,
 h2,
 h3,
@@ -5,6 +10,7 @@ h4,
 a {
   font-family: Helvetica Neue, Arial, sans-serif;
   text-transform: uppercase;
+  font-weight: 400;
 }
 
 h5 {
@@ -18,7 +24,8 @@ h4 {
 }
 
 p {
-  font-family: "manroperegular";
+  font-family: "manropelight";
+  font-size: $textFontSizeSm;
 }
 
 a {
@@ -35,6 +42,29 @@ a {
   }
 }
 
+.menuheart span,
+.menucart span {
+  font-family: "manropeextralight";
+  font-size: 0.8em;
+}
+
+footer {
+  .footer_h1 {
+    font-size: 12px !important;
+    padding-bottom: 10px;
+  }
+
+  p,
+  a {
+    font-size: 11px;
+    font-family: "manropeextralight";
+  }
+
+  a {
+    text-transform: none;
+  }
+}
+
 #landingpage {
   a {
     font-family: "manroperegular";
@@ -43,7 +73,7 @@ a {
   }
 
   a:hover {
-    color: #71f049;
+    color: $limeGreen;
   }
   #discover {
     h2 {
@@ -62,9 +92,25 @@ a {
     font-size: 20px;
   }
 }
+/* WEBSHOP START */
+#products {
+  h3,
+  p {
+    font-family: "manropeextralight";
+    font-size: 10px;
+  }
+
+  /* WEBSHOP END */
+}
 
 /****************************************  IPAD TYPOGRAPHY START  ****************************************/
 @media only screen and (min-width: 768px) {
+  #products {
+    h3,
+    p {
+      font-size: 11px;
+    }
+  }
 }
 /****************************************  IPAD TYPOGRAPHY END  ****************************************/
 
@@ -72,9 +118,15 @@ a {
 @media only screen and (min-width: 1200px) {
   #landingpage_splash {
     .splash_title {
-      font-size: 5rem !important;
-      color: #71f049;
-      font-size: 20px;
+      font-size: 5rem;
+      color: $limeGreen;
+    }
+  }
+
+  #products {
+    h3,
+    p {
+      font-size: 12px;
     }
   }
 }

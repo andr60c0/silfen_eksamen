@@ -1,0 +1,16 @@
+//Variables
+
+$buttonBgColor: #000000;
+$buttonTextColor: #ffffff;
+$buttonFontSizeSm: 12px;
+
+button {
+  background-color: $buttonBgColor;
+  color: $buttonTextColor;
+  font-family: "manroperegular";
+  text-transform: uppercase;
+  border: none;
+  padding: 10px;
+  font-size: $buttonFontSizeSm;
+  width: 100%;
+}

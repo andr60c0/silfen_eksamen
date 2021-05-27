@@ -13,6 +13,23 @@ body {
   background: #bedfe8;
 } */
 
+.menuheart,
+.menucart {
+  position: relative;
+}
+
+.menuheart span {
+  position: absolute;
+  top: 1vw;
+  left: 3.1vw;
+}
+
+.menucart span {
+  position: absolute;
+  top: 1.3vw;
+  left: 3vw;
+}
+
 .contentBx {
   position: relative;
   margin: 0px 0px;
@@ -24,7 +41,11 @@ body {
   cursor: pointer;
   color: black;
   border-top: solid 1px #e0e0e0;
-  border-bottom: solid 0.1px #e0e0e0;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.contentBx:first-child .label {
+  border-bottom: none;
 }
 
 .contentBx .label::before {
@@ -80,37 +101,19 @@ body {
 }
 .contentBx.active .label {
   border-bottom: none;
+  color: #71f049;
 }
 
-/*
-   * Made by Erik Terwan
-   * 24th of November 2015
-   * MIT License
-   *
-   *
-   * If you are thinking of using this in
-   * production code, beware of the browser
-   * prefixes.
-   */
-
-// body {
-//   margin: 0;
-//   padding: 0;
-
-//   /* make it look decent enough */
-//   background: #fff;
-//   color: #000;
-//   font-family: "Avenir Next", "Avenir", sans-serif;
-// }
 nav {
   position: fixed;
   z-index: 2000;
   background-color: #fff;
-  padding-bottom: 30px;
+  //   padding-bottom: 30px;
 }
 
 .account_link {
   padding: 10px !important;
+  border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -126,12 +129,6 @@ nav {
   user-select: none;
 }
 
-/* #menuToggle .burger,
-  #menuToggle input {
-    top: 0;
-    left: 500px;
-  } */
-
 #menuToggle a {
   text-decoration: none;
   color: #232323;
@@ -143,7 +140,7 @@ nav {
 }
 
 #menuToggle a:hover {
-  color: tomato;
+  color: #71f049;
 }
 
 #menuToggle input {
@@ -194,12 +191,12 @@ nav {
     */
 #menuToggle input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
+  transform: rotate(43deg) translate(-2px, -1px);
   background: #232323;
 }
 
 /*
-    * But let's hide the middle one.
+    * hide the middle one.
     */
 #menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
@@ -207,10 +204,10 @@ nav {
 }
 
 /*
-    * Ohyeah and the last one should go the other direction
+    * the last one should go the other direction
     */
 #menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
+  transform: rotate(-43deg) translate(0, -1px);
 }
 
 /*
@@ -221,8 +218,8 @@ nav {
   position: absolute;
   width: 100%;
   height: 100vh;
-  margin: -20px 0 0 -50px;
-  padding: 0px;
+  margin: -50px 0 0 -50px;
+  padding-top: 30px;
   background: #fff;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -236,7 +233,6 @@ nav {
 
 #menu li {
   padding: 10px 35px;
-  /* font-size: 22px; */
 }
 
 /*
@@ -246,4 +242,105 @@ nav {
   transform: none;
 }
 
+.menuaccount {
+  display: none;
+}
+
 /****************** BURGER MENU END *********************/
+
+/****************** IPAD MENU START *********************/
+
+@media only screen and (min-width: 768px) {
+  .logo {
+    margin-left: 290px;
+    width: 20%;
+  }
+
+  .ui img {
+    width: 70%;
+  }
+
+  .account_link {
+    display: none;
+  }
+
+  .menuaccount {
+    display: block;
+  }
+
+  #menu {
+    margin: -120px 0 0 -50px;
+    height: auto;
+    transform: none;
+    transition: none;
+    display: flex;
+    background-color: transparent;
+  }
+
+  .header-wrapper {
+    z-index: 1000;
+    justify-content: space-around;
+  }
+
+  .contentBx .label {
+    border-bottom: none;
+    border-top: none;
+    padding-left: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .contentBx .label:hover {
+    color: #71f049;
+  }
+
+  #menuToggle {
+    input,
+    span {
+      display: none;
+    }
+  }
+  .contentBx:first-child {
+    width: 70px;
+  }
+
+  .contentBx .label::before {
+    content: "";
+  }
+  .contentBx.active .label::before {
+    content: "";
+  }
+
+  .contentBx.active .content {
+    padding-top: 60px;
+    height: 320px;
+    width: 100vw !important;
+    z-index: 1000;
+  }
+
+  .contentBx:nth-child(2) .content {
+    margin-left: -70px;
+  }
+
+  #menu li {
+    padding: 10px 65px;
+  }
+
+  /****************** IPAD MENU END *********************/
+}
+/****************** DESKTOP MENU START *********************/
+
+@media only screen and (min-width: 1200px) {
+  .logo {
+    width: 10%;
+    margin-left: 500px;
+  }
+  .header-wrapper {
+    justify-content: space-around;
+  }
+
+  #menu {
+    margin: -120px 0 0 0px;
+  }
+
+  /****************** DESKTOP MENU END *********************/
+}
