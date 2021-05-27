@@ -14,3 +14,14 @@ button {
   font-size: $buttonFontSizeSm;
   width: 100%;
 }
+
+.wp-block-buttons {
+  font-family: "manroperegular";
+  text-transform: uppercase;
+  color: black;
+  padding: 10px 0 40px 0;
+}
+
+.wp-block-button__link {
+  color: black !important;
+}

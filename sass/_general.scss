@@ -329,18 +329,28 @@ figure img {
   /******************** MOBIL LANDING PAGE START ********************/
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
+  margin: 20px;
 
   #most_wanted {
     flex-basis: 200px;
     flex-grow: 1;
-    padding: 0 30px 30px 30px;
+  }
+
+  #most_wanted img {
+    filter: contrast(95%);
+    margin-right: 5px;
+    width: 70%;
+  }
+
+  .mostwanted_bags_container {
+    display: flex;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
   }
 
   #lp_discover {
     flex-basis: 400px;
     flex-grow: 2;
-    padding: 0 30px 30px 30px;
   }
 
   #discover {
@@ -349,6 +359,7 @@ figure img {
     // padding: 0 30px 30px 30px;
 
     .landingpage_discover_article {
+      padding-bottom: 20px;
     }
 
     .lp_discover_container {
@@ -356,18 +367,33 @@ figure img {
     }
     .lp_discover_info {
       position: absolute;
-      bottom: 2vw;
-      left: 1vw;
+      bottom: 5vw;
+      left: 4vw;
     }
   }
 
   #whoruntheworld {
     flex-basis: 300px;
     flex-grow: 1.5;
-    padding: 0 30px 30px 30px;
     // .wp-block-group__inner-container p {
     //   max-width: 300px;
     // }
+    .wp-block-group__inner-container h2 {
+      margin-top: 20px;
+    }
+    .wp-block-group__inner-container p:nth-of-type(2),
+    .wp-block-group__inner-container p:nth-of-type(4) {
+      margin-top: 20px;
+    }
+
+    .wp-block-group__inner-container:nth-of-type(4) {
+      position: relative;
+      background-color: pink;
+    }
+
+    .video3 {
+      display: none;
+    }
   }
   /******************** MOBIL LANDING PAGE END ********************/
 
