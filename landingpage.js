@@ -18,7 +18,7 @@ function start() {
     let scrollTop = document.documentElement.scrollTop;
     const mediaIpad = window.matchMedia("(min-width: 768px)");
     const mediaDesktop = window.matchMedia("(min-width: 1200px)");
-    console.log("scrollTop", scrollTop);
+    // console.log("scrollTop", scrollTop);
     if (scrollTop < 8) {
       document.querySelector("#nav").style.position = "relative";
     } else {
@@ -26,7 +26,6 @@ function start() {
       document.querySelector("#nav").style.top = "0";
       document.querySelector("#nav").style.left = "0";
     }
-
     if (scrollTop > 900 && mediaDesktop.matches) {
       document.querySelector("#discover").style.position = "absolute";
       document.querySelector("#discover").style.top = "3vw";
@@ -34,6 +33,13 @@ function start() {
       var s = document.querySelector("#discover");
       var yPos = 248 - window.pageYOffset / 4;
       s.style.top = 0.5 + yPos + "px";
+    } else if (scrollTop > 1500 && mediaIpad.matches) {
+      document.querySelector("#discover").style.position = "absolute";
+      document.querySelector("#discover").style.top = "3vw";
+      document.querySelector("#discover").style.left = "0vw";
+      var s = document.querySelector("#discover");
+      var yPos = 143 - window.pageYOffset / 10;
+      s.style.top = 90 + yPos + "px";
     } else {
       document.querySelector("#discover").style.position = "relative";
       document.querySelector("#discover").style.top = "0vw";
