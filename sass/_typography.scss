@@ -1,8 +1,19 @@
 //Variables
 
+//Mobile font sizes
 $textFontSizeSm: 12px;
 $h1FontSizeSm: 18px;
 $h2FontSizeSm: 16px;
+
+//Ipad font sizes
+$h1FontSizeIpad: 20px;
+$h2FontSizeIpad: 18px;
+$textFontSizeIpad: 13px;
+
+//Desktop font sizes
+$textFontSizeDesktop: 14px;
+
+//General
 $h1FontWeight: 500;
 $h2FontWeight: 400;
 $limeGreen: #71f049;
@@ -19,7 +30,6 @@ a {
   margin-bottom: 10px;
 }
 
-//Mobile font sizes
 h1 {
   font-size: $h1FontSizeSm;
   font-weight: $h1FontWeight;
@@ -53,6 +63,11 @@ a {
   text-decoration: none;
   font-weight: 500;
   font-size: $textFontSizeSm;
+}
+
+.shipping_popUp p {
+  font-size: 10px;
+  color: $limeGreen;
 }
 
 #menu {
@@ -130,6 +145,19 @@ footer {
 
 /****************************************  IPAD TYPOGRAPHY START  ****************************************/
 @media only screen and (min-width: 768px) {
+  h1 {
+    font-size: $h1FontSizeIpad;
+  }
+
+  h2 {
+    font-size: $h2FontSizeIpad;
+  }
+
+  p {
+    font-size: $textFontSizeIpad;
+    line-height: 1.8;
+  }
+
   #products {
     h3,
     p {
@@ -141,6 +169,11 @@ footer {
 
 /****************************************  DESKTOP TYPOGRAPHY START  ****************************************/
 @media only screen and (min-width: 1200px) {
+  p {
+    font-size: $textFontSizeDesktop;
+    line-height: 1.8;
+  }
+
   #landingpage_splash {
     .splash_title {
       font-size: 5rem;

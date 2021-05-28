@@ -151,6 +151,9 @@ document.addEventListener("DOMContentLoaded", start);
 // let lookbookbody = document.querySelector("#lookbookbody");
 function start() {
   console.log("script start");
+  // document.querySelector(".close_newsletter").addEventListener("click", () => {
+  //   document.querySelector(".newsletter").classList.add("hide");
+  // });
   displayCart();
   displayWishlist();
   updateNumbers();
@@ -164,7 +167,6 @@ function start() {
   getProductsData();
   getSingleProductData();
 
-  // document.querySelector(".all_product_images_container").addEventListener("scroll", scrollFunction);
   const x = window.matchMedia("(min-width: 1200px)");
 
   const accordion = document.querySelectorAll(".contentBx");

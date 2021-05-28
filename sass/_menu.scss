@@ -105,7 +105,7 @@ body {
 }
 
 nav {
-  position: fixed;
+  // position: fixed;
   z-index: 2000;
   background-color: #fff;
   //   padding-bottom: 30px;
@@ -121,7 +121,7 @@ nav {
   display: block;
   position: relative;
   top: 50px;
-  left: 50px;
+  padding-left: 50px;
 
   z-index: 1;
 
