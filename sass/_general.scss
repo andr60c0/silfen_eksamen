@@ -99,17 +99,18 @@
 }
 /* MOBILE WEBSHOP START  */
 #products {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 4vw;
+  margin-top: 30vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
 
   img {
     filter: contrast(95%);
   }
 
   .col {
-    flex-grow: 1;
-    flex-basis: 120px;
-    margin: 4vw;
     cursor: pointer;
   }
 
@@ -117,6 +118,85 @@
     position: relative;
   }
 
+  .product_image_container {
+    z-index: 500;
+  }
+
+  .product_heart_container {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    cursor: pointer;
+    // z-index: 1000;
+  }
+
+  .product_morecolors {
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+    font-size: 8px;
+  }
+
+  .product_quick_info {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    margin-top: -2vw;
+    padding: 3vw 2vw 2vw 2vw;
+  }
+
+  .product_quick_info h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+/* MOBILE WEBSHOP END  */
+/* MOBILE SINGLEVIEW START */
+#singleProduct {
+  margin: 23vw 4vw 4vw 4vw;
+  .color_picker {
+    display: flex;
+  }
+  img {
+    filter: contrast(95%);
+  }
+  .product_name,
+  .product_price {
+    margin-top: 3vw;
+  }
+
+  .product_color {
+    display: none;
+  }
+
+  .add_to_cart_button {
+    margin-top: 5vw;
+  }
+
+  .relatedproducts_h1 {
+    margin-top: 50px;
+  }
+
+  .related_products {
+    display: flex;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    margin-bottom: 70px;
+  }
+  .relatedProducts_col {
+    min-width: 200px;
+    margin: 10px 10px 10px 0;
+  }
+
+  #relatedProducts_article {
+    position: relative;
+  }
+  // .relatedProducts_col {
+  //   flex-basis: 100px;
+  //   flex-grow: 1;
+  // }
   .product_image_container {
     z-index: 500;
   }
@@ -144,29 +224,6 @@
     background-color: #f9f9f9;
     margin-top: -1vw;
     padding: 3vw 2vw 2vw 2vw;
-  }
-}
-/* MOBILE WEBSHOP END  */
-/* MOBILE SINGLEVIEW START */
-#singleProduct {
-  margin: 4vw;
-  .color_picker {
-    display: flex;
-  }
-  img {
-    filter: contrast(95%);
-  }
-  .product_name,
-  .product_price {
-    margin-top: 3vw;
-  }
-
-  .product_color {
-    display: none;
-  }
-
-  .add_to_cart_button {
-    margin-top: 5vw;
   }
 
   .cc {
@@ -214,6 +271,72 @@
   .carousel_inner {
     display: flex;
   }
+
+  .product_description {
+    margin-top: 20px;
+  }
+  .specifications {
+    margin-top: 20px;
+    .sv_contentBx {
+      position: relative;
+      margin: 0px 0px;
+    }
+
+    .sv_contentBx .sv_label {
+      position: relative;
+      padding: 2vw 0;
+      cursor: pointer;
+      color: black;
+      font-family: "manropeextralight";
+      font-size: 12px;
+    }
+
+    .sv_contentBx .sv_label::before {
+      content: "+";
+      color: #71f049;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      font-size: 1.5em;
+      font-weight: 400;
+    }
+    .sv_contentBx.active .sv_label::before {
+      content: "-";
+      font-size: 2.5em;
+      font-weight: 300;
+    }
+
+    .sv_contentBx .sv_content {
+      position: relative;
+      background: white;
+      height: 0;
+      overflow: hidden;
+      transition: 0.5s;
+      overflow-y: auto;
+    }
+
+    .sv_contentBx.active .sv_content {
+      height: 110px;
+      padding: 0px;
+    }
+
+    .sv_contentBx:nth-child(3).active .sv_content {
+      height: 200px;
+      padding: 0px;
+    }
+
+    .material {
+      margin-top: 10px;
+    }
+  }
+  .breadcrumb {
+    margin-bottom: 20px;
+    span {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
 }
 /* MOBILE SINGLEVIEW END */
 
@@ -247,6 +370,23 @@ figure img {
 }
 /* CART END */
 
+/* SUSTAINABILITY START*/
+
+#sustainability {
+  margin: 18vw 4vw 4vw 4vw;
+
+  .sustainability_h1 {
+    margin-top: 6vw;
+    margin-bottom: 2vw;
+  }
+
+  .sustainability_text {
+    margin-bottom: 4vw;
+  }
+}
+
+/* SUSTAINABILITY END*/
+
 /* CONTACT START */
 .form {
   width: 100%;
@@ -267,6 +407,7 @@ figure img {
     position: absolute;
     top: 40%;
     left: 10%;
+    // z-index: -1;
   }
 
   #slideshow_wrap {
@@ -276,42 +417,42 @@ figure img {
 
   .slideimage_wrapper {
     display: flex;
-    // animation: slide 30s infinite linear;
+    animation: slide 30s infinite linear;
   }
   #slideshow_wrap img {
     flex-basis: 300px;
     flex-grow: 1;
   }
 
-  // @keyframes slide {
-  //   0% {
-  //     transform: translateX(300px);
-  //   }
-  //   100% {
-  //     transform: translateX(-3000px);
-  //   }
-  // }
+  @keyframes slide {
+    0% {
+      transform: translateX(300px);
+    }
+    100% {
+      transform: translateX(-3000px);
+    }
+  }
 
-  // @media only screen and (min-width: 768px) {
-  //   #slideshow_wrap img {
-  //     width: 60%;
-  //   }
-  //   @keyframes slide {
-  //     0% {
-  //       transform: translateX(500px);
-  //     }
-  //     100% {
-  //       transform: translateX(-3800px);
-  //     }
-  //   }
-  // }
+  @media only screen and (min-width: 768px) {
+    #slideshow_wrap img {
+      width: 60%;
+    }
+    @keyframes slide {
+      0% {
+        transform: translateX(500px);
+      }
+      100% {
+        transform: translateX(-3800px);
+      }
+    }
+  }
   @media only screen and (min-width: 1200px) {
     #slideshow_wrap img {
       width: 50%;
       padding: 140px;
     }
     .slideimage_wrapper {
-      animation-duration: 40s;
+      animation-duration: 50s;
     }
 
     @keyframes slide {
@@ -331,17 +472,40 @@ figure img {
   margin: 20px;
 
   .newsletter {
-  }
-
-  .overlay {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 15000;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+  }
+
+  .fade_in {
+    animation-name: fade_inkf;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+
+  .fade_out {
+    animation-name: fade_outkf;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  .checkmark {
+    width: 70% !important;
+  }
+
+  .overlay {
     width: 100%;
     height: 100vh;
     background-color: black;
     opacity: 0.5;
-    z-index: 10000;
+
     // animation-name: slide_inkf;
     // animation-duration: 1s;
     // animation-iteration-count: 1;
@@ -380,18 +544,25 @@ figure img {
     left: 3.5vw;
     z-index: 10001;
     box-shadow: 20px 20px 40px #6e6d6d;
-    animation-name: slide_inkf;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
   }
 
-  @keyframes slide_inkf {
+  @keyframes fade_inkf {
     0% {
-      transform: translateY(200px);
+      opacity: 0;
     }
 
     100% {
-      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade_outkf {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
     }
   }
   .newsletter_consent {
@@ -406,6 +577,9 @@ figure img {
     flex-basis: 10px;
     flex-grow: 0.1;
     margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .newsletter_button {
@@ -570,16 +744,51 @@ figure img {
       flex-grow: 4;
       flex-basis: 600px;
     }
+
+    .newsletter_container {
+      max-width: 550px;
+      top: 25vw;
+      left: 14%;
+    }
+
+    .newsletter_inner_container {
+      padding: 40px 55px 40px 55px;
+    }
+    .newsletter_consent_checkbox {
+      margin-right: 15px;
+
+      margin-top: 5px;
+    }
+
+    #fnewsletter {
+      margin: 30px 0px 5px 0px;
+    }
+    .newsletter_consent {
+      margin-top: 40px;
+    }
+
+    .newsletter_button {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+
+    .newsletter h1 {
+      margin-top: 80px;
+    }
+    .newsletter h2 {
+      margin-top: 15px;
+    }
+    .newsletter p {
+    }
   }
   /******************** IPAD LANDING PAGE END ********************/
 
   /* WEBSHOP IPAD START */
   #products {
-    margin: 1vw;
-    .col {
-      flex-basis: 180px;
-      margin: 2vw 1vw;
-    }
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-top: 20vw;
+    margin-bottom: 8vw;
+
     .product_morecolors {
       font-size: 9px;
     }
@@ -588,6 +797,8 @@ figure img {
   }
   /* PRODUCT SINGLE VIEW IPAD START */
   #singleProduct {
+    margin-top: 18vw;
+
     .all_product_images_container {
       flex-direction: column;
     }
@@ -604,6 +815,10 @@ figure img {
       margin-bottom: 2vw;
     }
 
+    .product_name {
+      margin-top: 0vw;
+    }
+
     .product_description {
       margin-top: 2vw;
     }
@@ -618,7 +833,44 @@ figure img {
     .add_to_cart_button {
       margin-top: 3vw;
     }
-    /* PRODUCT SINGLE VIEW IPAD START */
+
+    .related_products {
+      margin: 2vw;
+    }
+    .relatedproducts_h1 {
+      margin-left: 2vw;
+    }
+
+    .breadcrumb {
+      margin-left: 2vw;
+    }
+    .specifications {
+      .sv_contentBx.active .sv_content {
+        height: 150px;
+        padding: 0px;
+      }
+
+      .sv_contentBx:nth-child(3).active .sv_content {
+        height: 280px;
+        padding: 0px;
+      }
+      .sv_contentBx .sv_label {
+        padding: 1vw 0;
+      }
+    }
+
+    /* PRODUCT SINGLE VIEW IPAD END */
+  }
+
+  #sustainability {
+    .sustainability_article {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .sustainability_col {
+      flex-basis: 300px;
+      flex-grow: 1;
+    }
   }
 
   /****************** IPAD END ******************/
@@ -627,7 +879,12 @@ figure img {
 /****************** DESKTOP START ******************/
 @media only screen and (min-width: 1200px) {
   /*  Webshop desktop start */
-
+  #products {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-top: 15vw;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
   #landingpage {
     padding-left: 30px;
     padding-right: 30px;
@@ -659,6 +916,23 @@ figure img {
       h1 {
         padding-left: 30px;
       }
+    }
+
+    .newsletter_container {
+      max-width: 500px;
+      top: 5vw;
+      left: 32%;
+    }
+    .newsletter_button {
+      margin-top: 20px;
+      margin-bottom: 0px;
+    }
+
+    .newsletter h1 {
+      margin-top: 30px;
+    }
+    .newsletter_inner_container {
+      padding: 40px 45px 40px 45px;
     }
 
     #discover {

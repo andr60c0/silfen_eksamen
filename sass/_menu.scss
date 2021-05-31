@@ -1,17 +1,8 @@
 /****************** BURGER MENU START *********************/
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #bedfe8;
-} */
+.language {
+  display: none;
+}
 
 .menuheart,
 .menucart {
@@ -105,10 +96,11 @@ body {
 }
 
 nav {
-  // position: fixed;
-  z-index: 2000;
+  position: fixed;
+  z-index: 7000;
+  top: 13vw;
+  left: 0;
   background-color: #fff;
-  //   padding-bottom: 30px;
 }
 
 .account_link {
@@ -123,7 +115,7 @@ nav {
   top: 50px;
   padding-left: 50px;
 
-  z-index: 1;
+  z-index: 6000;
 
   -webkit-user-select: none;
   user-select: none;
@@ -149,7 +141,7 @@ nav {
   height: 40px;
   position: absolute;
   top: -84px;
-  left: 260px;
+  left: 310px;
   cursor: pointer;
   opacity: 0;
   z-index: 2;
@@ -247,13 +239,75 @@ nav {
 }
 
 /****************** BURGER MENU END *********************/
+/****************** BURGER FILTER MENU START *******************/
+#filter-menu {
+  display: flex;
+
+  margin: 4vw;
+  position: absolute;
+  top: 33vw;
+  left: 0;
+  z-index: 5000;
+  .fm_contentBx {
+    position: relative;
+    // flex-basis: 30px;
+    // flex-grow: 1;
+    margin: 0px 0px;
+  }
+
+  .fm_contentBx .fm_label {
+    position: relative;
+    margin-right: 16px;
+    cursor: pointer;
+    color: black;
+  }
+
+  .fm_contentBx .fm_content {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+
+    background-color: white;
+  }
+
+  .fm_contentBx.active .fm_content {
+    width: 85px;
+    height: 250px;
+    padding: 20px 0;
+  }
+  .fm_contentBx.active .fm_content li {
+    padding-top: 10px;
+    padding-left: 5px;
+  }
+}
+/****************** BURGER FILTER MENU end *******************/
 
 /****************** IPAD MENU START *********************/
 
 @media only screen and (min-width: 768px) {
+  nav {
+    top: 7vw;
+    padding-bottom: 20px;
+  }
+  .ui {
+    z-index: 10000;
+  }
   .logo {
     margin-left: 290px;
     width: 20%;
+  }
+
+  .menuheart span {
+    position: absolute;
+    top: 0.2vw;
+    left: 1.1vw;
+  }
+  .menucart span {
+    position: absolute;
+    top: 0.2vw;
+    left: 0.9vw;
   }
 
   .ui img {
@@ -269,7 +323,7 @@ nav {
   }
 
   #menu {
-    margin: -120px 0 0 -50px;
+    margin: -115px 0 0 -50px;
     height: auto;
     transform: none;
     transition: none;
@@ -278,7 +332,6 @@ nav {
   }
 
   .header-wrapper {
-    z-index: 1000;
     justify-content: space-around;
   }
 
@@ -325,17 +378,67 @@ nav {
     padding: 10px 65px;
   }
 
+  #filter-menu {
+    width: 80%;
+    top: 18vw;
+    margin-left: 35px;
+    flex-wrap: wrap;
+
+    .fm_contentBx {
+      flex-basis: 80px;
+      flex-grow: 1;
+    }
+
+    .fm_contentBx.active .fm_content {
+      width: 110px;
+    }
+  }
+
   /****************** IPAD MENU END *********************/
 }
 /****************** DESKTOP MENU START *********************/
 
 @media only screen and (min-width: 1200px) {
+  nav {
+    top: 4vw;
+  }
+
+  #filter-menu {
+    width: 50%;
+    top: 12vw;
+    margin-left: 4.5vw;
+
+    .fm_contentBx.active .fm_content {
+      width: 120px;
+    }
+  }
   .logo {
     width: 10%;
-    margin-left: 500px;
+    margin-left: 460px;
   }
   .header-wrapper {
     justify-content: space-around;
+  }
+
+  .menuheart span {
+    position: absolute;
+    top: 0.1vw;
+    left: 0.6vw;
+  }
+  .menucart span {
+    position: absolute;
+    top: 0.2vw;
+    left: 0.5vw;
+  }
+
+  .language {
+    display: block;
+    margin-left: 10px;
+  }
+
+  .language p {
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-weight: 500;
   }
 
   #menu {

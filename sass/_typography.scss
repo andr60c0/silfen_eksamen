@@ -4,6 +4,7 @@
 $textFontSizeSm: 12px;
 $h1FontSizeSm: 18px;
 $h2FontSizeSm: 16px;
+$menuLinksSm: 16px;
 
 //Ipad font sizes
 $h1FontSizeIpad: 20px;
@@ -62,12 +63,36 @@ a {
   color: black;
   text-decoration: none;
   font-weight: 500;
-  font-size: $textFontSizeSm;
+  font-size: $menuLinksSm;
+}
+
+.breadcrumb {
+  a {
+    font-family: "manropeextralight";
+    text-transform: none;
+    font-size: $textFontSizeSm;
+  }
+}
+
+.related_products {
+  h3,
+  p {
+    font-family: "manropeextralight";
+    font-size: 10px;
+  }
 }
 
 .shipping_popUp p {
   font-size: 10px;
   color: $limeGreen;
+}
+
+#filter-menu {
+  .fm_label,
+  li {
+    font-size: $textFontSizeSm;
+    font-family: "manropeextralight";
+  }
 }
 
 #menu {
@@ -158,10 +183,25 @@ footer {
     line-height: 1.8;
   }
 
+  a {
+    font-size: $textFontSizeIpad;
+  }
+
+  #nav a {
+    font-size: $menuLinksSm;
+  }
+
   #products {
     h3,
     p {
       font-size: 11px;
+    }
+  }
+  #landingpage_splash {
+    .splash_title {
+      font-size: 3rem;
+
+      color: $limeGreen;
     }
   }
 }
@@ -169,6 +209,21 @@ footer {
 
 /****************************************  DESKTOP TYPOGRAPHY START  ****************************************/
 @media only screen and (min-width: 1200px) {
+  #filter-menu {
+    .fm_label,
+    li {
+      font-size: $textFontSizeDesktop;
+      font-family: "manropeextralight";
+    }
+  }
+  #singleProduct {
+    .specifications {
+      .sv_contentBx .sv_label {
+        font-size: $textFontSizeDesktop !important;
+      }
+    }
+  }
+
   p {
     font-size: $textFontSizeDesktop;
     line-height: 1.8;
@@ -176,7 +231,7 @@ footer {
 
   #landingpage_splash {
     .splash_title {
-      font-size: 5rem;
+      font-size: 5.5rem;
       color: $limeGreen;
     }
   }

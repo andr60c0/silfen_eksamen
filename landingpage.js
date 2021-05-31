@@ -24,7 +24,7 @@ function start() {
     } else {
       document.querySelector("#nav").style.position = "fixed";
       document.querySelector("#nav").style.top = "0";
-      document.querySelector("#nav").style.left = "0";
+      // document.querySelector("#nav").style.left = "0";
     }
     if (scrollTop > 900 && mediaDesktop.matches) {
       document.querySelector("#discover").style.position = "absolute";

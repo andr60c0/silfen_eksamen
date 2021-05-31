@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", displayFooter);
 
 function displayFooter() {
   console.log("footer");
-  let footer = document.querySelector("#footer");
+  let footer = document.querySelector(".footer");
   footer.innerHTML += `
 <div class="footer_container">
 <div class="footer_newsletter">

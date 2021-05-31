@@ -62,3 +62,12 @@
     transform: translateY(300px);
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  .shipping_popUp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

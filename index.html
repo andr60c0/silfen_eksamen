@@ -19,17 +19,18 @@
         </div>
         <div class="ui">
           <div class="menuaccount">
-            <a href="#"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+            <a href="account.html"><img src="static/ui-elements/account.svg" alt="Account" /></a>
           </div>
           <div class="menusearch">
             <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
           </div>
           <div class="menuheart wishlist_icon">
-            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span></a>
+            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span> </a>
           </div>
           <div class="menucart cart_link">
-            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span></a>
+            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span> </a>
           </div>
+          <div class="language"></div>
         </div>
       </div>
       <div id="menuToggle">
@@ -71,11 +72,11 @@
             <div class="label">WORLD OF SILFEN</div>
             <div class="content">
               <ul>
-                <li><a href="#">INFORMATION</a></li>
-                <li><a href="#">SUSTAINABILITY</a></li>
+                <li><a href="information.html">INFORMATION</a></li>
+                <li><a href="sustainability.html">SUSTAINABILITY</a></li>
                 <li><a href="lookbook.html">LOOKBOOK</a></li>
-                <li><a href="#">COMMUNITY</a></li>
-                <li><a href="#">CARE GUIDE</a></li>
+                <li><a href="community.html">COMMUNITY</a></li>
+                <li><a href="careguide.html">CARE GUIDE</a></li>
               </ul>
             </div>
           </div>
@@ -86,18 +87,18 @@
       </div>
     </nav>
     <section id="landingpage_splash">
-      <h1 class="splash_title">FASHIONABLE SUSTAINABLE</h1>
       <div id="slideshow_wrap">
-        <!-- <div class="slideimage_wrapper slider1">
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-          <img class="slider" src="static/bags/placeholder_lp_splash.png" />
-        </div> -->
+        <h1 class="splash_title">FASHIONABLE SUSTAINABLE</h1>
+        <div class="slideimage_wrapper slider1">
+          <img class="slider" src="static/clipart/CLIPART_ASSETS1.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS2.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS3.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS4.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS5.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS6.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS7.png" />
+          <img class="slider" src="static/clipart/CLIPART_ASSETS8.png" />
+        </div>
       </div>
     </section>
     <section id="landingpage">
@@ -137,28 +138,32 @@
 
       <div id="whoruntheworld"></div>
 
-      <!-- <div class="newsletter">
+      <div class="newsletter fade_in">
         <div class="overlay"></div>
         <div class="newsletter_container">
           <img class="close_newsletter" src="static/ui-elements/closeburger.svg" alt="close_newsletter" />
-          <h1>JOIN THE GIRLSQUAD</h1>
-          <h2>Get 10% off your first purchase</h2>
-          <p>Be the first to know about new arrivals, promotional offers, new places to find us and useful tips and tricks for your SILFEN products.</p>
-          <form>
-            <input type="text" id="fnewsletter" placeholder="example@example.com" />
-          </form>
-          <p class="xs">Sign up to our newsletter and get the discount code!</p>
-          <div class="newsletter_consent">
-            <div class="newsletter_consent_checkbox"></div>
-            <div class="newsletter_consent_text">
-              <p>By subscribing to SILFEN you accept our terms & conditions. To learn how we process your data, visit our privacy policy. You can unsubscribe at any time.</p>
+          <div class="newsletter_inner_container">
+            <h1>JOIN THE GIRLSQUAD</h1>
+            <h2>Get 10% off your first purchase</h2>
+            <p>Be the first to know about new arrivals, promotional offers, new places to find us and useful tips and tricks for your SILFEN products.</p>
+            <form>
+              <input type="text" id="fnewsletter" placeholder="example@example.com" />
+            </form>
+            <p class="xs">Sign up to our newsletter and get the discount code!</p>
+            <div class="newsletter_consent">
+              <div class="newsletter_consent_checkbox">
+                <img class="checkmark" src="static/ui-elements/checkmark.svg" alt="checkmark" />
+              </div>
+              <div class="newsletter_consent_text">
+                <p>By subscribing to SILFEN you accept our terms & conditions. To learn how we process your data, visit our privacy policy. You can unsubscribe at any time.</p>
+              </div>
             </div>
+            <button class="newsletter_button">SIGN UP!</button>
           </div>
-          <button class="newsletter_button">SIGN UP!</button>
         </div>
-      </div> -->
+      </div>
     </section>
-    <footer id="footer"></footer>
+    <footer class="footer"></footer>
 
     <!-- <div class="cookie_popUp">
       <p>THIS WEBSITE STORES COOKIES ON YOUR COMPUTER. TO FIND OUT MORE ABOUT THIS, SEE OUR COOKIE POLICY.</p>
@@ -166,6 +171,7 @@
         <p>Accept</p>
       </div>
     </div> -->
+    <script type="module" src="./newsletter.js"></script>
     <script type="module" src="./landingpage.js"></script>
     <script type="module" src="./script.js"></script>
     <script type="module" src="./footer.js"></script>

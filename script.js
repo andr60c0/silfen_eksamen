@@ -42,6 +42,8 @@ let productsData = [];
 const productsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
 let productsTemplate = document.querySelector("#products_template");
 const container = document.querySelector("#products");
+let filter = "alle";
+// let filter = [39, 36, 32, 38, 34, 35, 37];
 
 //Webshop - single view
 const urlParams = new URLSearchParams(window.location.search);
@@ -116,6 +118,22 @@ const allColors = [
     color: "poetryflowers",
     hex: "#E19CF4",
   },
+  {
+    color: "limegreen",
+    hex: "#73BC45",
+  },
+  {
+    color: "lightpurple",
+    hex: "#D1A1E8",
+  },
+  {
+    color: "red",
+    hex: "#CB2828",
+  },
+  {
+    color: "tiger",
+    hex: "#CB7628",
+  },
 ];
 console.log("allColors", allColors);
 
@@ -151,9 +169,7 @@ document.addEventListener("DOMContentLoaded", start);
 // let lookbookbody = document.querySelector("#lookbookbody");
 function start() {
   console.log("script start");
-  // document.querySelector(".close_newsletter").addEventListener("click", () => {
-  //   document.querySelector(".newsletter").classList.add("hide");
-  // });
+
   displayCart();
   displayWishlist();
   updateNumbers();
@@ -169,6 +185,25 @@ function start() {
 
   const x = window.matchMedia("(min-width: 1200px)");
 
+  document.querySelectorAll(".filter").forEach((elm) => {
+    elm.addEventListener("click", filtrering);
+  });
+
+  const filterMenu = document.querySelectorAll(".fm_contentBx");
+  console.log("filterMenu", filterMenu);
+  for (let i = 0; i < filterMenu.length; i++) {
+    filterMenu[i].addEventListener("click", function () {
+      console.log("filtermenubutton click");
+      if (this.classList.contains("active")) {
+        this.classList.remove("active");
+      } else {
+        filterMenu.forEach((filter) => {
+          filter.classList.remove("active");
+        });
+        this.classList.add("active");
+      }
+    });
+  }
   const accordion = document.querySelectorAll(".contentBx");
   if (x.matches) {
     console.log("x matches");
@@ -257,6 +292,7 @@ async function getCommunityData() {
 async function getSustainabilityData() {
   const sustainabilityResponse = await fetch(sustainabilityEndpoint);
   sustainabilityData = await sustainabilityResponse.json();
+  showSustainabilityPage();
 }
 
 async function getTermsAndConditionsData() {
@@ -312,42 +348,59 @@ function showPrivacyPage() {
 //Webshop - all products
 function showProducts() {
   console.log("showProducts");
-  // container.innerHTML = "";
+  container.innerHTML = "";
   productsData.forEach((product) => {
-    const clone = productsTemplate.cloneNode(true).content;
-    clone.querySelector(".product_image").src = product.product_image.guid;
-    clone.querySelector(".product_name").innerHTML = product.product_name;
-    clone.querySelector(".product_price").innerHTML = product.product_price + " DKK";
-    clone.querySelector(".product_image_container").addEventListener("click", () => {
-      location.href = "product_singelView.html?id=" + product.id;
-    });
-    clone.querySelector(".product_heart").addEventListener("click", function () {
-      const wishlistBag = Object.create(wishlistItem);
-      wishlistBag.id = product.id;
-      wishlistBag.name = product.product_name;
-      wishlistBag.color = product.product_color;
-      wishlistBag.tag = product.product_name + "_" + wishlistBag.color;
-      wishlistBag.price = product.product_price;
-      wishlistBag.image = product.product_image.guid;
-      wishlistBag.inStock = "In Stock";
+    if (filter == "alle" || filter == product.wf_product_folders) {
+      const clone = productsTemplate.cloneNode(true).content;
+      clone.querySelector(".product_image").src = product.product_image.guid;
+      clone.querySelector(".product_name").innerHTML = product.product_name;
+      clone.querySelector(".product_price").innerHTML = product.product_price + " DKK";
+      clone.querySelector(".product_image_container").addEventListener("click", () => {
+        location.href = "product_singelView.html?id=" + product.id;
+      });
+      clone.querySelector(".product_heart").addEventListener("click", function () {
+        const wishlistBag = Object.create(wishlistItem);
+        wishlistBag.id = product.id;
+        wishlistBag.name = product.product_name;
+        wishlistBag.color = product.product_color;
+        wishlistBag.tag = product.product_name + "_" + wishlistBag.color;
+        wishlistBag.price = product.product_price;
+        wishlistBag.image = product.product_image.guid;
+        wishlistBag.inStock = "In Stock";
 
-      if (this.classList.contains("active")) {
-        this.classList.remove("active");
-        this.setAttribute("src", "static/ui-elements/heart.svg");
-        removeFromWishlist(wishlistBag);
-      } else {
-        this.classList.add("active");
-        this.setAttribute("src", "static/ui-elements/blackheart.svg");
-        addToWishlist(wishlistBag);
-      }
-      updateNumbers();
+        if (this.classList.contains("active")) {
+          this.classList.remove("active");
+          this.setAttribute("src", "static/ui-elements/heart.svg");
+          removeFromWishlist(wishlistBag);
+        } else {
+          this.classList.add("active");
+          this.setAttribute("src", "static/ui-elements/blackheart.svg");
+          addToWishlist(wishlistBag);
+        }
+        updateNumbers();
 
-      console.log("wishlistBagObject", wishlistBag);
-    });
+        console.log("wishlistBagObject", wishlistBag);
+      });
 
-    container.appendChild(clone);
+      container.appendChild(clone);
+    }
   });
 }
+
+function filtrering() {
+  console.log("filter", filter);
+  filter = this.dataset.kategori;
+  console.log("filter", filter);
+  document.querySelectorAll(".filter").forEach((elm) => {
+    elm.classList.remove("valgt");
+  });
+
+  this.classList.add("valgt");
+
+  showProducts();
+}
+// filter = filter.find(this.dataset.kategori);
+// console.log("filter", filter);
 
 //Webshop - single view
 function showSingleProduct() {
@@ -366,6 +419,10 @@ function showSingleProduct() {
       productSingleView.querySelector(".product_name").innerHTML = product.product_name;
       productSingleView.querySelector(".product_price").innerHTML = product.product_price + " DKK";
       productSingleView.querySelector(".product_color").innerHTML = product.product_color;
+      productSingleView.querySelector(".material_description").innerHTML = product.material_description;
+      productSingleView.querySelector(".material").innerHTML = product.material;
+      productSingleView.querySelector(".measurements").innerHTML = product.measurements;
+      document.querySelector(".breadcrumb_current").innerHTML = product.product_name;
 
       productSingleView.querySelector(".product_description").innerHTML = product.product_description;
 
@@ -416,6 +473,7 @@ function showSingleProduct() {
       console.log("singleBagColors", singleBagColors);
     }
   });
+
   //De billeder som skal vises til at starte med, har fået property default ind i wordpress. Dem viser vi når man kommer ind på single viewet.
   productImagesArray.forEach((image) => {
     const clone = document.querySelector("template").cloneNode(true).content;
@@ -510,23 +568,36 @@ function showSingleProduct() {
       });
     });
   });
+
+  //Related products
+  let randomProducts = [];
+  for (let i = 0; i < 5; i++) {
+    let randomItem = productSingleViewData[Math.floor(Math.random() * productSingleViewData.length)];
+    randomProducts.push(randomItem);
+  }
+  console.log("randomProducts", randomProducts);
+  randomProducts.forEach((product) => {
+    const clone = relatedProducts_template.cloneNode(true).content;
+    clone.querySelector(".product_image").src = product.product_image.guid;
+    clone.querySelector(".product_name").innerHTML = product.product_name;
+    clone.querySelector(".product_price").innerHTML = product.product_price + " DKK";
+    clone.querySelector(".product_image_container").addEventListener("click", () => {
+      location.href = "product_singelView.html?id=" + product.id;
+    });
+    document.querySelector(".related_products").appendChild(clone);
+  });
 }
 
 function showSustainabilityPage() {
   console.log("showSustainabilityPage");
-  // sustainabilityContainer.innerHTML = "";
-  if (sustainabilityData === null) {
-    return;
-  } else {
-    sustainabilityData.forEach((sect) => {
-      const clone = sustainabilityTemplate.cloneNode(true).content;
-      clone.querySelector(".sustainability_h1").innerHTML = sect.overskrift;
-      clone.querySelector(".sustainability_text").innerHTML = sect.tekst;
-      clone.querySelector(".sustainability_image").src = sect.billede.guid;
+  sustainabilityData.forEach((sect) => {
+    const clone = sustainabilityTemplate.cloneNode(true).content;
+    clone.querySelector(".sustainability_h1").innerHTML = sect.overskrift;
+    clone.querySelector(".sustainability_text").innerHTML = sect.tekst;
+    clone.querySelector(".sustainability_image").src = sect.billede.guid;
 
-      sustainabilityContainer.appendChild(clone);
-    });
-  }
+    sustainabilityContainer.appendChild(clone);
+  });
 }
 
 function showCommunityPage() {
@@ -821,64 +892,3 @@ function removeFromWishlist(wishlistBag) {
     document.querySelector(".wishlist_icon span").textContent = "";
   }
 }
-
-//Eventlisteners på add & subtract knapper. Opdaterer antal.
-// document.querySelector(".add_button").addEventListener("click", () => {
-//   console.log("add");
-//   number++;
-//   console.log(number);
-//   productSingleView.querySelector(".number").innerHTML = number;
-// });
-// document.querySelector(".subtract_button").addEventListener("click", () => {
-//   console.log("subtract");
-//   if (number > 0) {
-//     number--;
-//     console.log(number);
-//     productSingleView.querySelector(".number").innerHTML = number;
-//   }
-// });
-
-// function fwd() {
-//   if (caroCurrentNum < numberOfPicsInCaro - 1) {
-//     caroCurrentNum++;
-//     navigate();
-//   }
-// }
-
-// function bwd() {
-//   if (caroCurrentNum > 0) caroCurrentNum--;
-//   navigate();
-// }
-
-function navigate() {
-  document.querySelector(".all_product_images_container").scrollTo({
-    left: caroCurrentNum * document.querySelector(".caro_imgs").width,
-    behavior: "smooth",
-  });
-  // setBtns();
-}
-
-function scrollFunction() {
-  //  console.log("scrollFunction");
-
-  caroCurrentNum = Math.round(document.querySelector(".all_product_images_container").scrollLeft / document.querySelector(".caro_imgs").width);
-  console.log(caroCurrentNum);
-  // setBtns();
-}
-
-// function setBtns() {
-//   if (caroCurrentNum < numberOfPicsInCaro - 1) {
-//     document.querySelector(".fwd").style.opacity = 1;
-//     document.querySelector(".fwd").style.cursor = "pointer";
-//   } else {
-//     document.querySelector(".fwd").style.opacity = 0.2;
-//     document.querySelector(".fwd").style.cursor = "default";
-//   }
-//   if (caroCurrentNum > 0) {
-//     document.querySelector(".bwd").style.opacity = 1;
-//     document.querySelector(".bwd").style.cursor = "pointer";
-//   } else {
-//     document.querySelector(".bwd").style.opacity = 0.2;
-//     document.querySelector(".bwd").style.cursor = "default";
-//   }
-// }
