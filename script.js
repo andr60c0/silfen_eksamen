@@ -748,7 +748,7 @@ function displayCart() {
             <div class="deleteFromCart_button">
             <img src="static/ui-elements/delete.svg">
             </div>
-            <p class="itemtotal">I alt:   ${item.price * item.inCart} DKK</p>
+            <p class="itemtotal">${item.price * item.inCart} DKK</p>
             </div>
             </div>
            </div>
