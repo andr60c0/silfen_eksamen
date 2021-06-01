@@ -24,10 +24,10 @@ let communityData;
 let communityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/157";
 
 //Sustainability
-let sustainabilityData = [];
-let sustainabilityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/sustainability";
-let sustainabilityTemplate = document.querySelector("#sustainability_template");
-let sustainabilityContainer = document.querySelector("#sustainability");
+// let sustainabilityData = [];
+// let sustainabilityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/sustainability";
+// let sustainabilityTemplate = document.querySelector("#sustainability_template");
+// let sustainabilityContainer = document.querySelector("#sustainability");
 
 //Terms and conditions
 let termsAndConditionsData;
@@ -173,11 +173,11 @@ function start() {
   displayCart();
   displayWishlist();
   updateNumbers();
+  // getSustainabilityData();
   getWRTWData();
   getLPDiscoverData();
   getLookbookData();
   getCommunityData();
-  getSustainabilityData();
   getTermsAndConditionsData();
   getPrivacyData();
   getProductsData();
@@ -289,11 +289,11 @@ async function getCommunityData() {
 }
 
 //Sustainability data
-async function getSustainabilityData() {
-  const sustainabilityResponse = await fetch(sustainabilityEndpoint);
-  sustainabilityData = await sustainabilityResponse.json();
-  showSustainabilityPage();
-}
+// async function getSustainabilityData() {
+//   const sustainabilityResponse = await fetch(sustainabilityEndpoint);
+//   sustainabilityData = await sustainabilityResponse.json();
+//   showSustainabilityPage();
+// }
 
 async function getTermsAndConditionsData() {
   const termsAndConditionsResponse = await fetch(termsAndConditionsEndpoint);
@@ -461,7 +461,7 @@ function showSingleProduct() {
         bag.color = document.querySelector(".product_color").innerHTML;
         bag.tag = itemName + "_" + bag.color;
         bag.inCart = 0;
-        bag.image = itemName + "_" + bag.color + "_1.jpeg";
+        bag.image = itemName + "_" + bag.color + "_1.jpg";
         addToCart(bag);
         totalCost(bag);
 
@@ -588,46 +588,25 @@ function showSingleProduct() {
   });
 }
 
-function showSustainabilityPage() {
-  console.log("showSustainabilityPage");
-  sustainabilityData.forEach((sect) => {
-    const clone = sustainabilityTemplate.cloneNode(true).content;
-    clone.querySelector(".sustainability_h1").innerHTML = sect.overskrift;
-    clone.querySelector(".sustainability_text").innerHTML = sect.tekst;
-    clone.querySelector(".sustainability_image").src = sect.billede.guid;
-
-    sustainabilityContainer.appendChild(clone);
-  });
-}
-
 function showCommunityPage() {
   console.log("showCommunityPage");
-  if (communityData === null) {
-    return;
-  } else {
-    document.querySelector("#community").innerHTML = communityData.content.rendered;
-  }
+
+  document.querySelector("#community").innerHTML = communityData.content.rendered;
 }
 
 function showLookbook() {
   console.log("showLookBook");
-
-  // lookbookContainer.innerHTML = "";
-  if (lookbookData === null) {
-    return;
-  } else {
-    lookbookData.forEach((collection) => {
-      const clone = lookbookTemplate.cloneNode(true).content;
-      clone.querySelector(".collection_image").src = collection.collection_image.guid;
-      clone.querySelector(".collection_abbreviation").innerHTML = collection.collection_abbreviation;
-      clone.querySelector(".collection_name").innerHTML = collection.collection_navn;
-      clone.querySelector("article").addEventListener("click", () => {
-        location.href = "lookbook_singelView.html?id=" + collection.id;
-      });
-
-      lookbookContainer.appendChild(clone);
+  lookbookData.forEach((collection) => {
+    const clone = lookbookTemplate.cloneNode(true).content;
+    clone.querySelector(".collection_image").src = collection.collection_image.guid;
+    clone.querySelector(".collection_abbreviation").innerHTML = collection.collection_abbreviation;
+    clone.querySelector(".collection_name").innerHTML = collection.collection_navn;
+    clone.querySelector("article").addEventListener("click", () => {
+      location.href = "lookbook_singelView.html?id=" + collection.id;
     });
-  }
+
+    lookbookContainer.appendChild(clone);
+  });
 }
 
 //BURGER MENU
@@ -753,21 +732,27 @@ function displayCart() {
     Object.values(cartItems).map((item) => {
       productContainer.innerHTML += `
             <div class="product">
+            <div class="cart_col">
             <img class="cart_product_image" src="static/bags/${item.image}">
+            </div>
             <div class="cart_col">
             <p>${item.name}</p>
             <p>Color: ${item.color}</p>
-            </div>
+            <p>Price: ${item.price}</p>
+            <div class="cart_inner_col">
             <div class="cart_add_subtract">
               <div class="cartbuttons subtract_button">-</div>
               <p>${item.inCart}</p>
               <div class="cartbuttons add_button">+</div>
             </div>
-            <p>${item.price * item.inCart} DKK</p>
             <div class="deleteFromCart_button">
             <img src="static/ui-elements/delete.svg">
             </div>
+            <p class="itemtotal">I alt:   ${item.price * item.inCart} DKK</p>
+            </div>
+            </div>
            </div>
+           
             `;
     });
   }

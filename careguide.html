@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story</title>
+  </head>
+  <style>
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    .careguide_col {
+      scroll-snap-align: start;
+    }
+  </style>
+  <body>
+    <div class="shipping_popUp">
+      <p>Worldwide free shipping on all orders over 1000 DKK</p>
+      <p>Let's talk: +45 20 51 89 23</p>
+    </div>
+    <nav role="navigation" id="nav">
+      <div class="header-wrapper">
+        <div class="logo">
+          <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+        </div>
+        <div class="ui">
+          <div class="menuaccount">
+            <a href="account.html"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+          </div>
+          <div class="menusearch">
+            <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
+          </div>
+          <div class="menuheart wishlist_icon">
+            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span> </a>
+          </div>
+          <div class="menucart cart_link">
+            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span> </a>
+          </div>
+          <div class="language"></div>
+        </div>
+      </div>
+      <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu">
+          <div class="contentBx">
+            <div class="label">SHOP</div>
+            <div class="content">
+              <ul>
+                <li><a href="webshop.html">BAGS</a></li>
+                <li><a href="#">PROTECTION AND CARE</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+                <li><a href="#">MOST WANTED</a></li>
+                <li><a href="#">SALE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <div class="label">WORLD OF SILFEN</div>
+            <div class="content">
+              <ul>
+                <li><a href="information.html">INFORMATION</a></li>
+                <li><a href="ourstory.html">OUR STORY</a></li>
+                <li><a href="sustainability.html">SUSTAINABILITY</a></li>
+                <li><a href="lookbook.html">LOOKBOOK</a></li>
+                <li><a href="community.html">COMMUNITY</a></li>
+                <li><a href="careguide.html">CARE GUIDE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <li class="account_link"><a href="#">ACCOUNT</a></li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <section id="careguide">
+      <div class="careguide_text_container">
+        <div class="careguide_col text1">
+          <h1 class="careguide_h1">We guide you through the best care of your SILFEN bag.</h1>
+
+          <img class="careguide_image" src="static/careguide/care1.jpg" />
+        </div>
+
+        <div class="careguide_col text2">
+          <h1>TREATMENT OF LEATHER</h1>
+          <p>
+            For the care of our leather bags, we recommend Adax’s leather conditioner and leather protection spray. Adax leather conditioner is made from mineral grease and oil without color, which
+            highlights the color of the leather and prolongs the life of the product. Among other things, it impregnates against water and dirt, and gives the bag maximum care and protection. Adax
+            leather protection spray provides a transparent protection against liquids, dirt and stains. Regular protection with Adax protection spray protects the surface of the bag. It is important
+            to impregnate your bag before use, and here we recommend the protection spray. on both our present and our future.
+          </p>
+          <img class="careguide_image" src="static/careguide/care2.jpg" />
+        </div>
+        <div class="careguide_col text3">
+          <h1>TREATMENT OF NYLON</h1>
+          <p>Nylon is super easy to deal with. Simply clean the bag with a slightly damp cloth.</p>
+          <h1>TREATMENT OF SUEDE</h1>
+          <p>
+            Suede is very delicate, so you have to be very careful about how you impregnate it. Never use leather conditioner or other conditioner on suede. Always impregnate suede bags before use, to
+            make it water, dirt and grease repellent. Use the leather protection spray. For stains, use a suede brush very gently. Always try on a small area first.
+          </p>
+          <img class="careguide_image" src="static/careguide/care3.jpg" />
+        </div>
+        <div class="careguide_col text4">
+          <h1>HOW TO USE LEATHER CONDITIONER</h1>
+          <p>Nylon is super easy to deal with. Simply clean the bag with a slightly damp cloth.</p>
+          <h1>TREATMENT OF SUEDE</h1>
+          <p>
+            1. Remove dirt with a damp cloth and let it dry<br />
+            2. Use the corresponding sponge or a colorless and lint-free cloth to apply a thin layer of leather conditioner in a circular manner<br />
+            3. Let the bag dry before using it again 4. Once the bag has stood for a few minutes, wipe it with a dry cloth to remove any remnants of leather conditioner that the bag has not absorbed
+          </p>
+          <a class="careguide_link">SHOP NOW</a>
+          <img class="careguide_image" src="static/careguide/care4.jpg" />
+        </div>
+        <div class="careguide_col text4">
+          <h1>HOW TO USE LEATHER PROTECTION SPRAY</h1>
+          <p>Nylon is super easy to deal with. Simply clean the bag with a slightly damp cloth.</p>
+          <h1>TREATMENT OF SUEDE</h1>
+          <p>
+            1. Remove dirt with a damp cloth and let it dry<br />
+            2. Spray 10-15 cm away from the bag<br />
+            3. Let the bag dry before using it again
+          </p>
+          <a class="careguide_link">SHOP NOW</a>
+          <img class="careguide_image" src="static/careguide/care5.jpg" />
+        </div>
+      </div>
+      <div class="split careguide_picture_container">
+        <img class="cg_pic" src="static/careguide/care1.jpg" alt="1" />
+      </div>
+    </section>
+
+    <footer class="footer"></footer>
+    <script type="module" src="./menu.js"></script>
+    <script type="module" src="./footer.js"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

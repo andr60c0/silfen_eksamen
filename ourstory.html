@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story</title>
+  </head>
+  <style>
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    .ourstory_col {
+      scroll-snap-align: start;
+    }
+  </style>
+  <body>
+    <div class="shipping_popUp">
+      <p>Worldwide free shipping on all orders over 1000 DKK</p>
+      <p>Let's talk: +45 20 51 89 23</p>
+    </div>
+    <nav role="navigation" id="nav">
+      <div class="header-wrapper">
+        <div class="logo">
+          <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+        </div>
+        <div class="ui">
+          <div class="menuaccount">
+            <a href="account.html"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+          </div>
+          <div class="menusearch">
+            <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
+          </div>
+          <div class="menuheart wishlist_icon">
+            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span> </a>
+          </div>
+          <div class="menucart cart_link">
+            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span> </a>
+          </div>
+          <div class="language"></div>
+        </div>
+      </div>
+      <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu">
+          <div class="contentBx">
+            <div class="label">SHOP</div>
+            <div class="content">
+              <ul>
+                <li><a href="webshop.html">BAGS</a></li>
+                <li><a href="#">PROTECTION AND CARE</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+                <li><a href="#">MOST WANTED</a></li>
+                <li><a href="#">SALE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <div class="label">WORLD OF SILFEN</div>
+            <div class="content">
+              <ul>
+                <li><a href="information.html">INFORMATION</a></li>
+                <li><a href="ourstory.html">OUR STORY</a></li>
+                <li><a href="sustainability.html">SUSTAINABILITY</a></li>
+                <li><a href="lookbook.html">LOOKBOOK</a></li>
+                <li><a href="community.html">COMMUNITY</a></li>
+                <li><a href="careguide.html">CARE GUIDE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <li class="account_link"><a href="#">ACCOUNT</a></li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <section id="ourstory">
+      <div class="ourstory_text_container">
+        <div class="ourstory_col text1">
+          <h1 class="ourstory_h1">Since 2013, SILFEN has been on a mission to bring diversity to people’s everyday lives with bold prints and colors.</h1>
+
+          <img class="ourstory_image" src="static/ourstory/story1.jpg" />
+        </div>
+
+        <div class="ourstory_col text2">
+          <h1>Our Story</h1>
+          <p>
+            SILFEN is an innovative Copenhagen based fashion brand, established in 2013, with a strong focus on sustainability. Behind SILFEN stands the siblings Daniel and Celine Silfen. Both have a
+            deep passion for danish design and growing up, their childhood was filled with beautiful bags. They love to build up the brand’s DNA with a new and playful aesthetic towards the key
+            accessory – the bag. Characteristic of SILFEN is a colorful and playful universe, where innovation and risk taking go hand in hand. We deliver enchanting bags of high quality created in
+            genuine materials with various prints and textures. The bags are negotiated at reasonable prices, which allows you to have a bag for any occasion, whether it’s handbags, tote bags,
+            shoulder bags, fanny bags and the like. As a young, global fashion brand, it is our duty to take care of the planet, not only for our own sake, but for all future generations to come.
+            That’s why every piece is made with sustainable fabrics for an experience that is not only luxurious but responsible. Vegan bags anyone? Our collections are released as limited editions
+            because we are mindful of quality and quantity’s impact on both our present and our future. <br /><br />We hope to see you there!
+          </p>
+          <img class="ourstory_image" src="static/ourstory/story2.jpg" />
+        </div>
+        <div class="ourstory_col text3">
+          <h1 class="ourstory_h2">“For me the perfect bag is the one I reach for everyday. It’s the bag that makes my outfit complete and makes me shine”</h1>
+          <p class="ourstory_p">- Celine Silfen, Director</p>
+          <img class="ourstory_image" src="static/ourstory/story3.jpg" />
+        </div>
+        <div class="ourstory_col text4">
+          <h1>WE’VE BEEN WAITING FOR YOU</h1>
+          <p>Want to follow our journey every day? Follow @silfenstudio on Instagram and use the hashtag #silfenvibes when sharing your pictures.</p>
+          <img class="ourstory_image" src="static/ourstory/story4.jpg" />
+        </div>
+      </div>
+      <div class="split ourstory_picture_container">
+        <img class="os_pic" src="static/ourstory/story1.jpg" alt="1" />
+      </div>
+    </section>
+
+    <footer class="footer"></footer>
+    <script type="module" src="./menu.js"></script>
+    <script type="module" src="./footer.js"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

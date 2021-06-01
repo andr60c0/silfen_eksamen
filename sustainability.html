@@ -7,6 +7,14 @@
 
     <title>SILFEN</title>
   </head>
+  <style>
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    .sustainability_col {
+      scroll-snap-align: start;
+    }
+  </style>
   <body>
     <div class="shipping_popUp">
       <p>Worldwide free shipping on all orders over 1000 DKK</p>
@@ -73,6 +81,7 @@
             <div class="content">
               <ul>
                 <li><a href="information.html">INFORMATION</a></li>
+                <li><a href="ourstory.html">OUR STORY</a></li>
                 <li><a href="sustainability.html">SUSTAINABILITY</a></li>
                 <li><a href="lookbook.html">LOOKBOOK</a></li>
                 <li><a href="community.html">COMMUNITY</a></li>
@@ -86,24 +95,89 @@
         </ul>
       </div>
     </nav>
-    <div class="sustainability_video">
-      <video controls>
-        <source src="https://www.youtube.com/watch?app=desktop&v=WtmQmYWtuvk" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <section id="sustainability"></section>
-    <template id="sustainability_template">
-      <article class="sustainability_article">
-        <div class="sustainability_col">
-          <h1 class="sustainability_h1"></h1>
-          <p class="sustainability_text"></p>
+
+    <section id="sustainability">
+      <div class="sustainability_text_container">
+        <div class="sustainability_col text1">
+          <h1>We have a responsibility</h1>
+          <p>
+            Sustainability is a fuzzy word. At SILFEN it means putting action behind the words, considering all stakeholders and always aiming a little bit higher when creating another collection. As
+            a young, global fashion brand, it is our duty to take care of the planet, not only for own sake, but for all future generations to come. Since day one, we have launched various initiatives
+            to keep our carbon footprint to an absolute minimum as well as making conscious decisions concerning the social impact on the communities in the countries, in which we operate. As a
+            company with great manufacturing activities, we know that we have a responsibility. Our vision is to make as green a production as possible, and we will continue to launch new initiatives
+            to lower our carbon footprint even further. Scroll down and take a look at our principles.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus1.jpg" />
         </div>
-        <div class="sustainability_col">
-          <img class="sustainability_image" alt="" />
+
+        <div class="sustainability_col text2">
+          <h1>Water</h1>
+          <p>
+            We minimize the water consumption in our production in an effort to decrease its negative impact on the environment and to ensure local access to clean drinking water. HOW? All cotton used
+            for production of SILFEN bags is either made from eco-friendly or organic cotton. This means that there is much less consumption of water throughout production and treatment of our cotton,
+            than conventional cotton products. In 2020 we introduced a new collection of bags made from a new material; Recycled Polyethylene Terephthalate (rPET). This recycled material is primarily
+            made from plastic waste collected from the oceans or from recycled plastic bottles gathered from all over the world. With this collection, we aim to emphasize the impact of pollution
+            irresponsible wasting. We wish to pass this awareness to our customers, and to encourage them to help clean our oceans!
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus2.jpg" />
         </div>
-      </article>
-    </template>
+        <div class="sustainability_col text3">
+          <h1>WORKING CONDITION</h1>
+          <p>
+            At SILFEN, we believe that it is our job to amplify a healthy and socially responsible conduct within our organization, including all our suppliers. <br />
+            <b>HOW?</b> <br />
+            We ensure the ethical development of future generations by guaranteeing that our suppliers do not support or make use of child labor. We encourage our factories to ensure that all families
+            have the possibility to put their children in school. SILFEN provides insurance to all our employees as well as their family. Our factories grant pensions to all employees, providing them
+            with financial stability after retirement. We support the different religions of employees and protect their right to engage with rituals, prayers etc. at any time. We condemn
+            discrimination, and make sure that the employees are protected from prejudice and injustice at the workplace. We visit our manufacturers regularly to ensure that they follow the issued
+            principles regarding working conditions, quality, pollution etc. All our manufacturers are SA8000 certified. Above allows us to promise our customers that a SILFEN bag is always crafted in
+            a responsible manner.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus3.jpg" />
+        </div>
+        <div class="sustainability_col text4">
+          <h1>
+            COTTON;<br />
+            ECO-FRIENDLY OR ORGANIC
+          </h1>
+          <p>
+            At SILFEN, bags in cotton is either made from eco-friendly or organic cotton. Both materials require far less water consumption than conventional cotton products. Every nylon product is
+            made from eco-friendly material, meaning that the journey from raw material to SILFEN bag impacts the environment as little as possible.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus4.jpg" />
+        </div>
+        <div class="sustainability_col text5">
+          <h1>LEATHER</h1>
+          <p>
+            All leather goods are made from sustainable high-quality calf leather and is a bi product of the food industry, meaning that every part of the animal is utilized in various industries. All
+            our components, zippers, thread, reinforcement, glue etc., are made from high-quality raw materials. We encourage our customers to take good care of their bag, prolonging the life of the
+            product. By caring for your bag, you will be able to create more experiences with it – an important factor in creating a more sustainable, mindful business.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus5.jpg" />
+        </div>
+        <div class="sustainability_col text6">
+          <h1>VEGAN OPTIONS</h1>
+          <p>
+            In 2019, we presented our first vegan option in a collection, and we have continued to this since then. We make sure that all nonleather material - e.g. our nylon, lacquer - are all 100%
+            vegan, promising that these products do not contain any parts from animals. We encourage our customers to take good care of their bag, prolonging the life of the product. By caring for
+            your bag, you will be able to create more experiences with it – an important factor in creating a more sustainable, mindful business.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus6.jpg" />
+        </div>
+        <div class="sustainability_col text7">
+          <h1>GREEN SHIPPING</h1>
+          <p>
+            We are aware of the major impact that the shipping industry have on our planet. Because of this, we choose environmental friendly shipping options when applicable. We are in close contact
+            with other brands in our aim to minimize shipping as much as possible - by joining forces. We strive to ship as much as possible in bulk – mostly by sea or train. These are the most
+            environmentally friendly modes of shipping, reducing polluting emissions.
+          </p>
+          <img class="sustainability_image" src="static/sustainability/sus7.jpg" />
+        </div>
+      </div>
+      <div class="split sustainability_picture_container">
+        <img class="sus_pic" src="static/sustainability/sustainability_1.jpg" alt="1" />
+      </div>
+    </section>
 
     <footer class="footer"></footer>
 
