@@ -568,7 +568,7 @@ function showSingleProduct() {
 
   //Related products
   let randomProducts = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 8; i++) {
     let randomItem = productSingleViewData[Math.floor(Math.random() * productSingleViewData.length)];
     randomProducts.push(randomItem);
   }
