@@ -549,9 +549,7 @@ function showSingleProduct() {
       console.log("colorbox click");
 
       document.querySelector(".cart_pop_up").classList.remove("slideIn");
-      // document.querySelectorAll(".imgs").forEach((img) => {
-      //   img.classList.add("hide");
-      // });
+
       document.querySelector(".all_product_images_container").innerHTML = "";
       productImagesArray.forEach((image) => {
         const clone = document.querySelector("template").cloneNode(true).content;

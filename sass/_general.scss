@@ -1854,11 +1854,10 @@ figure img {
       // flex-direction: column;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       grid-template-areas:
         "photo2 mainphoto mainphoto"
-        "photo3 mainphoto mainphoto"
-        "photo4 mainphoto mainphoto";
+        "photo3 mainphoto mainphoto";
       gap: 0.1vw 2vw;
     }
     .imgs:nth-of-type(1) {
@@ -1870,8 +1869,17 @@ figure img {
     .imgs:nth-of-type(3) {
       grid-area: photo3;
     }
-    .imgs:nth-of-type(4) {
-      grid-area: photo4;
+
+    .product_quick_info {
+      display: flex;
+      justify-content: space-between;
+      background-color: #f9f9f9;
+      margin-top: -1vw;
+      padding: 10px;
+    }
+    .product_name,
+    .product_price {
+      margin-top: 0vw;
     }
   }
   //SINGLE PRODUCT DESKTOP END
