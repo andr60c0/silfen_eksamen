@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Cart</title>
+    <title>Document</title>
   </head>
+
   <body>
-    <div class="shipping_popUp">
-      <p>Worldwide free shipping on all orders over 1000 DKK</p>
-      <p>Let's talk: +45 20 51 89 23</p>
-    </div>
     <nav role="navigation" id="nav">
       <div class="header-wrapper">
         <div class="logo">
@@ -35,26 +31,26 @@
       </div>
       <div id="menuToggle">
         <!--
-      A fake / hidden checkbox is used as click reciever,
-      so you can use the :checked selector on it.
-      -->
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
         <input type="checkbox" />
 
         <!--
-      Some spans to act as a hamburger.
-      
-      They are acting like a real hamburger,
-      not that McDonalds stuff.
-      -->
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
 
         <span></span>
         <span></span>
         <span></span>
 
         <!--
-      Too bad the menu has to be inside of the button
-      but hey, it's pure CSS magic.
-      -->
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
         <ul id="menu">
           <div class="contentBx">
             <div class="label">SHOP</div>
@@ -87,22 +83,26 @@
         </ul>
       </div>
     </nav>
-    <section id="cart">
-      <h1 class="cart_h1">SHOPPING CART</h1>
-      <div class="products-container">
-        <div class="product-header">
-          <h5 class="product-title">Product</h5>
-          <h5 class="price">Total</h5>
+    <section id="account">
+      <h1>LOGIN</h1>
+      <div class="login_info">
+        <div class="login_email">
+          <p>Email</p>
         </div>
-      </div>
-      <div class="cart_wrapper">
-        <div class="products">
-          <p>Your cart is empty!</p>
+        <div class="login_password">
+          <p>Password</p>
         </div>
-        <div class="shoppingcart_total"></div>
+        <div class="remember_container">
+          <div>
+            <div class="login_checkmark"></div>
+            <p>Remember me</p>
+          </div>
+          <p>Lost password?</p>
+        </div>
+        <button>LOGIN</button>
       </div>
+      <h1>CREATE ACCOUNT</h1>
     </section>
-
     <footer class="footer"></footer>
     <script type="module" src="./footer.js"></script>
     <script type="module" src="./menu.js"></script>

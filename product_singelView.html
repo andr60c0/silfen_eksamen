@@ -7,6 +7,7 @@
 
     <title></title>
   </head>
+
   <body>
     <div class="shipping_popUp">
       <p>Worldwide free shipping on all orders over 1000 DKK</p>
@@ -86,6 +87,17 @@
         </ul>
       </div>
     </nav>
+    <div class="cart_pop_up">
+      <div class="popUp_cart_container">
+        <img class="popUp_product_image" />
+      </div>
+      <div class="popUp_cart_container">
+        <h1 class="popUp_product_name"></h1>
+        <p class="popUp_product_price"></p>
+        <p class="popUp_product_color"></p>
+        <p class="popUp_product_quantity"></p>
+      </div>
+    </div>
     <section id="singleProduct">
       <article>
         <div class="breadcrumb">
@@ -95,11 +107,10 @@
         <div class="sectionwrapper">
           <div class="col">
             <!-- <img class="product_image" alt="" /> -->
-            <div class="all_product_images_container">
-              <template>
-                <img class="imgs" alt="" />
-              </template>
-            </div>
+            <div class="all_product_images_container"></div>
+            <template>
+              <img class="imgs" alt="" />
+            </template>
           </div>
           <div class="col">
             <div class="mobile_heart_container">

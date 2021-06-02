@@ -77,6 +77,7 @@
 }
 .logo {
   width: 30%;
+  z-index: 999999999;
 }
 .ui {
   display: flex;
@@ -329,6 +330,7 @@ nav {
     transition: none;
     display: flex;
     background-color: transparent;
+    width: 30%;
   }
 
   .header-wrapper {

@@ -14,6 +14,7 @@ module.exports = {
         lookbook: resolve(__dirname, "lookbook.html"),
         ourstory: resolve(__dirname, "ourstory.html"),
         careguide: resolve(__dirname, "careguide.html"),
+        checkout: resolve(__dirname, "checkout.html"),
       },
     },
   },

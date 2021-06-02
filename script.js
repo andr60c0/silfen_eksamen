@@ -23,12 +23,6 @@ let lookbookContainer = document.querySelector("#lookbook .sectionwrapper");
 let communityData;
 let communityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/157";
 
-//Sustainability
-// let sustainabilityData = [];
-// let sustainabilityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/sustainability";
-// let sustainabilityTemplate = document.querySelector("#sustainability_template");
-// let sustainabilityContainer = document.querySelector("#sustainability");
-
 //Terms and conditions
 let termsAndConditionsData;
 let termsAndConditionsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/49";
@@ -155,7 +149,6 @@ const wishlistItem = {
   tag: "",
   price: "",
   image: "",
-  remove_button: "",
   inStock: "",
 };
 
@@ -169,11 +162,9 @@ document.addEventListener("DOMContentLoaded", start);
 // let lookbookbody = document.querySelector("#lookbookbody");
 function start() {
   console.log("script start");
-
+  updateNumbers();
   displayCart();
   displayWishlist();
-  updateNumbers();
-  // getSustainabilityData();
   getWRTWData();
   getLPDiscoverData();
   getLookbookData();
@@ -453,6 +444,7 @@ function showSingleProduct() {
         // console.log("wishlistBagObject", wishlistBag);
       });
       //Creating object for cart
+      document.querySelector(".cart_pop_up").classList.remove("slideIn");
       document.querySelector(".add_to_cart_button").addEventListener("click", () => {
         console.log("addToCartButtonClick");
         const bag = Object.create(cartItem);
@@ -464,6 +456,7 @@ function showSingleProduct() {
         bag.image = itemName + "_" + bag.color + "_1.jpg";
         addToCart(bag);
         totalCost(bag);
+        showCartPopUp(bag);
 
         console.log("bag.image", bag.image);
       });
@@ -554,15 +547,19 @@ function showSingleProduct() {
   colorboxes.forEach((colorbox) => {
     colorbox.addEventListener("click", () => {
       console.log("colorbox click");
-      document.querySelectorAll(".imgs").forEach((img) => {
-        img.classList.add("hide");
-      });
+
+      document.querySelector(".cart_pop_up").classList.remove("slideIn");
+      // document.querySelectorAll(".imgs").forEach((img) => {
+      //   img.classList.add("hide");
+      // });
+      document.querySelector(".all_product_images_container").innerHTML = "";
       productImagesArray.forEach((image) => {
         const clone = document.querySelector("template").cloneNode(true).content;
         if (colorbox.color === image.color) {
           clone.querySelector(".imgs").src = image.guid;
 
           productSingleView.querySelector(".product_color").innerHTML = image.color;
+
           document.querySelector(".all_product_images_container").appendChild(clone);
         }
       });
@@ -617,7 +614,7 @@ function showLookbook() {
 function addToCart(bag) {
   console.log("cartNumbers");
   console.log("the product", bag);
-  //RENAME: cartItemCounter;
+
   let productNumbers = localStorage.getItem("cartNumbers");
   //Converting from string to number
   productNumbers = parseInt(productNumbers);
@@ -629,6 +626,18 @@ function addToCart(bag) {
     document.querySelector(".cart_link span").textContent = 1;
   }
   setItems(bag);
+}
+
+function removeFromCart(bag) {
+  console.log("removeFromCart");
+  let productNumbers = parseInt(localStorage.getItem("cartNumbers"));
+  if (productNumbers) {
+    localStorage.setItem("cartNumbers", productNumbers - 1);
+    document.querySelector(".cart_link span").textContent = productNumbers - 1;
+  } else {
+    console.log("nothing in cart");
+  }
+  // setItems(bag);
 }
 
 function setItems(bag) {
@@ -655,9 +664,6 @@ function setItems(bag) {
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
-function removeFromCart() {
-  console.log("removeFromCart");
-}
 //Checking if there are any products in the cart / wishlist on reload
 
 function updateNumbers() {
@@ -701,6 +707,7 @@ function updateNumbers() {
 
 function totalCost(bag) {
   // console.log("The product price is:", bag.price);
+  console.log("totalCost");
   let cartCost = localStorage.getItem("totalCost");
 
   // console.log("My cartCost is", cartCost);
@@ -713,22 +720,55 @@ function totalCost(bag) {
     cartCost = parseInt(cartCost);
     console.log(typeof cartCost);
     localStorage.setItem("totalCost", cartCost + price);
-    // document.querySelector(".ordervalue").textContent = cartCost + price;
+    // document.querySelector(".ordervalue").innerHTML = totalCost;
   } else {
     localStorage.setItem("totalCost", price);
     // document.querySelector(".ordervalue").textContent = cartCost;
   }
 }
 
+function showCartPopUp(bag) {
+  console.log("showCartPopUp");
+  updateNumbers();
+  document.querySelector(".cart_pop_up").classList.add("slideIn");
+  document.querySelector(".popUp_product_image").src = "static/bags/" + bag.image;
+  document.querySelector(".popUp_product_name").innerHTML = bag.name;
+  document.querySelector(".popUp_product_price").innerHTML = bag.price + " DKK";
+  document.querySelector(".popUp_product_color").innerHTML = "Color: " + bag.color;
+  document.querySelector(".popUp_product_quantity").innerHTML = "Quantity:" + bag.inCart;
+}
+
 function displayCart() {
   console.log("displayCart");
   let cartItems = localStorage.getItem("productsInCart");
   cartItems = JSON.parse(cartItems);
+  let totalCost = localStorage.getItem("totalCost");
+
+  totalCost = JSON.parse(totalCost);
+  console.log("totalCost", totalCost);
+
+  totalCost = JSON.parse(totalCost);
+  console.log("typeOf totalCost", typeof totalCost);
+  if (totalCost != null) {
+    localStorage.setItem("totalCost", totalCost);
+  } else {
+    localStorage.setItem("totalCost", 0);
+  }
+
+  let shippingCost;
+  if (totalCost <= 1000) {
+    shippingCost = 35;
+  } else {
+    shippingCost = 0;
+  }
+  // document.querySelector(".shippingcost").innerHTML = shippingCost + " DKK";
+  // document.querySelector(".ordertotal").innerHTML = totalCost + shippingCost + " DKK";
+
   let productContainer = document.querySelector(".products");
   console.log(cartItems);
   if (cartItems && productContainer) {
     console.log("running");
-    // productContainer.innerHTML = "";
+    productContainer.innerHTML = "";
     Object.values(cartItems).map((item) => {
       productContainer.innerHTML += `
             <div class="product">
@@ -738,7 +778,6 @@ function displayCart() {
             <div class="cart_col">
             <p>${item.name}</p>
             <p>Color: ${item.color}</p>
-            <p>Price: ${item.price}</p>
             <div class="cart_inner_col">
             <div class="cart_add_subtract">
               <div class="cartbuttons subtract_button">-</div>
@@ -755,10 +794,71 @@ function displayCart() {
            
             `;
     });
+
+    // if (cartItems && cartPopUpContainer) {
+
+    // }
+    let shoppingCartTotalContainer = document.querySelector(".shoppingcart_total");
+    if (cartItems && shoppingCartTotalContainer) {
+      shoppingCartTotalContainer.innerHTML = `<div class="discountbox_container">
+        <div class="discountbox">
+          <form>
+            <input type="text" id="fdiscount" placeholder="Got a discount code?" />
+          </form>
+        </div>
+        <div class="discountbox_button">
+          <button>ADD</button>
+        </div>
+      </div>
+      <div class="carttotal">
+        <div class="ordervalue_container">
+          <p>Order value:</p>
+          <p class="ordervalue">${totalCost} DKK</p>
+        </div>
+        <div class="shippingcost_container">
+          <p>Shipping:</p>
+          <p class="shippingcost">${shippingCost} DKK</p>
+        </div>
+        <div class="total_cart_container">
+          <p>Order total:</p>
+          <p class="ordertotal">${totalCost + shippingCost} DKK</p>
+        </div>
+        <div class="proceedtocheckout_button">
+          <a href="checkout.html"><button>Proceed to checkout</button></a>
+        </div>
+        <div class="cart_return">
+          <p>
+            If, for any reason, you are not satisfied with the items purchased, you can return your purchase within 21 days for a full refund. The return period is counted from the day you receive
+            your goods.
+          </p>
+        </div>
+      </div>`;
+    }
+  }
+  let billingSummaryContainer = document.querySelector(".billingsummary");
+  if (cartItems && billingSummaryContainer) {
+    billingSummaryContainer.innerHTML = `  
+      <div class="checkout_ordervalue_container">
+      <p>Order value:</p>
+      <p class="checkout_ordervalue">${totalCost} DKK</p>
+    </div>
+    <div class="checkout_shipping_container">
+      <p>Shipping:</p>
+      <p class="checkout_shipping">${shippingCost} DKK</p>
+    </div>
+    <div class="checkout_total_container">
+      <p>Order Total:</p>
+      <p class="checkout_total">${totalCost + shippingCost} DKK</p>
+    </div>
+    <div class="checkout_ts">
+      <div class="checkout_checkmark"></div>
+      <p>By placing your order, you agree to the terms and conditions and privacy policy of SILFEN Studio.</p>
+    </div>`;
   }
   let allRemoveFromCartButtons = document.querySelectorAll(".deleteFromCart_button");
   console.log("allRemoveFromCartButtons", allRemoveFromCartButtons);
 }
+
 //Add to wishlist
 function addToWishlist(wishlistBag) {
   console.log("addToWishlist");
@@ -797,26 +897,29 @@ function displayWishlist(wishlistBag) {
   // console.log(wishlistItems);
   if (wishlistItems && wishlistProductContainer) {
     // console.log("running");
-    // wishlistProductContainer.innerHTML = "";
+    wishlistProductContainer.innerHTML = "";
     Object.values(wishlistItems).map((item) => {
       wishlistProductContainer.innerHTML += `
             <div class="wishlist_product">
             <div class="wishlist_image_container">
+            
+            <img src="${item.image}">
             <div class="removeFromWishlist_button">
             <img src="static/ui-elements/delete.svg">
             </div>
-            <img src="${item.image}">
             </div>
-            <p>${item.name}</p>
-            <p>${item.color}</p>
-            <p>${item.price} DKK</p>
-            <p>${item.inStock}</p>
+            <p class="wishlist_p">${item.name}</p>
+            <p class="wishlist_p">Color: ${item.color}</p>
+            <p class="wishlist_p">${item.price} DKK</p>
+            <p class="wishlist_p instock">${item.inStock}</p>
             <button class="add_to_cart_button">Add To Cart</button>
             
            </div>
 
             `;
     });
+  } else if (!wishlistItems && wishlistProductContainer) {
+    wishlistProductContainer.innerHTML = `<p class="wishlistempty">Your wishlist is empty!</p>`;
   }
   let deleteFromWishlistButtons = document.querySelectorAll(".removeFromWishlist_button");
   deleteFromWishlistButtons.forEach((button) => {
@@ -871,9 +974,10 @@ function removeFromWishlist(wishlistBag) {
     console.log("if");
     localStorage.setItem("numberOfWishlistItems", wishlistItems.length);
     document.querySelector(".wishlist_icon span").textContent = wishlistItems.length;
-  } else {
-    console.log("else");
-    localStorage.setItem("numberOfWishlistItems", 1);
-    document.querySelector(".wishlist_icon span").textContent = "";
   }
+  // else {
+  //   console.log("else");
+  //   localStorage.setItem("numberOfWishlistItems", 1);
+  //   document.querySelector(".wishlist_icon span").textContent = "";
+  // }
 }

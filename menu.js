@@ -8,13 +8,13 @@ function menuStart() {
 
   document.onscroll = function () {
     let scrollTop = document.documentElement.scrollTop;
-    console.log("scrollTop", scrollTop);
+    // console.log("scrollTop", scrollTop);
 
     const mediaMobile = window.matchMedia("(max-width: 767px)");
     const mediaIpad = window.matchMedia("(max-width: 1199px)");
     const mediaDesktop = window.matchMedia("(min-width: 1200px)");
 
-    if (scrollTop < 8) {
+    if (scrollTop < 12) {
       if (mediaMobile.matches) {
         console.log("mediaMobile");
         document.querySelector("#nav").style.top = "13vw";
