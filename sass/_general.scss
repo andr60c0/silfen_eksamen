@@ -480,6 +480,7 @@
   }
   .relatedProducts_col {
     min-width: 200px;
+    max-width: 201px;
     margin: 10px 10px 10px 0;
   }
 
@@ -538,6 +539,7 @@
   .mobile_singleview_heart {
     width: 8%;
     margin-top: 3vw;
+    cursor: pointer;
   }
 
   .all_product_images_container {
@@ -1879,7 +1881,16 @@ figure img {
     }
     .product_name,
     .product_price {
-      margin-top: 0vw;
+      margin-top: 10px;
+    }
+
+    .product_heart_container {
+      top: 1vw;
+      left: 1vw;
+    }
+    .product_morecolors {
+      top: 1vw;
+      right: 1vw;
     }
   }
   //SINGLE PRODUCT DESKTOP END

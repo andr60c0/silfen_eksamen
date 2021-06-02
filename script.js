@@ -524,6 +524,7 @@ function showSingleProduct() {
         colorbox.classList.add("colorbox");
         // const currentDiv = document.getElementsByClassName("currentDiv");
         document.querySelector(".color_picker").insertBefore(colorbox, null);
+
         colorboxes.push(colorbox);
       }
     });
@@ -545,6 +546,7 @@ function showSingleProduct() {
   //Her siger vi hvilke produktbilleder skal vises, ved klik på de forskellige farvebokse.
 
   colorboxes.forEach((colorbox) => {
+    colorbox.style.cursor = "pointer";
     colorbox.addEventListener("click", () => {
       console.log("colorbox click");
 
