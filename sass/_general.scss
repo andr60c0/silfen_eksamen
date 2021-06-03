@@ -910,9 +910,9 @@ figure img {
   background-position: 60% 100%;
 
   .splash_title {
-    top: 55vw;
-    left: 1vw;
-    position: absolute;
+    top: 65vw;
+    // left: 1vw;
+    position: relative;
     text-align: center;
     .green {
       margin-left: -10px;
@@ -930,6 +930,7 @@ figure img {
     animation: slide 30s infinite linear;
   }
   #slideshow_wrap img {
+    width: 30%;
     flex-basis: 300px;
     flex-grow: 1;
   }
@@ -945,7 +946,7 @@ figure img {
 
   @media only screen and (min-width: 768px) {
     #slideshow_wrap img {
-      width: 60%;
+      max-width: 30%;
     }
     @keyframes slide {
       0% {
@@ -958,7 +959,7 @@ figure img {
   }
   @media only screen and (min-width: 1200px) {
     #slideshow_wrap img {
-      width: 48%;
+      max-width: 40%;
       padding: 140px;
     }
 
@@ -1729,6 +1730,11 @@ figure img {
     .newsletter p {
     }
   }
+  #landingpage_splash {
+    .splash_title {
+      top: 35vw;
+    }
+  }
   //LANDING PAGE IPAD END
 
   //WEBSHOP IPAD START
@@ -2384,8 +2390,9 @@ figure img {
   //LANDING PAGE DESKTOP END
   #landingpage_splash {
     .splash_title {
-      top: 20vw;
-      left: 5%;
+      top: 30vw;
+
+      // left: 5%;
       // z-index: -1;
     }
   }
