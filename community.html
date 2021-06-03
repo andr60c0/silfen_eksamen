@@ -8,38 +8,118 @@
     <title>Community</title>
   </head>
   <body>
-    <header>
-      <ul class="nav" id="nav">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="webshop.html" id="webshop_button">SHOP</a></li>
-        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
-        <li><a href="privacypolicy.html">Privacy Policy</a></li>
-        <li><a href="sustainability.html">Sustainability</a></li>
-        <li><a href="community.html">Community</a></li>
-        <li><a href="lookbook.html">Lookbook</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="wishlist_icon">
-          <a href="wishlish.html"><img src="static/ui-elements/heart.svg" /><span>0</span></a>
-        </li>
-        <li class="cart_link">
-          <a href="cart.html">Cart <span>0</span></a>
-        </li>
-      </ul>
-    </header>
-    <section id="community"></section>
-    <section id="community-form">
-      <h1>Want to collaborate?</h1>
-      <p>Become a member of SILFEN’s girl squad today! Send us your application by filling out the form below.</p>
-      <form>
-        <div class="collab_form_container">
-          <input type="text" id="fullname" name="fullname" placeholder="Name" />
-          <input type="text" id="email" name="email" placeholder="Email" />
-          <label for="application">Application</label>
-          <input type="text" id="application" name="application" />
+    <div class="shipping_popUp">
+      <p>Worldwide free shipping on all orders over 1000 DKK</p>
+      <p>Let's talk: +45 20 51 89 23</p>
+    </div>
+    <nav role="navigation" id="nav">
+      <div class="header-wrapper">
+        <div class="logo">
+          <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
         </div>
-      </form>
+        <div class="ui">
+          <div class="menuaccount">
+            <a href="account.html"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+          </div>
+          <div class="menusearch">
+            <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
+          </div>
+          <div class="menuheart wishlist_icon">
+            <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span> </a>
+          </div>
+          <div class="menucart cart_link">
+            <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span> </a>
+          </div>
+          <div class="language"></div>
+        </div>
+      </div>
+      <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu">
+          <div class="contentBx">
+            <div class="label">SHOP</div>
+            <div class="content">
+              <ul>
+                <li><a href="webshop.html">BAGS</a></li>
+                <li><a href="#">PROTECTION AND CARE</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+                <li><a href="#">MOST WANTED</a></li>
+                <li><a href="#">SALE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <div class="label">WORLD OF SILFEN</div>
+            <div class="content">
+              <ul>
+                <li><a href="information.html">INFORMATION</a></li>
+                <li><a href="ourstory.html">OUR STORY</a></li>
+                <li><a href="sustainability.html">SUSTAINABILITY</a></li>
+                <li><a href="lookbook.html">LOOKBOOK</a></li>
+                <li><a href="community.html">COMMUNITY</a></li>
+                <li><a href="careguide.html">CARE GUIDE</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="contentBx">
+            <li class="account_link"><a href="#">ACCOUNT</a></li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <section id="community">
+      <div class="community_col">
+        <div id="community-pics"></div>
+      </div>
+      <div class="community_col">
+        <div class="silfenGS">
+          <h1>Silfen Girl Squad</h1>
+          <p>
+            Behold our amazing girl squad. These girls are spreading the #silfenvibes everyday and inspiring the people around them to explore new looks and styles.<br /><br />
+            We are always looking for talented girls to join the squad. So if you speak SoMe fluently and would like spread the SILFEN vibes, don’t hesitate to contact us!
+          </p>
+        </div>
+
+        <div id="community-form">
+          <h1>Want to collaborate?</h1>
+          <p>Become a member of SILFEN’s girl squad today! Send us your application by filling out the form below.</p>
+          <form>
+            <div class="collab_form_container">
+              <label>Name</label>
+              <input type="text" id="fullname" name="fullname" placeholder="Name" />
+              <label>Email</label>
+              <input type="text" id="email" name="email" placeholder="Email" />
+              <label for="application">Application</label>
+              <textarea type="text" id="application" name="application"></textarea>
+            </div>
+          </form>
+          <button>Get in touch</button>
+        </div>
+      </div>
     </section>
-    <footer></footer>
+    <footer class="footer"></footer>
     <script type="module" src="./script.js"></script>
+    <script type="module" src="./footer.js"></script>
+    <script type="module" src="./menu.js"></script>
   </body>
 </html>

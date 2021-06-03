@@ -612,7 +612,7 @@ function showSingleProduct() {
 function showCommunityPage() {
   console.log("showCommunityPage");
 
-  document.querySelector("#community").innerHTML = communityData.content.rendered;
+  document.querySelector("#community-pics").innerHTML = communityData.content.rendered;
 }
 
 function showLookbook() {
