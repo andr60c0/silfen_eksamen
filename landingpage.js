@@ -18,12 +18,13 @@ function start() {
     let scrollTop = document.documentElement.scrollTop;
     const mediaIpad = window.matchMedia("(min-width: 768px)");
     const mediaDesktop = window.matchMedia("(min-width: 1200px)");
-    // console.log("scrollTop", scrollTop);
-    if (scrollTop < 8) {
-      document.querySelector("#nav").style.position = "relative";
-    } else {
+    console.log("scrollTop", scrollTop);
+    if (scrollTop > 50) {
       document.querySelector("#nav").style.position = "fixed";
       document.querySelector("#nav").style.top = "0";
+    } else {
+      document.querySelector("#nav").style.position = "relative";
+
       // document.querySelector("#nav").style.left = "0";
     }
     if (scrollTop > 900 && mediaDesktop.matches) {

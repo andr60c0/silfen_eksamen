@@ -9,27 +9,34 @@ function menuStart() {
   document.onscroll = function () {
     let scrollTop = document.documentElement.scrollTop;
     console.log("scrollTop", scrollTop);
+    if (scrollTop > 50) {
+      document.querySelector("#nav").style.position = "fixed";
+      document.querySelector("#nav").style.top = "0";
+    } else {
+      document.querySelector("#nav").style.position = "relative";
 
+      // document.querySelector("#nav").style.left = "0";
+    }
     const mediaMobile = window.matchMedia("(max-width: 767px)");
     const mediaIpad = window.matchMedia("(max-width: 1199px)");
     const mediaDesktop = window.matchMedia("(min-width: 1200px)");
 
-    if (scrollTop < 12) {
-      if (mediaMobile.matches) {
-        console.log("mediaMobile");
-        document.querySelector("#nav").style.top = "13vw";
-      } else if (mediaIpad.matches) {
-        console.log("mediaIpad");
-        document.querySelector("#nav").style.top = "7vw";
-      } else {
-        console.log("desktopMedia");
-        document.querySelector("#nav").style.top = "4vw";
-      }
-    } else {
-      document.querySelector("#nav").style.position = "fixed";
-      document.querySelector("#nav").style.top = "0";
-      document.querySelector("#nav").style.left = "0";
-    }
+    // if (scrollTop < 12) {
+    //   if (mediaMobile.matches) {
+    //     console.log("mediaMobile");
+    //     document.querySelector("#nav").style.top = "13vw";
+    //   } else if (mediaIpad.matches) {
+    //     console.log("mediaIpad");
+    //     document.querySelector("#nav").style.top = "7vw";
+    //   } else {
+    //     console.log("desktopMedia");
+    //     document.querySelector("#nav").style.top = "4vw";
+    //   }
+    // } else {
+    //   document.querySelector("#nav").style.position = "fixed";
+    //   document.querySelector("#nav").style.top = "0";
+    //   document.querySelector("#nav").style.left = "0";
+    // }
 
     let allSusSections = [];
     let allOSSections = [];
