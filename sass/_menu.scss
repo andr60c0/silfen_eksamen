@@ -98,6 +98,7 @@
 
 nav {
   position: fixed;
+  width: 100%;
   z-index: 7000;
   top: 13vw;
   left: 0;
@@ -156,7 +157,7 @@ nav {
   display: block;
   width: 23px;
   height: 0.8px;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   position: relative;
   top: -69px;
   left: 270px;
@@ -184,7 +185,7 @@ nav {
     */
 #menuToggle input:checked ~ span {
   opacity: 1;
-  transform: rotate(43deg) translate(-0px, -px);
+  transform: rotate(43deg) translate(-2px, -1px);
   background: #232323;
 }
 
@@ -193,7 +194,7 @@ nav {
     */
 #menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
+  transform: rotate(-43deg) scale(0.2, 0.2);
 }
 
 /*

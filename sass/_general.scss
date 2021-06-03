@@ -76,7 +76,7 @@
     a:hover {
       color: #71f049;
     }
-    background-image: url("static/ss2.jpg");
+    background-image: url("../static/ss2.jpg");
     background-position: 60% 90%;
   }
 
@@ -87,7 +87,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-image: url("static/ss3.jpg");
+    background-image: url("../static/ss3.jpg");
     background-position: 60% 90%;
     overflow-y: scroll;
     display: flex;
@@ -1507,7 +1507,7 @@ figure img {
       flex-grow: 1;
       flex-basis: 300px;
       position: unset;
-      background-image: url("static/ss.jpg");
+      background-image: url("../static/ss.jpg");
       background-position: 50% 90%;
     }
     .close_info {

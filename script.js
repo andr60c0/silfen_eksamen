@@ -146,6 +146,10 @@ const allColors = [
     color: "waterfall",
     hex: "#AAD9E2",
   },
+  {
+    color: "orange",
+    hex: "#da643d",
+  },
 ];
 console.log("allColors", allColors);
 
