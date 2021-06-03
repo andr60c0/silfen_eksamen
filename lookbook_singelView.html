@@ -7,54 +7,104 @@
 
     <title>Lookbook</title>
   </head>
+
+  <nav role="navigation" id="nav">
+    <div class="header-wrapper">
+      <div class="logo">
+        <a href="index.html"><img src="static/ui-elements/silfen_logo.png" alt="silfenlogo" /></a>
+      </div>
+      <div class="ui">
+        <div class="menuaccount">
+          <a href="account.html"><img src="static/ui-elements/account.svg" alt="Account" /></a>
+        </div>
+        <div class="menusearch">
+          <a href="#"><img src="static/ui-elements/search.svg" alt="Search" /></a>
+        </div>
+        <div class="menuheart wishlist_icon">
+          <a href="wishlish.html"><img src="static/ui-elements/heart.svg" alt="Wishlist" /><span>0</span> </a>
+        </div>
+        <div class="menucart cart_link">
+          <a href="cart.html"><img src="static/ui-elements/cart.svg" alt="Shopping cart" /><span>0</span> </a>
+        </div>
+        <div class="language"></div>
+      </div>
+    </div>
+    <div id="menuToggle">
+      <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+      <input type="checkbox" />
+
+      <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+      <ul id="menu">
+        <div class="contentBx">
+          <div class="label">SHOP</div>
+          <div class="content">
+            <ul>
+              <li><a href="webshop.html">BAGS</a></li>
+              <li><a href="#">PROTECTION AND CARE</a></li>
+              <li><a href="#">NEW ARRIVALS</a></li>
+              <li><a href="#">MOST WANTED</a></li>
+              <li><a href="#">SALE</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="contentBx">
+          <div class="label">WORLD OF SILFEN</div>
+          <div class="content">
+            <ul>
+              <li><a href="information.html">INFORMATION</a></li>
+              <li><a href="ourstory.html">OUR STORY</a></li>
+              <li><a href="sustainability.html">SUSTAINABILITY</a></li>
+              <li><a href="lookbook.html">LOOKBOOK</a></li>
+              <li><a href="community.html">COMMUNITY</a></li>
+              <li><a href="careguide.html">CARE GUIDE</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="contentBx">
+          <li class="account_link"><a href="#">ACCOUNT</a></li>
+        </div>
+      </ul>
+    </div>
+  </nav>
   <body>
     <section id="singleCollection">
-      <article>
-        <h1 class="collection"></h1>
-        <h3 class="collection_name"></h3>
+      <article class="hz-scroll-wrapper">
+        <h1 class="collection hz-child"></h1>
+        <h2 class="collection_name hz-child"></h2>
+
+        <p class="lookbook_text1 hz-child"></p>
+        <img class="lookbook_pic1 hz-child" />
+        <img class="lookbook_pic2 hz-child" />
+        <p class="lookbook_text2 hz-child"></p>
+        <div class="lookbook_collage">
+          <img class="lookbook_pic3 hz-gchild" />
+          <img class="lookbook_pic4 hz-gchild" />
+          <img class="lookbook_pic5 hz-gchild" />
+        </div>
+        <p class="lookbook_text3 hz-child"></p>
+        <img class="lookbook_pic6 hz-child" />
       </article>
     </section>
-    <footer></footer>
-    <script src="script.js"></script>
-    <script>
-      //Produkt single view tekst indhold
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get("id");
-      console.log("id", id);
-      const lookbookSingleViewEndpoint =
-        "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/collection?per_page=100";
-      let lookbookSingleViewData = [];
-      let lookbookSingleView = document.querySelector("#singleCollection");
-
-      document.addEventListener("DOMContentLoaded", start);
-
-      function start() {
-        console.log("singleView start");
-        getSingleCollectionData();
-      }
-
-      async function getSingleCollectionData() {
-        const singleCollectionResponse = await fetch(
-          lookbookSingleViewEndpoint
-        );
-        lookbookSingleViewData = await singleCollectionResponse.json();
-        console.log("lookbookSingleViewData", lookbookSingleViewData);
-        showSingleCollection();
-      }
-
-      function showSingleCollection() {
-        console.log("showSingleCollection");
-
-        lookbookSingleViewData.forEach((collection) => {
-          if (collection.id == id) {
-            console.log("if");
-            lookbookSingleView.querySelector(".collection").innerHTML =
-              collection.collection;
-            lookbookSingleView.querySelector(".collection_name").innerHTML =
-              collection.collection_navn;
-          }
-        });
-      }
-    </script>
+    <!-- <footer class="footer"></footer> -->
+    <script type="module" src="./menu.js"></script>
+    <script type="module" src="./script.js"></script>
+    <!-- <script type="module" src="./footer.js"></script> -->
   </body>
 </html>

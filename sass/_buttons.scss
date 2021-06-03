@@ -3,6 +3,7 @@
 $buttonBgColor: #000000;
 $buttonTextColor: #ffffff;
 $buttonFontSizeSm: 12px;
+$limeGreen: #71f049;
 
 button {
   background-color: $buttonBgColor;
@@ -24,6 +25,10 @@ button {
 
 .wp-block-button__link {
   color: black !important;
+}
+
+.active_link {
+  color: $limeGreen;
 }
 
 .newsletter {

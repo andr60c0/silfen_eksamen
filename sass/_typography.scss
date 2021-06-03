@@ -168,6 +168,15 @@ footer {
   /* WEBSHOP END */
 }
 
+#information {
+  h3 {
+    color: white;
+    font-size: 14px;
+    padding: 0px 40px 0px 40px;
+    font-weight: 400;
+  }
+}
+
 /****************************************  IPAD TYPOGRAPHY START  ****************************************/
 @media only screen and (min-width: 768px) {
   h1 {
@@ -185,6 +194,19 @@ footer {
 
   a {
     font-size: $textFontSizeIpad;
+  }
+
+  #information {
+    .left-column {
+      a {
+        font-size: $h1FontSizeIpad;
+        transition: color 0.3s ease;
+      }
+    }
+
+    h1 {
+      font-size: 15px;
+    }
   }
 
   #nav a {

@@ -19,6 +19,14 @@ const lookbookEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wor
 let lookbookTemplate = document.querySelector("#lookbook_template");
 let lookbookContainer = document.querySelector("#lookbook .sectionwrapper");
 
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+
+//Lookbook - Single view
+const lookbookSingleViewEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/collection?per_page=100";
+let lookbookSingleViewData = [];
+let lookbookSingleView = document.querySelector("#singleCollection");
+
 //Community
 let communityData;
 let communityEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/pages/157";
@@ -40,12 +48,6 @@ let filter = "alle";
 // let filter = [39, 36, 32, 38, 34, 35, 37];
 
 //Webshop - single view
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get("id");
-//Karussel til mobil
-let karussel;
-let numberOfPicsInCaro;
-let caroCurrentNum = 0;
 
 // console.log("id", id);
 const productSingleViewEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
@@ -168,6 +170,7 @@ function start() {
   getWRTWData();
   getLPDiscoverData();
   getLookbookData();
+  getSingleCollectionData();
   getCommunityData();
   getTermsAndConditionsData();
   getPrivacyData();
@@ -230,6 +233,13 @@ function start() {
 
 //ASYNC FUNCTIONS
 
+async function getSingleCollectionData() {
+  const singleCollectionResponse = await fetch(lookbookSingleViewEndpoint);
+  lookbookSingleViewData = await singleCollectionResponse.json();
+  console.log("lookbookSingleViewData", lookbookSingleViewData);
+  showSingleCollection();
+}
+
 async function getWRTWData() {
   const landingpageWRTWResponse = await fetch(landingpageWRTWEndpoint);
   landingpageWRTWData = await landingpageWRTWResponse.json();
@@ -269,6 +279,7 @@ function showLPDiscover() {
 async function getLookbookData() {
   const lookbookResponse = await fetch(lookbookEndpoint);
   lookbookData = await lookbookResponse.json();
+
   showLookbook();
 }
 
@@ -278,13 +289,6 @@ async function getCommunityData() {
   communityData = await communityResponse.json();
   showCommunityPage();
 }
-
-//Sustainability data
-// async function getSustainabilityData() {
-//   const sustainabilityResponse = await fetch(sustainabilityEndpoint);
-//   sustainabilityData = await sustainabilityResponse.json();
-//   showSustainabilityPage();
-// }
 
 async function getTermsAndConditionsData() {
   const termsAndConditionsResponse = await fetch(termsAndConditionsEndpoint);
@@ -314,7 +318,7 @@ async function getSingleProductData() {
   //All product images
   const allProductImagesResponse = await fetch(allProductImagesEndpoint);
   allProductImages = await allProductImagesResponse.json();
-  // console.log("allProductImages", allProductImages);
+  console.log("allProductImages", allProductImages);
 
   showSingleProduct();
 }
@@ -328,6 +332,26 @@ function showTermsAndConditionsPage() {
   console.log("showTermsAndConditions");
 
   document.querySelector("#terms_and_conditions").innerHTML = termsAndConditionsData.content.rendered;
+}
+
+function showSingleCollection() {
+  console.log("showSingleCollection");
+
+  lookbookSingleViewData.forEach((collection) => {
+    if (collection.id == id) {
+      lookbookSingleView.querySelector(".collection").innerHTML = collection.collection;
+      lookbookSingleView.querySelector(".collection_name").innerHTML = collection.collection_navn;
+      lookbookSingleView.querySelector(".lookbook_text1").innerHTML = collection.lookbook_text1;
+      lookbookSingleView.querySelector(".lookbook_pic1").src = collection.collection_image1.guid;
+      lookbookSingleView.querySelector(".lookbook_pic2").src = collection.collection_image2.guid;
+      lookbookSingleView.querySelector(".lookbook_text2").innerHTML = collection.lookbook_text2;
+      lookbookSingleView.querySelector(".lookbook_pic3").src = collection.collection_image3.guid;
+      lookbookSingleView.querySelector(".lookbook_pic4").src = collection.collection_image4.guid;
+      lookbookSingleView.querySelector(".lookbook_pic5").src = collection.collection_image5.guid;
+      lookbookSingleView.querySelector(".lookbook_text3").innerHTML = collection.lookbook_text3;
+      lookbookSingleView.querySelector(".lookbook_pic6").src = collection.collection_image6.guid;
+    }
+  });
 }
 
 //Privacy Policy
