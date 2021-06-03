@@ -44,7 +44,7 @@ let productsData = [];
 const productsEndpoint = "https://cecilieslemming.nu/kea/4sem_eksamen_silfen/wordpress/wp-json/wp/v2/product?per_page=100";
 let productsTemplate = document.querySelector("#products_template");
 const container = document.querySelector("#products");
-let filter = "alle";
+let filter = "39";
 // let filter = [39, 36, 32, 38, 34, 35, 37];
 
 //Webshop - single view
@@ -160,22 +160,47 @@ let number = 0;
 let itemName;
 
 document.addEventListener("DOMContentLoaded", start);
-// let body = document.querySelector("body");
-// let lookbookbody = document.querySelector("#lookbookbody");
+const page = document.querySelector("body").dataset.page;
+
 function start() {
   console.log("script start");
+
   updateNumbers();
   displayCart();
   displayWishlist();
+
+  //Landing page
   getWRTWData();
   getLPDiscoverData();
-  getLookbookData();
-  getSingleCollectionData();
-  getCommunityData();
-  getTermsAndConditionsData();
-  getPrivacyData();
-  getProductsData();
-  getSingleProductData();
+
+  //Lookbook
+  if (page === "lookbook") {
+    getLookbookData();
+  }
+  //Lookbook singleview
+  if (page === "lookbook_singleView") {
+    getSingleCollectionData();
+  }
+
+  //Community
+  if (page === "community") {
+    getCommunityData();
+  }
+
+  if (page === "information") {
+    //Terms and conditions
+    getTermsAndConditionsData();
+    //Privacy Policy
+    getPrivacyData();
+  }
+  //Webshop
+  if (page === "webshop") {
+    getProductsData();
+  }
+  if (page === "product_singleView") {
+    //Webshop single view
+    getSingleProductData();
+  }
 
   const x = window.matchMedia("(min-width: 1200px)");
 
@@ -364,8 +389,9 @@ function showPrivacyPage() {
 function showProducts() {
   console.log("showProducts");
   container.innerHTML = "";
+
   productsData.forEach((product) => {
-    if (filter == "alle" || filter == product.wf_product_folders) {
+    if (filter == "39" || product.wf_product_folders.includes(filter)) {
       const clone = productsTemplate.cloneNode(true).content;
       clone.querySelector(".product_image").src = product.product_image.guid;
       clone.querySelector(".product_name").innerHTML = product.product_name;
@@ -404,7 +430,7 @@ function showProducts() {
 
 function filtrering() {
   console.log("filter", filter);
-  filter = this.dataset.kategori;
+  filter = Number(this.dataset.kategori);
   console.log("filter", filter);
   document.querySelectorAll(".filter").forEach((elm) => {
     elm.classList.remove("valgt");

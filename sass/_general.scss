@@ -465,8 +465,8 @@
   }
 
   .checkout_checkmark {
-    width: 15px;
-    height: 15px;
+    max-width: 15px;
+    max-height: 15px;
     border: 0.5px solid black;
     flex-basis: 1px;
     flex-grow: 0.05;
@@ -506,6 +506,7 @@
   margin-top: 30vw;
   margin-left: 4vw;
   margin-right: 4vw;
+  margin-bottom: 8vw;
 
   img {
     filter: contrast(95%);
@@ -896,10 +897,6 @@ figure img {
   background-color: blue;
 }
 
-.green {
-  color: #71f049;
-}
-
 #contact .inner_col {
   display: flex;
 }
@@ -917,6 +914,10 @@ figure img {
     top: 40%;
     left: 10%;
     // z-index: -1;
+    .green {
+      margin-left: -10px;
+      color: #71f049;
+    }
   }
 
   #slideshow_wrap {
@@ -978,6 +979,10 @@ figure img {
 //MOBILE LANDING PAGE START
 #landingpage {
   margin: 20px;
+  .wp-block-button__link {
+    text-transform: capitalize;
+    font-size: 14px;
+  }
 
   .newsletter {
     position: fixed;
@@ -1119,7 +1124,7 @@ figure img {
 
   #most_wanted img {
     filter: contrast(95%);
-    margin-right: 5px;
+    margin-right: 20px;
     width: 70%;
   }
 
@@ -1410,59 +1415,59 @@ figure img {
     p {
     }
 
-    // .lookbook_text1 {
-    //   // grid-area: text1;
-    //   position: absolute;
-    //   top: 50vw;
-    //   right: 0vw;
-    //   max-width: 290px;
-    // }
-    // .lookbook_text2 {
-    //   // grid-area: text2;
-    //   max-width: 290px;
-    //   padding-top: 200px;
-    // }
-    // .lookbook_text3 {
-    //   margin-top: 280px;
-    //   margin-left: 450px;
-    //   margin-bottom: 40px;
-    //   text-align: end;
-    //   max-width: 290px;
-    // }
-    // .lookbook_pic1 {
-    //   // grid-area: pic1;
-    //   width: 45%;
-    //   position: absolute;
-    //   top: 10vw;
-    //   right: 0;
-    // }
-    // .lookbook_pic2 {
-    //   // grid-area: pic2;
-    //   width: 40%;
-    //   margin-top: 130px;
-    // }
-    // .lookbook_pic3 {
-    //   // grid-area: pic3;
-    //   width: 40%;
-    //   float: right;
-    //   margin-top: -280px;
-    //   margin-right: 33px;
-    // }
-    // .lookbook_pic4 {
-    //   width: 40%;
-    //   margin-left: 30px;
-    // }
-    // .lookbook_pic5 {
-    //   // grid-area: pic5;
-    //   width: 50%;
-    //   float: right;
-    //   margin-top: 100px;
-    // }
-    // .lookbook_pic6 {
-    //   width: 60%;
-    //   float: right;
-    //   margin-bottom: 300px;
-    // }
+    .lookbook_text1 {
+      // grid-area: text1;
+      position: absolute;
+      top: 50vw;
+      right: 0vw;
+      max-width: 290px;
+    }
+    .lookbook_text2 {
+      // grid-area: text2;
+      max-width: 290px;
+      padding-top: 200px;
+    }
+    .lookbook_text3 {
+      margin-top: 280px;
+      margin-left: 450px;
+      margin-bottom: 40px;
+      text-align: end;
+      max-width: 290px;
+    }
+    .lookbook_pic1 {
+      // grid-area: pic1;
+      width: 45%;
+      position: absolute;
+      top: 10vw;
+      right: 0;
+    }
+    .lookbook_pic2 {
+      // grid-area: pic2;
+      width: 40%;
+      margin-top: 130px;
+    }
+    .lookbook_pic3 {
+      // grid-area: pic3;
+      width: 40%;
+      float: right;
+      margin-top: -280px;
+      margin-right: 33px;
+    }
+    .lookbook_pic4 {
+      width: 40%;
+      margin-left: 30px;
+    }
+    .lookbook_pic5 {
+      // grid-area: pic5;
+      width: 50%;
+      float: right;
+      margin-top: 100px;
+    }
+    .lookbook_pic6 {
+      width: 60%;
+      float: right;
+      margin-bottom: 300px;
+    }
   }
 
   //LOOKBOOK SINGLE VIEW IPAD END
@@ -1540,18 +1545,33 @@ figure img {
     }
 
     .col_25 {
+      display: flex;
       width: 25%;
+      align-items: center;
     }
     .col_75 {
       width: 75%;
+      display: flex;
+      align-items: center;
     }
 
     input {
-      padding: 2vw 0;
+      padding: 1.3vw 0;
+      margin: 1vw 5px;
+    }
+
+    ::placeholder {
+      padding-left: 4px;
+    }
+
+    .checkout_checkmark {
+      margin-top: 6px;
     }
 
     select {
-      padding: 0;
+      padding: 1.3vw 0;
+      margin: 1vw 5px;
+      width: 100%;
     }
 
     .form_col {
@@ -2182,14 +2202,33 @@ figure img {
 
   #checkout {
     margin-top: 10vw;
-
+    .cardinfo_container {
+      display: flex;
+    }
     .wrapperwrapper {
       display: flex;
       flex-wrap: wrap;
     }
-
+    .checkout_payment_container {
+      padding-top: 2vw;
+      margin-bottom: 1vw;
+    }
     .checkout_payment_container img {
       width: 8%;
+    }
+    .checkout_checkmark {
+      max-width: 15px;
+      max-height: 15px;
+    }
+    .delivery_same_container,
+    .gls_container {
+      padding-top: 2vw;
+    }
+    .customer_notes {
+      padding-top: 2vw;
+    }
+    #customernotes {
+      width: 100%;
     }
 
     input {
@@ -2198,7 +2237,7 @@ figure img {
     }
 
     select {
-      padding: 0;
+      padding: 1vw 0;
     }
 
     .form_col {

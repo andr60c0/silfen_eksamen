@@ -15,6 +15,7 @@ module.exports = {
         ourstory: resolve(__dirname, "ourstory.html"),
         careguide: resolve(__dirname, "careguide.html"),
         checkout: resolve(__dirname, "checkout.html"),
+        information: resolve(__dirname, "information.html"),
       },
     },
   },

@@ -84,6 +84,7 @@ a {
 
 .shipping_popUp p {
   font-size: 10px;
+  font-weight: 500px;
   color: $limeGreen;
 }
 
@@ -91,7 +92,7 @@ a {
   .fm_label,
   li {
     font-size: $textFontSizeSm;
-    font-family: "manropeextralight";
+    font-family: "manroperegular";
   }
 }
 
@@ -111,7 +112,9 @@ a {
 
 footer {
   .footer_h1 {
+    font-family: "manroperegular";
     font-size: 12px !important;
+    font-weight: 500;
     padding-bottom: 10px;
   }
 
@@ -131,6 +134,7 @@ footer {
     font-family: "manroperegular";
     text-decoration: none;
     color: white;
+    text-transform: none;
   }
 
   a:hover {
@@ -141,6 +145,7 @@ footer {
       color: white;
       margin-bottom: 2px;
       text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.05);
+      font-weight: 500;
     }
 
     p {
@@ -153,8 +158,8 @@ footer {
 
 #landingpage_splash {
   .splash_title {
-    color: #71f049;
-    font-size: 20px;
+    color: black;
+    font-size: 40px;
   }
 }
 /* WEBSHOP START */
@@ -235,7 +240,8 @@ footer {
     .fm_label,
     li {
       font-size: $textFontSizeDesktop;
-      font-family: "manropeextralight";
+      font-family: "manroperegular";
+      font-weight: 500;
     }
   }
   #singleProduct {
