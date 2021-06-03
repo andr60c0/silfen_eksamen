@@ -65,6 +65,10 @@ a {
   font-weight: 500;
   font-size: $menuLinksSm;
 }
+a:hover {
+  color: $limeGreen;
+  cursor: pointer;
+}
 
 .breadcrumb {
   a {
@@ -226,9 +230,9 @@ footer {
   }
   #landingpage_splash {
     .splash_title {
-      font-size: 3rem;
+      font-size: 3.4rem;
 
-      color: $limeGreen;
+      // color: $limeGreen;
     }
   }
 }

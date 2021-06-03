@@ -130,6 +130,22 @@ const allColors = [
     color: "tiger",
     hex: "#CB7628",
   },
+  {
+    color: "tileblue",
+    hex: "#81c3d1",
+  },
+  {
+    color: "brown",
+    hex: "#81c3d1",
+  },
+  {
+    color: "raspberry",
+    hex: "#d75792",
+  },
+  {
+    color: "waterfall",
+    hex: "#AAD9E2",
+  },
 ];
 console.log("allColors", allColors);
 
@@ -170,8 +186,10 @@ function start() {
   displayWishlist();
 
   //Landing page
-  getWRTWData();
-  getLPDiscoverData();
+  if (page === "landingpage") {
+    getWRTWData();
+    getLPDiscoverData();
+  }
 
   //Lookbook
   if (page === "lookbook") {

@@ -503,7 +503,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 4vw;
-  margin-top: 30vw;
+  margin-top: 35vw;
   margin-left: 4vw;
   margin-right: 4vw;
   margin-bottom: 8vw;
@@ -725,7 +725,7 @@
       padding: 2vw 0;
       cursor: pointer;
       color: black;
-      font-family: "manropeextralight";
+      font-family: "manropelight";
       font-size: 12px;
     }
 
@@ -775,7 +775,7 @@
     margin-bottom: 20px;
     span {
       margin-left: 5px;
-      margin-right: 5px;
+      margin-right: 0px;
     }
   }
 }
@@ -832,7 +832,7 @@ figure img {
       text-transform: none;
       font-family: "manropeextralight";
       font-size: 20px;
-      padding: 20vw 4vw 10vw 4vw;
+      padding: 20vw 4vw 10vw 1vw;
     }
     .ourstory_h2 {
       margin: 7vw 4vw 1vw 4vw;
@@ -910,10 +910,10 @@ figure img {
   background-position: 60% 100%;
 
   .splash_title {
+    top: 55vw;
+    left: 1vw;
     position: absolute;
-    top: 40%;
-    left: 10%;
-    // z-index: -1;
+    text-align: center;
     .green {
       margin-left: -10px;
       color: #71f049;
@@ -958,7 +958,7 @@ figure img {
   }
   @media only screen and (min-width: 1200px) {
     #slideshow_wrap img {
-      width: 50%;
+      width: 48%;
       padding: 140px;
     }
 
@@ -1126,6 +1126,7 @@ figure img {
     filter: contrast(95%);
     margin-right: 20px;
     width: 70%;
+    height: auto;
   }
 
   .mostwanted_bags_container {
@@ -1185,51 +1186,51 @@ figure img {
 //MOBILE LANDING PAGE END
 
 // COMMUNITY MOBILE START
-#sustainability {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0;
-  margin-right: 0;
+// #sustainability {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-left: 0;
+//   margin-right: 0;
 
-  .sustainability_image {
-    display: none;
-  }
+//   .sustainability_image {
+//     display: none;
+//   }
 
-  .sustainability_picture_container,
-  .sustainability_text_container {
-    width: 50%;
-  }
+//   .sustainability_picture_container,
+//   .sustainability_text_container {
+//     width: 50%;
+//   }
 
-  .sustainability_picture_container {
-    height: 100vh;
-    position: relative;
-    display: block;
-    overflow: hidden;
-  }
+//   .sustainability_picture_container {
+//     height: 100vh;
+//     position: relative;
+//     display: block;
+//     overflow: hidden;
+//   }
 
-  .sustainability_col {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    h1 {
-      margin-bottom: 0vw;
-      margin-left: 8vw;
-      margin-right: 8vw;
-    }
-    p {
-      margin-top: 2vw;
-      margin-left: 8vw;
-      margin-right: 8vw;
-    }
-  }
-  .sus_pic {
-    position: relative;
-    height: 100vh;
-    width: auto;
-    right: 300px;
-  }
-}
+//   .sustainability_col {
+//     height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     h1 {
+//       margin-bottom: 0vw;
+//       margin-left: 8vw;
+//       margin-right: 8vw;
+//     }
+//     p {
+//       margin-top: 2vw;
+//       margin-left: 8vw;
+//       margin-right: 8vw;
+//     }
+//   }
+//   .sus_pic {
+//     position: relative;
+//     height: 100vh;
+//     width: auto;
+//     right: 300px;
+//   }
+// }
 
 #community {
   margin-top: 100px;
@@ -2383,6 +2384,7 @@ figure img {
   //LANDING PAGE DESKTOP END
   #landingpage_splash {
     .splash_title {
+      top: 20vw;
       left: 5%;
       // z-index: -1;
     }
@@ -2600,7 +2602,7 @@ figure img {
       display: flex;
       justify-content: space-between;
       background-color: #f9f9f9;
-      margin-top: -1vw;
+      margin-top: -2vw;
       padding: 10px;
     }
     .product_name,

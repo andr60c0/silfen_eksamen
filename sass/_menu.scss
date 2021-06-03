@@ -244,7 +244,7 @@ nav {
 #filter-menu {
   display: flex;
 
-  margin: 4vw;
+  margin: 4vw 4vw 18vw 4vw;
   position: absolute;
   top: 33vw;
   left: 0;
@@ -277,6 +277,7 @@ nav {
     width: 85px;
     height: 250px;
     padding: 20px 0;
+    box-shadow: 0px 4px 4px 0px #00000040;
   }
   .fm_contentBx.active .fm_content li {
     padding-top: 10px;
@@ -366,7 +367,7 @@ nav {
   }
 
   .contentBx.active .content {
-    padding-top: 60px;
+    padding-top: 40px;
     height: 320px;
     width: 100vw !important;
     z-index: 1000;

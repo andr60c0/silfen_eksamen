@@ -8,7 +8,7 @@ function menuStart() {
 
   document.onscroll = function () {
     let scrollTop = document.documentElement.scrollTop;
-    // console.log("scrollTop", scrollTop);
+    console.log("scrollTop", scrollTop);
 
     const mediaMobile = window.matchMedia("(max-width: 767px)");
     const mediaIpad = window.matchMedia("(max-width: 1199px)");
