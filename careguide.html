@@ -22,11 +22,14 @@
     <title>Our Story</title>
   </head>
   <style>
-    html {
-      scroll-snap-type: y mandatory;
-    }
-    .careguide_col {
-      scroll-snap-align: start;
+    @media only screen and (min-width: 768px) {
+      html {
+        scroll-snap-type: y mandatory;
+      }
+      .careguide_col,
+      footer {
+        scroll-snap-align: start;
+      }
     }
   </style>
   <body>
@@ -150,6 +153,7 @@
           <img class="careguide_image" src="static/careguide/care4.jpg" />
         </div>
         <div class="careguide_col text4">
+          <div id="cg_bottom"></div>
           <h1>HOW TO USE LEATHER PROTECTION SPRAY</h1>
           <p>Nylon is super easy to deal with. Simply clean the bag with a slightly damp cloth.</p>
           <h1>TREATMENT OF SUEDE</h1>

@@ -313,9 +313,7 @@ function showLPDiscover() {
     clone.querySelector(".lp_discover_header").innerHTML = sect.overskrift;
     clone.querySelector(".lp_discover_text").innerHTML = sect.tekst;
     clone.querySelector(".lp_discover_link").innerHTML = sect.link;
-    clone.querySelector(".lp_discover_link").addEventListener("click", () => {
-      console.log("link klik");
-    });
+    clone.querySelector(".lp_discover_link").href = sect.url;
     clone.querySelector(".lp_discover_image").src = sect.billede.guid;
 
     landingpageDiscoverContainer.appendChild(clone);

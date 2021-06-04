@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", menuStart);
 
 function menuStart() {
   console.log("start menu.js");
+  var el = document.getElementById("someElement");
+
+  // Use the 'top' property of 'getBoundingClientRect()' to get the distance from top
+  //
 
   document.onscroll = function () {
     let scrollTop = document.documentElement.scrollTop;
@@ -12,8 +16,11 @@ function menuStart() {
     if (scrollTop > 50) {
       document.querySelector("#nav").style.position = "fixed";
       document.querySelector("#nav").style.top = "0";
+      document.querySelector("body").style.marginTop = "65px";
     } else {
       document.querySelector("#nav").style.position = "relative";
+      document.querySelector("#nav").style.top = "0px";
+      document.querySelector("body").style.marginTop = "0px";
 
       // document.querySelector("#nav").style.left = "0";
     }

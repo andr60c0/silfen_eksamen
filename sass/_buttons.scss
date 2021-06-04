@@ -27,8 +27,15 @@ button {
   color: black !important;
 }
 
+.black {
+  background-color: #000;
+}
+
+.close_newsletter {
+  cursor: pointer;
+}
 .active_link {
-  color: $limeGreen;
+  color: $limeGreen !important;
 }
 
 .newsletter {

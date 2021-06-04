@@ -606,7 +606,7 @@
 /* MOBILE WEBSHOP END  */
 /* MOBILE SINGLEVIEW START */
 #singleProduct {
-  margin: 23vw 4vw 4vw 4vw;
+  margin: 4vw 4vw 4vw 4vw;
   .color_picker {
     display: flex;
   }
@@ -902,17 +902,14 @@ figure img {
 }
 #landingpage_splash {
   display: flex;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
-  align-items: center;
   position: relative;
-  // background-image: url("static/clipart/splash_bg.png");
-  background-position: 60% 100%;
 
   .splash_title {
     top: 65vw;
     // left: 1vw;
-    position: relative;
+    position: absolute;
     text-align: center;
     .green {
       margin-left: -10px;
@@ -927,10 +924,12 @@ figure img {
 
   .slideimage_wrapper {
     display: flex;
-    animation: slide 30s infinite linear;
+    animation: slide 23s infinite linear;
+    width: 100vw;
+    margin-top: 50px;
   }
   #slideshow_wrap img {
-    width: 30%;
+    width: 100%;
     flex-basis: 300px;
     flex-grow: 1;
   }
@@ -940,39 +939,44 @@ figure img {
       transform: translateX(300px);
     }
     100% {
-      transform: translateX(-3000px);
+      transform: translateX(-1900px);
     }
   }
 
   @media only screen and (min-width: 768px) {
     #slideshow_wrap img {
-      max-width: 30%;
+      width: 75%;
     }
     @keyframes slide {
       0% {
         transform: translateX(500px);
       }
       100% {
-        transform: translateX(-3800px);
+        transform: translateX(-2600px);
       }
     }
   }
   @media only screen and (min-width: 1200px) {
     #slideshow_wrap img {
-      max-width: 40%;
-      padding: 140px;
+      width: 45%;
+      margin-top: -40px;
+      padding: 0 140px;
     }
 
+    #slideshow_wrap img:last-child {
+      width: 43%;
+      margin-bottom: 40px;
+    }
     .slideimage_wrapper {
-      animation-duration: 50s;
+      animation-duration: 40s;
     }
 
     @keyframes slide {
       0% {
-        transform: translateX(800px);
+        transform: translateX(1000px);
       }
       100% {
-        transform: translateX(-5000px);
+        transform: translateX(-3000px);
       }
     }
   }
@@ -1884,7 +1888,7 @@ figure img {
       position: relative;
       height: 100vh;
       width: auto;
-      right: 300px;
+      right: 500px;
     }
   }
   //SUSTAINABILITY IPAD END
@@ -2000,7 +2004,7 @@ figure img {
       position: relative;
       height: 100vh;
       width: auto;
-      right: 300px;
+      right: 400px;
     }
   }
   //CAREGUIDE IPAD END
@@ -2048,13 +2052,6 @@ figure img {
     .col {
       flex-grow: 1;
       flex-basis: 600px;
-    }
-
-    .collection_image:hover {
-      animation-name: scaleKf;
-      animation-duration: 0.5s;
-      animation-iteration-count: 1;
-      animation-fill-mode: both;
     }
 
     @keyframes scaleKf {
@@ -2306,7 +2303,7 @@ figure img {
   /*  Webshop desktop start */
   #products {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    margin-top: 15vw;
+    margin-top: 10vw;
     margin-left: 60px;
     margin-right: 60px;
   }
@@ -2390,8 +2387,8 @@ figure img {
   //LANDING PAGE DESKTOP END
   #landingpage_splash {
     .splash_title {
-      top: 30vw;
-
+      top: 13vw;
+      left: 5vw;
       // left: 5%;
       // z-index: -1;
     }
@@ -2481,6 +2478,7 @@ figure img {
       flex-direction: column;
       justify-content: center;
       h1 {
+        margin-top: 10vw;
         margin-bottom: 0vw;
         margin-left: 10vw;
         margin-right: 10vw;
@@ -2493,9 +2491,10 @@ figure img {
     }
     .os_pic {
       position: relative;
-      float: right;
-      height: 100vh;
-      width: auto;
+      // float: right;
+      height: auto;
+
+      width: 100%;
       right: unset;
     }
     .ourstory_col {
@@ -2628,4 +2627,21 @@ figure img {
   }
   //SINGLE PRODUCT DESKTOP END
   /****************** DESKTOP END ******************/
+}
+
+@media only screen and (min-width: 1441px) {
+  #landingpage_splash {
+    .splash_title {
+      top: 18vw;
+      left: 15vw;
+    }
+    @keyframes slide {
+      0% {
+        transform: translateX(1500px);
+      }
+      100% {
+        transform: translateX(-4000px);
+      }
+    }
+  }
 }

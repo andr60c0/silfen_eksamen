@@ -19,13 +19,15 @@
     <title>SILFEN</title>
   </head>
   <style>
-    /* html {
-      scroll-snap-type: y mandatory;
+    @media only screen and (min-width: 768px) {
+      html {
+        scroll-snap-type: y mandatory;
+      }
+      .sustainability_col,
+      footer {
+        scroll-snap-align: start;
+      }
     }
-
-    .sustainability_col {
-      scroll-snap-align: start;
-    } */
   </style>
   <body>
     <div class="shipping_popUp">
@@ -141,10 +143,7 @@
             <br /><b>HOW?</b> <br />
             We ensure the ethical development of future generations by guaranteeing that our suppliers do not support or make use of child labor. We encourage our factories to ensure that all families
             have the possibility to put their children in school. SILFEN provides insurance to all our employees as well as their family. Our factories grant pensions to all employees, providing them
-            with financial stability after retirement. We support the different religions of employees and protect their right to engage with rituals, prayers etc. at any time. We condemn
-            discrimination, and make sure that the employees are protected from prejudice and injustice at the workplace. We visit our manufacturers regularly to ensure that they follow the issued
-            principles regarding working conditions, quality, pollution etc. All our manufacturers are SA8000 certified. Above allows us to promise our customers that a SILFEN bag is always crafted in
-            a responsible manner.
+            with financial stability after retirement. We condemn discrimination, and make sure that the employees are protected from prejudice and injustice at the workplace.
           </p>
           <img class="sustainability_image" src="static/sustainability/sus3.jpg" />
         </div>
@@ -178,6 +177,7 @@
           <img class="sustainability_image" src="static/sustainability/sus6.jpg" />
         </div>
         <div class="sustainability_col text7">
+          <div id="sus_bottom"></div>
           <h1>GREEN SHIPPING</h1>
           <p>
             We are aware of the major impact that the shipping industry have on our planet. Because of this, we choose environmental friendly shipping options when applicable. We are in close contact

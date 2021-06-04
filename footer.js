@@ -41,22 +41,24 @@ function displayFooter() {
     </div>
     <div class="footer_menu in">
       <p class="footer_h1">INFORMATION</p>
-      <a href="contact.html">Contact</a><br />
-      <a href="shipping.html">Shipping</a><br />
-      <a href="return.html">Return</a><br />
-      <a href="careers.html">Careers</a><br />
-      <a href="findstore.html">Find Store</a><br />
-      <a href="b2bwholesale.html">B2B Wholesale</a>
+      <a href="information.html">Contact</a><br />
+      <a href="information.html">Shipping</a><br />
+      <a href="information.html">Return</a><br />
+      <a href="information.html">Careers</a><br />
+      <a href="information.html">Terms and conditions</a>
+  <a href="information.html">Privacy and cookie policy</a>
+      <a href="information.html">Find Store</a><br />
+      <a href="information.html">B2B Wholesale</a>
     </div>
     <div class="footer_menu">
       <p class="footer_h1">CONNECT</p>
       <div class="some_icons">
         <div class="some_icons_sec">
-          <a href="https://www.facebook.com/Silfenstudio">FB</a>
-          <a href="https://www.instagram.com/silfenstudio/?hl=en">IG</a>
-          <a href="https://www.linkedin.com/company/silfenstudio/">LI</a>
-          <a href="#">YT</a>
-          <a href="https://www.pinterest.dk/SilfenStudio/_created/">PI</a>
+          <a target="_blank" href="https://www.facebook.com/Silfenstudio">FB</a>
+          <a target="_blank" href="https://www.instagram.com/silfenstudio/?hl=en">IG</a>
+          <a target="_blank" href="https://www.linkedin.com/company/silfenstudio/">LI</a>
+          <a target="_blank" href="#">YT</a>
+          <a target="_blank" href="https://www.pinterest.dk/SilfenStudio/_created/">PI</a>
         </div>
       </div>
     </div>
@@ -69,8 +71,8 @@ function displayFooter() {
 </div>
 <div class="footer_copyright">
   <p>© 2021 Silfen Studio. All rights reserved</p>
-  <a href="termsandconditions.html">Terms and conditions</a>
-  <a href="privacypolicy.html">Privacy and cookie policy</a>
+  <a href="information.html">Terms and conditions</a>
+  <a href="information.html">Privacy and cookie policy</a>
 </div>
 </div>
 </footer>

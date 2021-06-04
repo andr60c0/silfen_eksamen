@@ -6,6 +6,7 @@
 
 img {
   width: 100%;
+  height: auto;
 }
 
 video {
@@ -29,7 +30,9 @@ html {
   scroll-behavior: smooth;
   //   scroll-snap-type: y mandatory;
 }
-
+section {
+  max-width: 1920px !important;
+}
 body {
   max-width: 1920px;
   margin-left: auto;
